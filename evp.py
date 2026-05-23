@@ -612,6 +612,395 @@ def generate_ig_post(slug, product_data, category):
     return fname
 
 # ============================================================
+# LINKS PAGE — Linktree caseiro com produto em destaque
+# ============================================================
+def rebuild_links_page(highlight_slug=None, highlight_label=None):
+    """Regenera /links.html com produto em destaque no topo.
+
+    - highlight_slug: slug do post a ser destacado (próximo do kit, normalmente)
+    - highlight_label: texto opcional do destaque (ex: "Post de hoje", "Estreia")
+    """
+    meta = load_meta()
+    products = meta["products"]
+    site_url = meta["config"]["site_url"]
+
+    # Se não passou destaque, pega o post mais recente (por mtime do HTML)
+    if not highlight_slug:
+        post_files = glob.glob(os.path.join(SITE_DIR, "posts/*.html"))
+        if post_files:
+            newest = max(post_files, key=os.path.getmtime)
+            highlight_slug = os.path.basename(newest).replace(".html", "")
+
+    # Dados do destaque
+    hl_title = ""
+    hl_img = ""
+    hl_cat = "tech"
+    if highlight_slug:
+        post_path = os.path.join(SITE_DIR, f"posts/{highlight_slug}.html")
+        if os.path.exists(post_path):
+            with open(post_path, 'r', encoding='utf-8') as f:
+                h = f.read()
+            m = re.search(r'<h1>([^<]+)</h1>', h)
+            if m: hl_title = m.group(1)
+            m = re.search(r'(https://m\.media-amazon\.com/images/I/[^"\']+\.jpg)', h)
+            if m: hl_img = m.group(1)
+        hl_cat = products.get(highlight_slug, {}).get("category", "tech")
+    hl_emoji = CATEGORY_META.get(hl_cat, CATEGORY_META["tech"])["emoji"]
+    hl_label_text = highlight_label or "🔥 Em destaque agora"
+
+    # Pega 4 mais recentes (que não o destaque) por mtime
+    post_files = sorted(glob.glob(os.path.join(SITE_DIR, "posts/*.html")), key=os.path.getmtime, reverse=True)
+    secondary = []
+    for f in post_files:
+        slug = os.path.basename(f).replace(".html", "")
+        if slug == highlight_slug: continue
+        with open(f, 'r', encoding='utf-8') as fh:
+            h = fh.read()
+        m = re.search(r'<h1>([^<]+)</h1>', h)
+        title = m.group(1) if m else slug
+        cat = products.get(slug, {}).get("category", "tech")
+        emoji = CATEGORY_META.get(cat, CATEGORY_META["tech"])["emoji"]
+        # Short title
+        sh = (title[:36] + "...") if len(title) > 36 else title
+        secondary.append({"slug": slug, "title": sh, "emoji": emoji, "cat": cat})
+        if len(secondary) >= 4: break
+
+    # Total de reviews
+    total_reviews = len(products)
+
+    # Construir HTML
+    sec_html = "\n".join([
+        f'''  <a href="posts/{s["slug"]}.html" class="link-btn">
+    <span class="link-emoji">{s["emoji"]}</span>
+    <span class="link-text">{s["title"]}
+      <span class="link-sub">Review · {s["cat"]}</span>
+    </span>
+  </a>''' for s in secondary
+    ])
+
+    highlight_block = ""
+    if highlight_slug and hl_title:
+        highlight_block = f'''  <a href="posts/{highlight_slug}.html" class="link-btn featured">
+    <span class="link-emoji">{hl_emoji}</span>
+    <span class="link-text">{hl_label_text}: {(hl_title[:36] + "...") if len(hl_title) > 36 else hl_title}
+      <span class="link-sub">Toque para ler o review completo</span>
+    </span>
+  </a>
+
+'''
+
+    html = f'''<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Links — ESSE VALE A PENA SIM</title>
+<meta name="description" content="Todos os links do ESSE VALE A PENA SIM — reviews, achados por categoria e produtos em destaque.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .links-page {{
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+    text-align: center;
+  }}
+  .links-avatar {{
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--brand-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: -1px;
+    margin: 0 auto 18px;
+    box-shadow: var(--shadow-md);
+  }}
+  .links-handle {{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }}
+  .links-bio {{
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }}
+  .link-btn {{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-align: left;
+  }}
+  .link-btn:hover {{ transform: translateY(-2px); box-shadow: var(--shadow-md); }}
+  .link-btn.featured {{
+    background: var(--brand-gradient);
+    color: white;
+    border: none;
+  }}
+  .link-emoji {{ font-size: 24px; }}
+  .link-text {{ flex-grow: 1; }}
+  .link-sub {{
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-top: 2px;
+  }}
+  .link-btn.featured .link-sub {{ opacity: 0.9; }}
+  .section-label {{
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin: 24px 0 10px 4px;
+    font-weight: 700;
+  }}
+</style>
+<link rel="canonical" href="{site_url}/links">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Links — ESSE VALE A PENA SIM">
+<meta property="og:description" content="Curadoria honesta de achados Amazon — reviews completos com prós E contras.">
+<meta property="og:url" content="{site_url}/links">
+<meta property="og:image" content="{site_url}/assets/og-default.png">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="ESSE VALE A PENA SIM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Links — ESSE VALE A PENA SIM">
+<meta name="twitter:description" content="Curadoria honesta de achados Amazon — reviews com prós E contras.">
+<meta name="twitter:image" content="{site_url}/assets/og-default.png">
+<meta name="robots" content="index, follow">
+</head>
+<body>
+
+<main class="links-page">
+
+  <div class="links-avatar">EVP</div>
+  <div class="links-handle">@essevaleapenasim</div>
+  <p class="links-bio">🛒 Curadoria honesta de achados Amazon<br>⭐ Reviews com prós E contras — {total_reviews} produtos analisados</p>
+
+{highlight_block}  <a href="index.html" class="link-btn featured">
+    <span class="link-emoji">⭐</span>
+    <span class="link-text">Ver TODOS os produtos
+      <span class="link-sub">{total_reviews} reviews completos no site</span>
+    </span>
+  </a>
+
+  <a href="categorias.html" class="link-btn">
+    <span class="link-emoji">📂</span>
+    <span class="link-text">Achados por categoria
+      <span class="link-sub">11 categorias organizadas</span>
+    </span>
+  </a>
+
+  <p class="section-label">📝 Reviews recentes</p>
+
+{sec_html}
+
+  <a href="sobre.html" class="link-btn">
+    <span class="link-emoji">💬</span>
+    <span class="link-text">Sobre o site
+      <span class="link-sub">Como funciona a curadoria</span>
+    </span>
+  </a>
+
+  <p style="margin-top:40px;font-size:11px;color:var(--text-muted);">
+    Participante do Programa de Associados Amazon · O preço é o mesmo que você pagaria entrando direto no site da Amazon
+  </p>
+
+</main>
+
+</body>
+</html>
+'''
+    with open(os.path.join(SITE_DIR, "links.html"), 'w', encoding='utf-8') as f:
+        f.write(html)
+    return highlight_slug
+
+# ============================================================
+# STORY TEMPLATE — 1080×1920
+# ============================================================
+def generate_story_template(slug, product_data, category, label="Novo review"):
+    """Cria template Story 1080×1920 pra produto."""
+    title = product_data.get("title", slug)
+    short = (title[:50] + "...") if len(title) > 50 else title
+    img_id = product_data.get("img_id", "")
+    if not img_id:
+        # tenta extrair do post
+        post_path = os.path.join(SITE_DIR, f"posts/{slug}.html")
+        if os.path.exists(post_path):
+            with open(post_path, 'r', encoding='utf-8') as f:
+                h = f.read()
+            m = re.search(r'https://m\.media-amazon\.com/images/I/([A-Za-z0-9-]+)\._', h)
+            if m: img_id = m.group(1)
+    img_url = f"https://m.media-amazon.com/images/I/{img_id}._AC_SX679_.jpg" if img_id else ""
+    emoji = CATEGORY_META.get(category, CATEGORY_META["tech"])["emoji"]
+    badge = CATEGORY_META.get(category, CATEGORY_META["tech"])["badge_text"]
+
+    html = f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+* {{ box-sizing: border-box; margin: 0; padding: 0; }}
+body {{
+  background: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+  gap: 16px;
+}}
+h2 {{ font-size: 14px; color: #475569; }}
+.story {{
+  width: 1080px;
+  height: 1920px;
+  background: linear-gradient(180deg, #1E40AF 0%, #06B6D4 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 60px;
+}}
+.story::before {{
+  content: "";
+  position: absolute;
+  top: -300px;
+  right: -300px;
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(255,255,255,0.20) 0%, transparent 70%);
+}}
+.brand {{
+  position: relative;
+  color: white;
+  font-weight: 900;
+  font-size: 36px;
+  letter-spacing: -1px;
+  text-align: center;
+  margin-bottom: 24px;
+}}
+.label-pill {{
+  position: relative;
+  background: rgba(255,255,255,0.18);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-size: 34px;
+  font-weight: 700;
+  align-self: center;
+  margin-bottom: 40px;
+  backdrop-filter: blur(8px);
+}}
+.title {{
+  position: relative;
+  color: white;
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}}
+.product-card {{
+  position: relative;
+  background: white;
+  border-radius: 32px;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  margin-bottom: 50px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+}}
+.product-card img {{
+  max-width: 100%;
+  max-height: 800px;
+  object-fit: contain;
+}}
+.cta-arrow {{
+  position: relative;
+  background: white;
+  color: #1E40AF;
+  padding: 36px 48px;
+  border-radius: 100px;
+  font-size: 48px;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: -1px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}}
+.handle {{
+  position: relative;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 32px;
+  opacity: 0.9;
+  font-weight: 700;
+}}
+.sticker-hint {{
+  position: absolute;
+  bottom: 200px;
+  right: 80px;
+  background: #FBBF24;
+  color: #1A1A2E;
+  padding: 24px 32px;
+  border-radius: 24px;
+  font-size: 26px;
+  font-weight: 900;
+  transform: rotate(-8deg);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  z-index: 5;
+}}
+</style>
+</head>
+<body>
+<h2>📱 Story 1080×1920 — adicione o adesivo de Link apontando pra: /posts/{slug}</h2>
+<div class="story">
+  <div class="brand">ESSE VALE A PENA SIM ✓</div>
+  <div class="label-pill">{emoji} {label}</div>
+  <div class="title">{short}</div>
+  <div class="product-card">
+    {f'<img src="{img_url}" alt="{short}">' if img_url else '<span style="color:#94a3b8">imagem indisponível</span>'}
+  </div>
+  <div class="cta-arrow">👆 Adesivo de LINK aqui</div>
+  <div class="handle">@essevaleapenasim</div>
+  <div class="sticker-hint">VALE<br>A PENA?</div>
+</div>
+</body>
+</html>
+"""
+    stories_dir = os.path.join(SITE_DIR, "instagram/stories")
+    os.makedirs(stories_dir, exist_ok=True)
+    fname = f"{slug[:40]}.html"
+    with open(os.path.join(stories_dir, fname), 'w', encoding='utf-8') as f:
+        f.write(html)
+    return fname
+
+# ============================================================
 # MONTHLY BATCH GENERATOR — 3:1 ratio
 # ============================================================
 def generate_month(year_month=None, start_date=None, days_ahead=30):
@@ -746,6 +1135,13 @@ def generate_month(year_month=None, start_date=None, days_ahead=30):
         lines.append("")
         lines.append("Todos os reviews têm prós E contras — análise honesta sempre.")
         lines.append("```")
+        lines.append("")
+        lines.append(f"**📌 Comentário fixado (cole NO seu próprio post depois de publicar — depois 3 pontinhos → Fixar comentário)**:")
+        lines.append("```")
+        lines.append(f"👉 Link pro review completo: essevaleapena.vercel.app/posts/{slug}")
+        lines.append("```")
+        lines.append("")
+        lines.append(f"**📱 Story complementar** (postar na MESMA hora do post): `instagram/stories/{slug[:40]}.html` → screenshot → publicar no story COM adesivo de Link apontando pra `essevaleapena.vercel.app/posts/{slug}`")
         lines.append("")
         lines.append(f"**Hashtags**: #achadosamazon #{p.get('category','')} #valeapena #curadoria #amazonbrasil")
         lines.append("")
@@ -958,6 +1354,79 @@ def cmd_suggest(args):
   6. Email signature: assinatura com link do site em emails pessoais
   7. Pinterest: criar conta + 5 pins/dia (tráfego grátis duradouro)""")
 
+def cmd_links(args):
+    """Regenera /links.html. Use 'evp links <slug>' pra destacar um produto específico."""
+    slug = None
+    label = None
+    for a in args:
+        if a.startswith("--label="):
+            label = a.split("=", 1)[1]
+        elif not a.startswith("--"):
+            slug = a
+    result = rebuild_links_page(highlight_slug=slug, highlight_label=label)
+    log(f"✓ /links.html regenerada (destaque: {result or 'mais recente'})", "ok")
+
+def cmd_stories(args):
+    """Gera templates de Story 1080×1920 pra todos os produtos do último kit."""
+    kit_file = args[0] if args else None
+    if not kit_file:
+        files = sorted(glob.glob(os.path.join(SITE_DIR, "instagram/mensal/*.md")))
+        if not files:
+            log("❌ Nenhum kit encontrado.", "err")
+            return
+        # Pega o mais recente por mtime
+        kit_file = max(files, key=os.path.getmtime)
+    else:
+        if not kit_file.startswith("/"):
+            kit_file = os.path.join(SITE_DIR, "instagram/mensal", kit_file)
+    log(f"→ Lendo kit: {os.path.basename(kit_file)}", "info")
+    with open(kit_file, 'r', encoding='utf-8') as f:
+        content = f.read()
+    slugs = list(dict.fromkeys(re.findall(r'/posts/([a-z0-9-]+)', content)))
+    meta = load_meta()
+    generated = 0
+    for slug in slugs:
+        p = meta["products"].get(slug, {})
+        cat = p.get("category", "tech")
+        fname = generate_story_template(slug, {}, cat, label="Novo review")
+        log(f"  ✓ instagram/stories/{fname}", "ok")
+        generated += 1
+    log(f"\n✓ {generated} stories gerados", "ok")
+
+def cmd_next(args):
+    """Lê o kit atual e prepara o PRÓXIMO post (atualiza /links + gera story)."""
+    files = sorted(glob.glob(os.path.join(SITE_DIR, "instagram/mensal/*.md")))
+    if not files:
+        log("❌ Nenhum kit encontrado.", "err")
+        return
+    kit_file = max(files, key=os.path.getmtime)
+    with open(kit_file, 'r', encoding='utf-8') as f:
+        content = f.read()
+    # Encontra próximo post baseado na data de hoje
+    today = datetime.date.today()
+    # Regex que captura cada post: data e slug
+    pattern = re.compile(r'## Post \d+ — \w+ (\d{2})/(\d{2}) (\d{2}:\d{2})[\s\S]*?/posts/([a-z0-9-]+)')
+    matches = pattern.findall(content)
+    next_post = None
+    for day, month, time, slug in matches:
+        post_date = datetime.date(today.year, int(month), int(day))
+        if post_date >= today:
+            next_post = (post_date, time, slug)
+            break
+    if not next_post:
+        log("⚠️  Nenhum post futuro no kit atual. Gere um novo com 'evp month --from-today'.", "warn")
+        return
+    post_date, time, slug = next_post
+    log(f"→ Próximo post: {post_date.strftime('%d/%m')} {time} — {slug}", "info")
+    rebuild_links_page(highlight_slug=slug, highlight_label=f"🔥 Post de {post_date.strftime('%d/%m')}")
+    log(f"✓ /links.html atualizada com '{slug}' em destaque", "ok")
+    meta = load_meta()
+    p = meta["products"].get(slug, {})
+    cat = p.get("category", "tech")
+    fname = generate_story_template(slug, {}, cat, label=f"Hoje {post_date.strftime('%d/%m')}")
+    log(f"✓ Story gerado: instagram/stories/{fname}", "ok")
+    log(f"\n💡 Próximo: 'python3 evp.py publish' pra subir tudo no Vercel.", "info")
+
 def cmd_kit_templates(args):
     """Gera templates Instagram pra todos os produtos do último kit gerado."""
     kit_file = args[0] if args else None
@@ -1015,6 +1484,9 @@ COMMANDS = {
     "add": cmd_add,
     "month": cmd_month,
     "kit-templates": cmd_kit_templates,
+    "stories": cmd_stories,
+    "links": cmd_links,
+    "next": cmd_next,
     "tag": cmd_tag,
     "publish": cmd_publish,
     "list": cmd_list,

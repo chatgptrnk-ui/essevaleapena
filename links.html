@@ -39,7 +39,9 @@
     margin-bottom: 32px;
   }
   .link-btn {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 14px;
     background: white;
     border: 1px solid var(--border);
     border-radius: 14px;
@@ -52,14 +54,8 @@
     box-shadow: var(--shadow-sm);
     transition: transform 0.15s, box-shadow 0.15s;
     text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 14px;
   }
-  .link-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
+  .link-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
   .link-btn.featured {
     background: var(--brand-gradient);
     color: white;
@@ -75,18 +71,27 @@
     margin-top: 2px;
   }
   .link-btn.featured .link-sub { opacity: 0.9; }
+  .section-label {
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin: 24px 0 10px 4px;
+    font-weight: 700;
+  }
 </style>
 <link rel="canonical" href="https://essevaleapena.vercel.app/links">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Links — ESSE VALE A PENA SIM">
-<meta property="og:description" content="Todos os links do ESSE VALE A PENA SIM — reviews, achados por categoria e produtos em destaque.">
+<meta property="og:description" content="Curadoria honesta de achados Amazon — reviews completos com prós E contras.">
 <meta property="og:url" content="https://essevaleapena.vercel.app/links">
 <meta property="og:image" content="https://essevaleapena.vercel.app/assets/og-default.png">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="ESSE VALE A PENA SIM">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Links — ESSE VALE A PENA SIM">
-<meta name="twitter:description" content="Todos os links do ESSE VALE A PENA SIM — reviews, achados por categoria e produtos em destaque.">
+<meta name="twitter:description" content="Curadoria honesta de achados Amazon — reviews com prós E contras.">
 <meta name="twitter:image" content="https://essevaleapena.vercel.app/assets/og-default.png">
 <meta name="robots" content="index, follow">
 </head>
@@ -96,47 +101,53 @@
 
   <div class="links-avatar">EVP</div>
   <div class="links-handle">@essevaleapenasim</div>
-  <p class="links-bio">🛒 Curadoria honesta de produtos Amazon<br>⭐ Reviews sinceros desde 2023</p>
+  <p class="links-bio">🛒 Curadoria honesta de achados Amazon<br>⭐ Reviews com prós E contras — 97 produtos analisados</p>
+
+  <a href="posts/medicube-kojic-niacinamide.html" class="link-btn featured">
+    <span class="link-emoji">💧</span>
+    <span class="link-text">🔥 Post de 23/05: Medicube Kojic Acid + Niacinamide Se...
+      <span class="link-sub">Toque para ler o review completo</span>
+    </span>
+  </a>
 
   <a href="index.html" class="link-btn featured">
     <span class="link-emoji">⭐</span>
     <span class="link-text">Ver TODOS os produtos
-      <span class="link-sub">42 reviews completos no site</span>
+      <span class="link-sub">97 reviews completos no site</span>
     </span>
   </a>
 
   <a href="categorias.html" class="link-btn">
     <span class="link-emoji">📂</span>
     <span class="link-text">Achados por categoria
-      <span class="link-sub">Beleza, cozinha, casa, esporte, tech</span>
+      <span class="link-sub">11 categorias organizadas</span>
     </span>
   </a>
 
-  <a href="posts/dyson-airwrap-kit.html" class="link-btn">
-    <span class="link-emoji">💇</span>
-    <span class="link-text">Dyson Airwrap em destaque
-      <span class="link-sub">Review do mais vendido em hair</span>
+  <p class="section-label">📝 Reviews recentes</p>
+
+  <a href="posts/medicube-pdrn-jelly-mist.html" class="link-btn">
+    <span class="link-emoji">🌸</span>
+    <span class="link-text">medicube Soro PDRN Collagen Glow Jel...
+      <span class="link-sub">Review · kbeauty</span>
     </span>
   </a>
-
-  <a href="posts/ninja-creami.html" class="link-btn">
-    <span class="link-emoji">🍦</span>
-    <span class="link-text">Ninja Creami — viral no TikTok
-      <span class="link-sub">Sorveteira que virou febre</span>
+  <a href="posts/pilha-elgin-aaa.html" class="link-btn">
+    <span class="link-emoji">🧺</span>
+    <span class="link-text">Pilha Alcalina Elgin Palito AAA Blis...
+      <span class="link-sub">Review · casa</span>
     </span>
   </a>
-
-  <a href="posts/sanduicheira-cadence.html" class="link-btn">
-    <span class="link-emoji">🥪</span>
-    <span class="link-text">Sanduicheira Cadence
-      <span class="link-sub">Mais comprada esta semana</span>
+  <a href="posts/beauty-friends-aloe-kit3.html" class="link-btn">
+    <span class="link-emoji">💧</span>
+    <span class="link-text">Beauty Friends Aloe Kit 3 Máscaras
+      <span class="link-sub">Review · pele</span>
     </span>
   </a>
-
-  <a href="posts/hub-usb-c.html" class="link-btn">
-    <span class="link-emoji">🔌</span>
-    <span class="link-text">Hub USB-C 7 em 1
-      <span class="link-sub">Salvação do notebook moderno</span>
+  <a href="posts/quatree-racao-15kg.html" class="link-btn">
+    <span class="link-emoji">🐶</span>
+    <span class="link-text">Quatree Ração Cães Adultos 15kg
+      <span class="link-sub">Review · pet</span>
     </span>
   </a>
 
