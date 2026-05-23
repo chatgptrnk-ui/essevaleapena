@@ -666,6 +666,12 @@
       "source": "user",
       "category": "cozinha",
       "price_tier": "mid"
+    },
+    "isdin-reparador-labial-em-stick---4g": {
+      "asin": "B0FDBDW1TB",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
     }
   }
 }
