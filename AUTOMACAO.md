@@ -41,7 +41,7 @@ python3 evp.py add <url-ou-asin> --auto   # Auto (1 da regra)
 7. Reconstrói `/categorias.html` (todas as 11 categorias)
 8. Reconstrói `/sitemap.xml`
 9. Gera template Instagram (`/instagram/posts/slug.html`)
-10. Adiciona tag de afiliado `?tag=essevaleapenasim-20`
+10. Adiciona tag de afiliado `?tag=essevaleapena-20`
 
 **Aceita**: link curto (amzn.to), link completo (`amazon.com.br/dp/XXXX`), ou ASIN direto.
 
@@ -76,11 +76,11 @@ python3 evp.py month --from=2026-06-01     # Começa em data específica (+30 di
 
 ### `tag` — Garantir tag de afiliado
 ```bash
-python3 evp.py tag essevaleapenasim-20
+python3 evp.py tag essevaleapena-20
 ```
 
 Varre **todos** os `.html` da raiz e `/posts/` e:
-- Adiciona `?tag=essevaleapenasim-20` em links sem tag
+- Adiciona `?tag=essevaleapena-20` em links sem tag
 - Substitui tag antiga (ex: legado `dracarolribas-20`) pela atual
 
 ---
@@ -151,7 +151,7 @@ python3 evp.py publish "Kit Instagram do mês"
 
 ### A qualquer momento que mudar de tag/store ID
 ```bash
-python3 evp.py tag essevaleapenasim-20
+python3 evp.py tag essevaleapena-20
 python3 evp.py publish "Update tag de afiliado"
 ```
 
