@@ -70,7 +70,7 @@ git push -u origin main
 
 ⏳ Aguarde ~30 segundos. Vai aparecer **"Congratulations!"** com a URL final:
 ```
-https://essevaleapena.vercel.app
+https://essevaleapenasim.com.br
 ```
 
 ---
@@ -131,17 +131,17 @@ Em ~30s o site está com todos os 75 links monetizados.
 
 Depois do deploy:
 ```
-https://essevaleapena.vercel.app
+https://essevaleapenasim.com.br
 ```
 
 Ou para uma categoria específica:
 ```
-https://essevaleapena.vercel.app/categorias
+https://essevaleapenasim.com.br/categorias
 ```
 
 Ou para um produto específico:
 ```
-https://essevaleapena.vercel.app/posts/dyson-airwrap-kit
+https://essevaleapenasim.com.br/posts/dyson-airwrap-kit
 ```
 
 ---

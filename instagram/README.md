@@ -57,7 +57,7 @@ instagram/
    ⭐ Análises honestas — prós e contras
    👇 Todos os achados aqui
    ```
-5. **Link da bio**: `https://essevaleapena.vercel.app/links`
+5. **Link da bio**: `https://essevaleapenasim.com.br/links`
 6. **Configurar Respostas Rápidas** — ver `COMENTARIOS_E_DMS.md`
 
 ---

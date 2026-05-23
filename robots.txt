@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://essevaleapena.vercel.app/sitemap.xml
+Sitemap: https://essevaleapenasim.com.br/sitemap.xml
 
 # Bloqueios técnicos (não há conteúdo sensível, apenas higiene)
 Disallow: /.git/

@@ -75,7 +75,7 @@ Não testamos pessoalmente todos os 75 produtos — seria impossível. É uma cu
 3. Comparação com alternativas do segmento
 4. Contexto editorial — pra quem o produto serve
 
-Detalhes em essevaleapena.vercel.app/processo-editorial
+Detalhes em essevaleapenasim.com.br/processo-editorial
 ```
 
 ### 4. "/parceria" — Quando marca propõe parceria

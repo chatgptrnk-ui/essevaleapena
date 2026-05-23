@@ -11,7 +11,7 @@
 
 ### Link da bio:
 ```
-https://essevaleapena.vercel.app/links
+https://essevaleapenasim.com.br/links
 ```
 
 ### Categoria (no perfil profissional):

@@ -2,7 +2,7 @@
   "_comment": "Metadata de TODOS os produtos do site. source: 'user' = você especificou (link/nome). source: 'auto' = busca automática de bestseller/premium. price_tier: 'low' (até R$150), 'mid' (R$150-500), 'high' (R$500-1500), 'premium' (R$1500+)",
   "config": {
     "store_id": "essevaleapena-20",
-    "site_url": "https://essevaleapena.vercel.app",
+    "site_url": "https://essevaleapenasim.com.br",
     "monthly_ratio": {
       "user": 3,
       "auto": 1

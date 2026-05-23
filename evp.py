@@ -509,7 +509,7 @@ def rebuild_categorias():
 <title>Achados por categoria — ESSE VALE A PENA SIM</title>
 <meta name="description" content="Todos os produtos organizados em 11 categorias.">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="canonical" href="https://essevaleapena.vercel.app/categorias">
+<link rel="canonical" href="https://essevaleapenasim.com.br/categorias">
 <meta name="robots" content="index, follow">
 </head>
 <body>
@@ -1158,7 +1158,7 @@ def generate_month(year_month=None, start_date=None, days_ahead=30):
         lines.append(f"{cat_emoji} {title}")
         lines.append("")
         lines.append("Análise completa no site — link na bio:")
-        lines.append(f"essevaleapena.vercel.app/posts/{slug}")
+        lines.append(f"essevaleapenasim.com.br/posts/{slug}")
         lines.append("")
         lines.append("✓ O que gostei | ⚠️ Limitações | 🎯 Vale a pena?")
         lines.append("")
@@ -1167,10 +1167,10 @@ def generate_month(year_month=None, start_date=None, days_ahead=30):
         lines.append("")
         lines.append(f"**📌 Comentário fixado (cole NO seu próprio post depois de publicar — depois 3 pontinhos → Fixar comentário)**:")
         lines.append("```")
-        lines.append(f"👉 Link pro review completo: essevaleapena.vercel.app/posts/{slug}")
+        lines.append(f"👉 Link pro review completo: essevaleapenasim.com.br/posts/{slug}")
         lines.append("```")
         lines.append("")
-        lines.append(f"**📱 Story complementar** (postar na MESMA hora do post): `instagram/stories/{slug[:40]}.html` → screenshot → publicar no story COM adesivo de Link apontando pra `essevaleapena.vercel.app/posts/{slug}`")
+        lines.append(f"**📱 Story complementar** (postar na MESMA hora do post): `instagram/stories/{slug[:40]}.html` → screenshot → publicar no story COM adesivo de Link apontando pra `essevaleapenasim.com.br/posts/{slug}`")
         lines.append("")
         lines.append(f"**Hashtags**: #achadosamazon #{p.get('category','')} #valeapena #curadoria #amazonbrasil")
         lines.append("")
