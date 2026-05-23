@@ -125,7 +125,14 @@ def fetch_product(asin):
 CATEGORY_KEYWORDS = {
     "pele": ["serum", "sérum", "creme facial", "hidratante facial", "máscara facial", "mascara facial",
              "skincare", "anti-idade", "anti-rugas", "protetor solar", "fps", "tônico facial",
-             "ácido hialurônico", "niacinamida", "vitamina c facial", "olheiras", "skin", "rosto"],
+             "ácido hialurônico", "niacinamida", "vitamina c facial", "olheiras", "skin", "rosto",
+             # Labial / maquiagem básica de cuidado
+             "labial", "lip balm", "balm labial", "hidratante labial", "reparador labial",
+             "stick labial", "manteiga labial", "lip stick", "batom hidratante", "balm",
+             "gloss", "lip gloss", "lip oil", "lip mask", "máscara labial",
+             # Marcas de maquiagem/cuidado labial
+             "kiko milano", "kiko", "carmed", "labello", "maybelline", "nyx", "ruby rose",
+             "vivai", "natura una"],
     "cabelo": ["shampoo", "condicionador", "máscara capilar", "mascara capilar", "tratamento capilar",
                "leave-in", "leave in", "cabelo", "fios", "perfume capilar", "tônico capilar",
                "secador", "chapinha", "modelador", "babyliss", "escova alisadora", "airwrap",
