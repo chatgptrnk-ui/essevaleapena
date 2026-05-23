@@ -343,6 +343,7 @@ def generate_review_html(slug, product_data, category, store_id):
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="ESSE VALE A PENA SIM">
 <meta name="robots" content="index, follow">
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -804,6 +805,7 @@ def rebuild_links_page(highlight_slug=None, highlight_label=None):
 <meta name="twitter:description" content="Curadoria honesta de achados Amazon — reviews com prós E contras.">
 <meta name="twitter:image" content="{site_url}/assets/og-default.png">
 <meta name="robots" content="index, follow">
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
