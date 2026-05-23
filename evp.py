@@ -958,6 +958,53 @@ def cmd_suggest(args):
   6. Email signature: assinatura com link do site em emails pessoais
   7. Pinterest: criar conta + 5 pins/dia (tráfego grátis duradouro)""")
 
+def cmd_kit_templates(args):
+    """Gera templates Instagram pra todos os produtos do último kit gerado."""
+    kit_file = args[0] if args else None
+    if not kit_file:
+        # Pega o último kit
+        files = sorted(glob.glob(os.path.join(SITE_DIR, "instagram/mensal/*.md")))
+        if not files:
+            log("❌ Nenhum kit encontrado. Rode 'evp month --from-today' primeiro.", "err")
+            return
+        kit_file = files[-1]
+    else:
+        if not kit_file.startswith("/"):
+            kit_file = os.path.join(SITE_DIR, "instagram/mensal", kit_file)
+    log(f"→ Lendo kit: {os.path.basename(kit_file)}", "info")
+    with open(kit_file, 'r', encoding='utf-8') as f:
+        content = f.read()
+    # Extrai slugs
+    slugs = re.findall(r'/posts/([a-z0-9-]+)', content)
+    slugs = list(dict.fromkeys(slugs))  # dedup mantendo ordem
+    meta = load_meta()
+    generated = skipped = 0
+    for slug in slugs:
+        # Já existe template com esse slug?
+        existing = glob.glob(os.path.join(SITE_DIR, f"instagram/posts/*{slug[:20]}*"))
+        if existing:
+            skipped += 1
+            continue
+        # Recupera dados via post HTML
+        post_path = os.path.join(SITE_DIR, f"posts/{slug}.html")
+        if not os.path.exists(post_path):
+            continue
+        with open(post_path, 'r', encoding='utf-8') as f:
+            h = f.read()
+        title = ""
+        m = re.search(r'<h1>([^<]+)</h1>', h)
+        if m: title = m.group(1)
+        img_id = ""
+        m = re.search(r'https://m\.media-amazon\.com/images/I/([A-Za-z0-9-]+)\._', h)
+        if m: img_id = m.group(1)
+        p = meta["products"].get(slug, {})
+        cat = p.get("category", "tech")
+        pd = {"title": title, "img_id": img_id}
+        fname = generate_ig_post(slug, pd, cat)
+        log(f"  ✓ {fname}", "ok")
+        generated += 1
+    log(f"\n✓ {generated} templates gerados, {skipped} já existentes", "ok")
+
 def cmd_help(args=None):
     print(__doc__)
 
@@ -967,6 +1014,7 @@ def cmd_help(args=None):
 COMMANDS = {
     "add": cmd_add,
     "month": cmd_month,
+    "kit-templates": cmd_kit_templates,
     "tag": cmd_tag,
     "publish": cmd_publish,
     "list": cmd_list,
