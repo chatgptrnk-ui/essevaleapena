@@ -1,4 +1,4 @@
-# 📸 Instagram Posts — ESSE VALE PENA!
+# 📸 Instagram Posts — ESSE VALE A PENA SIM
 
 Templates de posts Instagram (1080×1080) prontos pra exportar em PNG. Workflow leva ~30 segundos por post.
 

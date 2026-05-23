@@ -1,4 +1,4 @@
-# ESSE VALE PENA! — Site de afiliados Amazon
+# ESSE VALE A PENA SIM — Site de afiliados Amazon
 
 Site estático em HTML/CSS puro, design moderno, mobile-first. Pronto pra publicação no Vercel.
 
@@ -33,7 +33,7 @@ produtos amazon/
 
 ## 🎨 Como funciona o design
 
-- **Header minimalista**: só o logo "ESSE VALE PENA!" centralizado, sem nav
+- **Header minimalista**: só o logo "ESSE VALE A PENA SIM" centralizado, sem nav
 - **Hero colorido** na homepage com gradiente rosa-laranja
 - **Cards com gradientes por categoria**:
   - 💗 Beleza/Skincare: rosa-laranja
@@ -121,7 +121,7 @@ Depois em [vercel.com/new](https://vercel.com/new) → "Import Git Repository" �
 - [ ] Site no ar em URL pública
 - [ ] Os 11 reviews acessíveis e funcionando
 - [ ] Imagens dos produtos plugadas (Método 1 ou 2 acima)
-- [ ] Criar e-mail `contato@esevalepena.com.br` no nome do operador da conta
+- [ ] Criar e-mail `essevaleapenasim@gmail.com` no nome do operador da conta
 - [ ] Nenhuma menção a "Dra", CRM ou medicina em qualquer página
 - [ ] Aguardar 2-3 semanas com o site no ar antes de aplicar
 

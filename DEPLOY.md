@@ -1,4 +1,4 @@
-# 🚀 Deploy do ESSE VALE PENA! — Guia completo
+# 🚀 Deploy do ESSE VALE A PENA SIM — Guia completo
 
 Tempo total: **~5 minutos** (depois é automático)
 
@@ -20,7 +20,7 @@ Já fizemos `git init`. Agora o primeiro commit:
 ```bash
 cd "/Users/alexandrekkipper/Desktop/produtos amazon"
 git add -A
-git commit -m "Versão inicial do site ESSE VALE PENA!"
+git commit -m "Versão inicial do site ESSE VALE A PENA SIM"
 ```
 
 > Se der erro pedindo email/nome, configure 1 vez:
