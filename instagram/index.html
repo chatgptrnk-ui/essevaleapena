@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria de Posts Instagram — ESSE VALE PENA!</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    background: #F8FAFC;
+    color: #0F172A;
+    line-height: 1.5;
+    padding: 40px 20px 80px;
+  }
+  .gallery-container { max-width: 1100px; margin: 0 auto; }
+  h1 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    color: #64748B;
+    margin-bottom: 32px;
+    font-size: 17px;
+  }
+  .workflow {
+    background: linear-gradient(135deg, #EFF6FF 0%, #ECFEFF 100%);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    border-left: 4px solid #1E40AF;
+  }
+  .workflow h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #1E40AF;
+  }
+  .workflow ol { padding-left: 22px; }
+  .workflow li { margin-bottom: 6px; font-size: 15px; }
+  .workflow code {
+    background: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #1E40AF;
+    font-weight: 700;
+  }
+
+  .post-card {
+    background: white;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 720px) {
+    .post-card { grid-template-columns: 1fr; }
+  }
+  .post-preview {
+    width: 280px;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: #1A1A2E;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  .post-preview iframe {
+    width: 1080px;
+    height: 1080px;
+    border: 0;
+    transform: scale(0.2593);
+    transform-origin: 0 0;
+    pointer-events: none;
+  }
+  .post-meta { padding-top: 4px; }
+  .post-meta h3 {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .post-type {
+    display: inline-block;
+    background: #EFF6FF;
+    color: #1E40AF;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .open-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .open-btn:hover { transform: translateY(-1px); }
+  .caption-box {
+    background: #F8FAFC;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    border-left: 3px solid #06B6D4;
+  }
+  .caption-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    color: #64748B;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .hashtags {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #1E40AF;
+    background: #F0F9FF;
+    border-radius: 8px;
+    padding: 10px 14px;
+    line-height: 1.6;
+  }
+  .copy-btn {
+    background: white;
+    border: 1px solid #E2E8F0;
+    color: #1E40AF;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 8px;
+  }
+  .copy-btn:hover { background: #EFF6FF; }
+</style>
+</head>
+<body>
+
+<div class="gallery-container">
+
+  <h1>📸 Galeria de Posts Instagram</h1>
+  <p class="subtitle">10 posts prontos pra @essevalepenaa · 1080×1080 cada</p>
+
+  <div class="workflow">
+    <h2>🚀 Como exportar pra Instagram (30 segundos por post)</h2>
+    <ol>
+      <li>Clique em <strong>"Abrir post"</strong> em qualquer card</li>
+      <li>Vai abrir o template em tela cheia (1080×1080)</li>
+      <li>Pressione <code>Cmd + Shift + 4</code> + barra de espaço + clique na imagem</li>
+      <li>Imagem salva no Desktop em PNG, prontinha pra o Instagram</li>
+      <li>Copie a legenda e hashtags do card e poste no app</li>
+    </ol>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/01-sanduicheira.html','_blank')">
+      <iframe src="posts/01-sanduicheira.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Hook de preço</span>
+      <h3>1. Sanduicheira Cadence</h3>
+      <a href="posts/01-sanduicheira.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Esse aqui virou parte da rotina aqui em casa. Sanduicheira Cadence Click 127v.
+
+✅ Esquenta em 2-3 min
+✅ Antiaderente bom de verdade
+✅ Cabe no armário fácil
+
+❌ Só faz formato retangular
+
+A R$ 90 é difícil pedir mais. Review completo + link da Amazon no link da bio.</div>
+      <div class="hashtags">#esquentourapido #cafedamanha #achadosamazon #valeapena #cozinhapratica #sanduicheira #amazonbrasil #achadosdedonadecasa</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/02-dyson-airwrap.html','_blank')">
+      <iframe src="posts/02-dyson-airwrap.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Aspiracional</span>
+      <h3>2. Dyson Airwrap</h3>
+      <a href="posts/02-dyson-airwrap.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">A pergunta de 5 mil reais: o Dyson Airwrap vale tudo isso?
+
+A resposta honesta: pra quem aliso/cacheia o cabelo várias vezes por semana, SIM. Pra uso esporádico, melhor uma escova rotativa de R$ 200.
+
+No review eu falo de:
+👉 Por que não estraga o fio
+👉 Quantos anos pra "pagar" o investimento
+👉 Pra QUEM ele realmente vale
+
+Link no perfil.</div>
+      <div class="hashtags">#dyson #dysonairwrap #achadosamazon #valeapena #beautytech #cabelo #investimento #premium</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/03-ninja-creami.html','_blank')">
+      <iframe src="posts/03-ninja-creami.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Viral</span>
+      <h3>3. Ninja Creami</h3>
+      <a href="posts/03-ninja-creami.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Aquela que tá em todo vídeo de "comi sorvete saudável e perdi peso" — Ninja Creami.
+
+E o melhor: NÃO é só marketing. Vou explicar:
+
+🍨 Você usa qualquer base (whey, fruta, iogurte)
+🍨 Congela 24h
+🍨 Ela transforma em sorvete cremoso de verdade
+
+Já temos receita de sorvete proteico de chocolate aqui em casa que ninguém acredita que tem 20g de proteína.
+
+Review completo + link no perfil. Custa caro? Custa. Vale? Pra quem ama sobremesa, VALE.</div>
+      <div class="hashtags">#ninjacreami #ninja #sorvetesaudavel #achadosamazon #valeapena #sobremesa #fitness</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/04-hub-usbc.html','_blank')">
+      <iframe src="posts/04-hub-usbc.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Utilitário</span>
+      <h3>4. Hub USB-C 7em1</h3>
+      <a href="posts/04-hub-usbc.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Notebook novo veio com 2 portinhas USB-C? Bem-vindo ao clube.
+
+Esse hub aqui transforma 1 porta em 7:
+🔌 HDMI 4K
+🔌 2× USB normal
+🔌 Leitor de SD/microSD
+🔌 USB-C de dados
+🔌 USB-C com carga (passa energia pro notebook)
+
+Por menos de R$ 100. Tô usando todo dia, todo dia.
+
+Link da Amazon no perfil.</div>
+      <div class="hashtags">#homeoffice #produtividade #achadosamazon #usbchub #macbook #valeapena #tech #setup</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/05a-carrossel-cover.html','_blank')">
+      <iframe src="posts/05a-carrossel-cover.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Carrossel · Cover</span>
+      <h3>5a. "5 Achados" — Cover</h3>
+      <a href="posts/05a-carrossel-cover.html" target="_blank" class="open-btn">Abrir cover →</a>
+      <a href="posts/05b-carrossel-item01.html" target="_blank" class="open-btn">Abrir item 01 →</a>
+      <span class="caption-label">Legenda (use no carrossel completo)</span>
+      <div class="caption-box">Salva esse post 🔖
+
+5 produtos abaixo de R$ 200 que TODO MUNDO deveria ter — testados aqui antes de virar lista:
+
+1️⃣ Sanduicheira Cadence (R$ 90)
+2️⃣ Mouse Logitech M170 (R$ 70)
+3️⃣ Kit Faixas Elásticas (R$ 50)
+4️⃣ Hub USB-C 7em1 (R$ 90)
+5️⃣ OMO Lavagem Perfeita 5L (R$ 80)
+
+Reviews completos + links da Amazon no perfil.
+
+Qual desses você já tem? 👇</div>
+      <div class="hashtags">#achadosbaratos #achadosamazon #valeapena #amazonbrasil #curadoria #5melhores #achadosdedonadecasa</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/06-airfryer-compare.html','_blank')">
+      <iframe src="posts/06-airfryer-compare.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Comparativo · Engajamento</span>
+      <h3>6. Max Pro vs Crispi</h3>
+      <a href="posts/06-airfryer-compare.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">A dúvida que recebi 14 vezes esta semana: Ninja Max Pro ou Ninja Crispi?
+
+Comparei lado a lado.
+
+NINJA MAX PRO ➡️ família, capacidade grande (6,2L), durabilidade extrema
+NINJA CRISPI ➡️ casa pequena, tigela vai ao micro, mais versátil
+
+Resposta curta:
+👨‍👩‍👧 4+ pessoas em casa → Max Pro
+👤 1-2 pessoas → Crispi
+
+Review completo dos dois + comparativo de preço no link da bio.</div>
+      <div class="hashtags">#ninjaairfryer #airfryer #ninja #achadosamazon #valeapena #cozinha #comparativo</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/07-mouse-logitech.html','_blank')">
+      <iframe src="posts/07-mouse-logitech.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Review · Pros & Cons</span>
+      <h3>7. Mouse Logitech M170</h3>
+      <a href="posts/07-mouse-logitech.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">A pilha dura 12 MESES. Bota a pilha hoje, troca em maio do ano que vem.
+
+Logitech M170 — esse aqui é o mouse sem fio mais vendido do país e dá pra entender:
+
+✅ Receptor USB nano (esquece que tá no notebook)
+✅ Design ambidestro
+✅ Clique silencioso
+✅ R$ 70
+
+Pra escritório, faculdade, home office. Não é gamer, mas é confiável demais.
+
+Link no perfil.</div>
+      <div class="hashtags">#logitech #homeoffice #achadosamazon #mouse #produtividade #valeapena #tech #escritorio</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/08-faixas-elasticas.html','_blank')">
+      <iframe src="posts/08-faixas-elasticas.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Treino casa</span>
+      <h3>8. Faixas Elásticas</h3>
+      <a href="posts/08-faixas-elasticas.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Pra quem não tem tempo de academia (eu).
+
+Kit 5 faixas elásticas — 5 níveis diferentes de resistência. Cabe na bolsa, ocupa zero espaço guardado, vem com tutorial impresso.
+
+R$ 50 e dá pra fazer treino completo: pernas, glúteo, costas, ombro.
+
+Não substitui peso livre pra hipertrofia pesada, mas pra manutenção física + viagem é INCRÍVEL.
+
+Review + link da Amazon no perfil.</div>
+      <div class="hashtags">#treinoemcasa #faixaselasticas #achadosamazon #pilates #valeapena #fitness #yoga</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/09-erros-amazon-cover.html','_blank')">
+      <iframe src="posts/09-erros-amazon-cover.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Carrossel · Dicas</span>
+      <h3>9. "3 erros na Amazon" — Cover</h3>
+      <a href="posts/09-erros-amazon-cover.html" target="_blank" class="open-btn">Abrir cover →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Conta nos comentários: você já caiu em algum desses?
+
+Sigo o EsseValePena pra ver os 42 reviews que tem no site — preços conferidos, com prós e contras de verdade.
+
+Salva esse post pra lembrar antes da próxima compra 🛒</div>
+      <div class="hashtags">#dicasamazon #achadosamazon #amazonbrasil #compraonline #curadoria #valeapena #dicas</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/10-dyson-v15-statement.html','_blank')">
+      <iframe src="posts/10-dyson-v15-statement.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Reel Cover · Statement</span>
+      <h3>10. Dyson V15 — Statement</h3>
+      <a href="posts/10-dyson-v15-statement.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda (use como Reel ou foto)</span>
+      <div class="caption-box">O laser verde mostra sujeira que olho nu não vê.
+
+Dyson V15 Detect Plus chegou aqui ontem. Primeira impressão depois de testar:
+✅ Sucção absurda (esperado)
+✅ Bateria 60min em modo eco
+✅ Filtragem HEPA
+⚠️ Reservatório pequeno (esvazio 2x por faxina)
+
+R$ 9.000. Vale? Review completo no link.</div>
+      <div class="hashtags">#dyson #dysonv15 #aspirador #achadosamazon #premium #valeapena #unboxing #limpezadiaria</div>
+    </div>
+  </div>
+
+
+
+  <h2 style="font-size:24px;font-weight:900;margin:40px 0 8px;letter-spacing:-0.5px;background:linear-gradient(135deg,#BE185D 0%,#F472B6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">🌸 K-Beauty (5 posts)</h2>
+  <p class="subtitle">Posts focados na linha de skincare coreano</p>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/11-medicube-pdrn-jelly.html','_blank')">
+      <iframe src="posts/11-medicube-pdrn-jelly.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Tendência</span>
+      <h3>11. Medicube PDRN Jelly Mist</h3>
+      <a href="posts/11-medicube-pdrn-jelly.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Você ouviu falar de PDRN? O ativo que viralizou na K-beauty e tá em todo lugar.
+
+Medicube Jelly Mist combina:
+✨ PDRN (a novidade da geração)
+✨ Niacinamida
+✨ Glutationa
+✨ Ceramida
+✨ Ácido hialurônico
+
+Tudo num formato névoa pra reaplicar durante o dia, sem desfazer maquiagem.
+
+Vale o hype? Review honesto + link no perfil.</div>
+      <div class="hashtags">#kbeauty #medicube #pdrn #skincarecoreano #achadosamazon #valeapena #skincare</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/12-tirtir-cushion.html','_blank')">
+      <iframe src="posts/12-tirtir-cushion.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Viral</span>
+      <h3>12. Tirtir Red Cushion</h3>
+      <a href="posts/12-tirtir-cushion.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">A base coreana que tomou o Brasil de assalto — Tirtir Red Cushion.
+
+A versão MINI (4,5g) é perfeita pra testar antes do tamanho grande:
+💋 Acabamento "glass skin" característico
+💋 Cobertura média modulável
+💋 Tom 22N Shell Beige versátil pra peles claras-médias
+💋 Cabe na bolsa pra retoque
+
+Quem já testou? 👇
+
+Link da versão mini no perfil.</div>
+      <div class="hashtags">#tirtir #kbeauty #cushion #glassskin #achadosamazon #maquiagem #valeapena #makeup</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/13-kbeauty-carousel-cover.html','_blank')">
+      <iframe src="posts/13-kbeauty-carousel-cover.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Carrossel · Cover</span>
+      <h3>13. "Por que K-Beauty viralizou" — Cover</h3>
+      <a href="posts/13-kbeauty-carousel-cover.html" target="_blank" class="open-btn">Abrir cover →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">K-beauty não é tendência, é uma filosofia.
+
+3 razões que explicam por que o skincare coreano tomou o mundo:
+1️⃣ Foco em hidratação (não em "corrigir" pele)
+2️⃣ Camadas (layering) — não 1 produto milagroso
+3️⃣ Ativos inovadores antes do resto do mercado
+
+No carrossel: os 5 produtos pra começar (sem gastar fortuna).
+
+Salva o post 🔖</div>
+      <div class="hashtags">#kbeauty #skincarecoreano #skincarelovers #achadosamazon #valeapena #beleza #curadoria</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/14-centella-vs-pdrn.html','_blank')">
+      <iframe src="posts/14-centella-vs-pdrn.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Comparativo · Engajamento</span>
+      <h3>14. Centella vs PDRN</h3>
+      <a href="posts/14-centella-vs-pdrn.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Pergunta que recebo direto: começo K-beauty com Centella ou PDRN?
+
+CENTELLA ➡️ Pele reativa, vermelhidão, pós-procedimento. Calmante clássico.
+PDRN ➡️ Pele madura ou que busca glow + anti-idade. Ativo da nova geração.
+
+Resposta curta:
+🌿 Pele sensível ou começando rotina → Centella
+✨ Já tem rotina montada e quer subir nível → PDRN
+
+Reviews dos dois + link no perfil.</div>
+      <div class="hashtags">#kbeauty #centella #pdrn #skincare #achadosamazon #valeapena #ativos #cosmeticos</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/15-ksecret-retinal-review.html','_blank')">
+      <iframe src="posts/15-ksecret-retinal-review.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Review · Pros & Cons</span>
+      <h3>15. K-Secret Retinal</h3>
+      <a href="posts/15-ksecret-retinal-review.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">K-Secret Creme Retinal — review honesto.
+
+Retinal é "primo mais potente" do retinol. Em creme lipossomado, a entrega vira ainda mais inteligente.
+
+✅ Pra quem JÁ usa retinol e quer subir
+✅ Foco em rugas profundas
+✅ Embalagem premium digna de presente
+
+❌ Não é entrada — exige adaptação (2x semana no começo)
+
+Vale R$ XXX? Pra quem tá há anos lidando com sinais de idade, sim. Pra iniciantes em retinoides, não.
+
+Review completo no link.</div>
+      <div class="hashtags">#kbeauty #retinal #antienvelhecimento #skincare #achadosamazon #valeapena #ksecret</div>
+    </div>
+  </div>
+
+  <h2 style="font-size:24px;font-weight:900;margin:40px 0 8px;letter-spacing:-0.5px;background:linear-gradient(135deg,#047857 0%,#34D399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">🌱 Teen Beauty (3 posts)</h2>
+  <p class="subtitle">Posts focados na linha pra pele jovem — fórmulas suaves</p>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/16-sallve-solar-bastao.html','_blank')">
+      <iframe src="posts/16-sallve-solar-bastao.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Pele jovem</span>
+      <h3>16. Sallve Solar Bastão FPS60</h3>
+      <a href="posts/16-sallve-solar-bastao.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Solar em bastão é o melhor formato pra adolescente — promete?
+
+Sallve FPS60 bastão:
+🌱 Não suja a mão
+🌱 Reaplica na escola/passeio em segundos
+🌱 Fórmula clean (a Sallve faz bonito nesse ponto)
+🌱 Cabe na mochila ou bolsa
+
+Solar é o produto mais importante da rotina jovem. Esse facilita a constância.
+
+Link no perfil.</div>
+      <div class="hashtags">#sallve #protetorsolar #skincare #peleadolescente #teenbeauty #achadosamazon #valeapena</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/17-teen-carousel-cover.html','_blank')">
+      <iframe src="posts/17-teen-carousel-cover.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Carrossel · Guia</span>
+      <h3>17. "Começando skincare" — Cover</h3>
+      <a href="posts/17-teen-carousel-cover.html" target="_blank" class="open-btn">Abrir cover →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">Pra quem tá começando do zero — sem precisar de 14 produtos.
+
+5 itens base pra pele jovem:
+1️⃣ Sabonete suave de limpeza
+2️⃣ Hidratante leve (Cetaphil ou CeraVe)
+3️⃣ Protetor solar (FPS50+)
+4️⃣ Sérum hidratante (opcional)
+5️⃣ Hidratante labial
+
+Marcas confiáveis, fórmulas suaves, preços acessíveis. Sem complicar a rotina de quem tá começando.
+
+Reviews completos no perfil.</div>
+      <div class="hashtags">#skincareiniciante #teenbeauty #peleadolescente #achadosamazon #valeapena #skincare #sallve #cerave #cetaphil</div>
+    </div>
+  </div>
+
+  <div class="post-card">
+    <div class="post-preview" onclick="window.open('posts/18-cerave-locao.html','_blank')">
+      <iframe src="posts/18-cerave-locao.html" scrolling="no"></iframe>
+    </div>
+    <div class="post-meta">
+      <span class="post-type">Highlight · Dermo</span>
+      <h3>18. CeraVe Loção Fluida</h3>
+      <a href="posts/18-cerave-locao.html" target="_blank" class="open-btn">Abrir post →</a>
+      <span class="caption-label">Legenda</span>
+      <div class="caption-box">CeraVe é o hidratante mais indicado por dermatologistas no mundo todo. Tem razão.
+
+🌱 Fórmula simples e eficaz (3 ceramidas + ác. hialurônico)
+🌱 Sem perfume nem ingredientes irritantes
+🌱 Textura fluida absorve rápido
+🌱 Adequado pra pele jovem em formação
+
+Preço acima da média? Sim. Vale? MUITO. Hidratante decente faz diferença que se sente na pele.
+
+Link no perfil.</div>
+      <div class="hashtags">#cerave #hidratante #skincare #teenbeauty #peleadolescente #achadosamazon #dermatologista #valeapena</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

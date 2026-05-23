@@ -1,0 +1,25 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Claude Code (não deve ir pro GitHub)
+.claude/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Node (caso venha a ser usado no futuro)
+node_modules/
+
+# Vercel
+.vercel/
+
+# Temporários
+*.tmp
+*.bak

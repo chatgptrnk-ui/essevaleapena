@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Links — ESSE VALE PENA!</title>
+<meta name="description" content="Todos os links do ESSE VALE PENA! — reviews, achados por categoria e produtos em destaque.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .links-page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+    text-align: center;
+  }
+  .links-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: var(--brand-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: -1px;
+    margin: 0 auto 18px;
+    box-shadow: var(--shadow-md);
+  }
+  .links-handle {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+  .links-bio {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+  .link-btn {
+    display: block;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .link-btn.featured {
+    background: var(--brand-gradient);
+    color: white;
+    border: none;
+  }
+  .link-emoji { font-size: 24px; }
+  .link-text { flex-grow: 1; }
+  .link-sub {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
+  .link-btn.featured .link-sub { opacity: 0.9; }
+</style>
+</head>
+<body>
+
+<main class="links-page">
+
+  <div class="links-avatar">EVP</div>
+  <div class="links-handle">@essevalepenaa</div>
+  <p class="links-bio">🛒 Curadoria honesta de produtos Amazon<br>⭐ Reviews sinceros desde 2023</p>
+
+  <a href="index.html" class="link-btn featured">
+    <span class="link-emoji">⭐</span>
+    <span class="link-text">Ver TODOS os produtos
+      <span class="link-sub">42 reviews completos no site</span>
+    </span>
+  </a>
+
+  <a href="categorias.html" class="link-btn">
+    <span class="link-emoji">📂</span>
+    <span class="link-text">Achados por categoria
+      <span class="link-sub">Beleza, cozinha, casa, esporte, tech</span>
+    </span>
+  </a>
+
+  <a href="posts/dyson-airwrap-kit.html" class="link-btn">
+    <span class="link-emoji">💇</span>
+    <span class="link-text">Dyson Airwrap em destaque
+      <span class="link-sub">Review do mais vendido em hair</span>
+    </span>
+  </a>
+
+  <a href="posts/ninja-creami.html" class="link-btn">
+    <span class="link-emoji">🍦</span>
+    <span class="link-text">Ninja Creami — viral no TikTok
+      <span class="link-sub">Sorveteira que virou febre</span>
+    </span>
+  </a>
+
+  <a href="posts/sanduicheira-cadence.html" class="link-btn">
+    <span class="link-emoji">🥪</span>
+    <span class="link-text">Sanduicheira Cadence
+      <span class="link-sub">Mais comprada esta semana</span>
+    </span>
+  </a>
+
+  <a href="posts/hub-usb-c.html" class="link-btn">
+    <span class="link-emoji">🔌</span>
+    <span class="link-text">Hub USB-C 7 em 1
+      <span class="link-sub">Salvação do notebook moderno</span>
+    </span>
+  </a>
+
+  <a href="sobre.html" class="link-btn">
+    <span class="link-emoji">💬</span>
+    <span class="link-text">Sobre o site
+      <span class="link-sub">Como funciona a curadoria</span>
+    </span>
+  </a>
+
+  <p style="margin-top:40px;font-size:11px;color:var(--text-muted);">
+    Participante do Programa de Associados Amazon · O preço é o mesmo que você pagaria entrando direto no site da Amazon
+  </p>
+
+</main>
+
+</body>
+</html>
