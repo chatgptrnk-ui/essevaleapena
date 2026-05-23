@@ -3,111 +3,669 @@
   "config": {
     "store_id": "essevaleapena-20",
     "site_url": "https://essevaleapena.vercel.app",
-    "monthly_ratio": {"user": 3, "auto": 1},
-    "auto_alternation": ["bestseller", "premium"]
+    "monthly_ratio": {
+      "user": 3,
+      "auto": 1
+    },
+    "auto_alternation": [
+      "bestseller",
+      "premium"
+    ]
   },
   "products": {
-    "fita-silicone-vital-derme": {"asin": "B0FRVYXPSW", "source": "user", "category": "cuidados", "price_tier": "low"},
-    "massageador-couro-cabeludo": {"asin": "B0CN19843K", "source": "user", "category": "bemestar", "price_tier": "low"},
-    "hada-labo-eye-care": {"asin": "B0BVT1LK79", "source": "user", "category": "pele", "price_tier": "mid"},
-    "celimax-tightening-booster": {"asin": "B0DK4Y2YP3", "source": "user", "category": "pele", "price_tier": "mid"},
-    "medicube-kojic-niacinamide": {"asin": "B0FG7VLJKG", "source": "user", "category": "pele", "price_tier": "mid"},
-    "hub-usb-c": {"asin": "B0GKQTNBSS", "source": "user", "category": "tech", "price_tier": "low"},
-    "filamento-tpu-preto": {"asin": "B0G5N2WBMM", "source": "user", "category": "tech", "price_tier": "mid"},
-    "filamento-tpu-flexivel": {"asin": "B0GSQXF738", "source": "user", "category": "tech", "price_tier": "low"},
-    "silk-amendoa": {"asin": "B07YYH4Z5M", "source": "user", "category": "cozinha", "price_tier": "low"},
-    "whey-dux": {"asin": "B07NH7B9JC", "source": "user", "category": "esporte", "price_tier": "high"},
-    "sabao-liquido": {"asin": "B0FMXFWNP3", "source": "user", "category": "casa", "price_tier": "low"},
-    "medicube-pdrn-jelly-mist": {"asin": "B0FPPKK2Z5", "source": "user", "category": "kbeauty", "price_tier": "mid"},
-    "loreal-absolut-repair-serum": {"asin": "B0CBV94G6D", "source": "user", "category": "cabelo", "price_tier": "high"},
-    "tirtir-red-cushion": {"asin": "B0DBZLL7LN", "source": "user", "category": "kbeauty", "price_tier": "mid"},
-    "capsulas-peptide-cobre-azul": {"asin": "B0FDJ768DD", "source": "user", "category": "kbeauty", "price_tier": "mid"},
-    "skin1004-centella-watergel-mask": {"asin": "B0BZV4MS6K", "source": "user", "category": "pele", "price_tier": "low"},
-    "oceane-nivea-antissinais": {"asin": "B07LFLFC1R", "source": "user", "category": "pele", "price_tier": "low"},
-    "beauty-friends-aloe-kit3": {"asin": "B0FN5CH1F3", "source": "user", "category": "pele", "price_tier": "low"},
-    "kbeauty-kit-8-mascaras": {"asin": "B0GZLZVR8Q", "source": "user", "category": "pele", "price_tier": "low"},
-    "pro-stick-fps95": {"asin": "B0B3SVR41R", "source": "user", "category": "pele", "price_tier": "mid"},
-    "pink-stick-fps90": {"asin": "B07F483M6T", "source": "user", "category": "pele", "price_tier": "mid"},
-    "odorata-solar-stick-sport": {"asin": "B0G4XN8567", "source": "user", "category": "pele", "price_tier": "mid"},
-    "soul-sun-mineral-nude": {"asin": "B0DCRPJFSW", "source": "user", "category": "pele", "price_tier": "mid"},
-    "soul-sun-mineral-kids": {"asin": "B0DG5QX6ZP", "source": "user", "category": "pele", "price_tier": "mid"},
-    "mustela-solar-stick-50": {"asin": "B0B1DW4P6T", "source": "user", "category": "pele", "price_tier": "mid"},
-    "redken-acidic-color-gloss": {"asin": "B0CRHSCB4Y", "source": "user", "category": "cabelo", "price_tier": "mid"},
-    "pink-cheeks-leave-in-fps": {"asin": "B0BGM453PN", "source": "user", "category": "cabelo", "price_tier": "low"},
-    "photoage-protetor-capilar": {"asin": "B0D8Q81H41", "source": "user", "category": "cabelo", "price_tier": "low"},
-    "sebastian-hydre-shampoo": {"asin": "B0FTY8JM9Y", "source": "user", "category": "cabelo", "price_tier": "mid"},
-    "mise-en-scene-damage-care": {"asin": "B0DFQGMY5M", "source": "user", "category": "cabelo", "price_tier": "low"},
-    "isdin-retinal-serum": {"asin": "B0GCVMJ8RL", "source": "user", "category": "pele", "price_tier": "high"},
-
-    "sanduicheira-cadence": {"asin": "B0CDJ4L7CZ", "source": "auto", "subsource": "bestseller", "category": "cozinha", "price_tier": "low"},
-    "filtro-electrolux-pe12": {"asin": "B0F256HPZJ", "source": "auto", "subsource": "bestseller", "category": "cozinha", "price_tier": "low"},
-    "potes-vidro-gato-panda": {"asin": "B08CPW5BR2", "source": "auto", "subsource": "bestseller", "category": "cozinha", "price_tier": "low"},
-    "mixer-elgin-turbo-chef": {"asin": "B09VQ39F41", "source": "auto", "subsource": "bestseller", "category": "cozinha", "price_tier": "low"},
-    "pilha-elgin-aaa": {"asin": "B0754J12RW", "source": "auto", "subsource": "bestseller", "category": "casa", "price_tier": "low"},
-    "galaxy-a17": {"asin": "B0FPYXKBJG", "source": "auto", "subsource": "bestseller", "category": "tech", "price_tier": "high"},
-    "galaxy-a07": {"asin": "B0FPJ52LSR", "source": "auto", "subsource": "bestseller", "category": "tech", "price_tier": "mid"},
-    "kit-faixas-elasticas": {"asin": "B07KQMVYKL", "source": "auto", "subsource": "bestseller", "category": "esporte", "price_tier": "low"},
-    "garrafa-squeeze-tiba": {"asin": "B0G1PCXPNC", "source": "auto", "subsource": "bestseller", "category": "esporte", "price_tier": "low"},
-    "bike-ergometrica-spinning": {"asin": "B0GG4WYRNM", "source": "auto", "subsource": "bestseller", "category": "esporte", "price_tier": "high"},
-    "cartucho-hp-667": {"asin": "B08WKPK952", "source": "auto", "subsource": "bestseller", "category": "tech", "price_tier": "low"},
-    "mouse-logitech-m170": {"asin": "B074L9L5KZ", "source": "auto", "subsource": "bestseller", "category": "tech", "price_tier": "low"},
-    "mouse-rgb-bluetooth": {"asin": "B0F1G2TL8P", "source": "auto", "subsource": "bestseller", "category": "tech", "price_tier": "low"},
-    "omo-lavagem-perfeita": {"asin": "B07DYHDXX8", "source": "auto", "subsource": "bestseller", "category": "casa", "price_tier": "low"},
-    "creatina-dark-lab": {"asin": "B0CF71CJ2L", "source": "auto", "subsource": "bestseller", "category": "esporte", "price_tier": "mid"},
-    "downy-amaciante": {"asin": "B07MBXDB51", "source": "auto", "subsource": "bestseller", "category": "casa", "price_tier": "low"},
-    "finish-lava-loucas": {"asin": "B07DZ8VXQN", "source": "auto", "subsource": "bestseller", "category": "casa", "price_tier": "low"},
-    "percarbonato-sodio": {"asin": "B0GPN6CNRT", "source": "auto", "subsource": "bestseller", "category": "casa", "price_tier": "low"},
-    "veja-buque-cerrado": {"asin": "B07DZ7JP8L", "source": "auto", "subsource": "bestseller", "category": "casa", "price_tier": "low"},
-    "finish-secante": {"asin": "B07FGYQCKM", "source": "auto", "subsource": "bestseller", "category": "casa", "price_tier": "low"},
-
-    "dyson-airwrap-kit": {"asin": "B0F2TPQVRX", "source": "auto", "subsource": "premium", "category": "cabelo", "price_tier": "premium"},
-    "dyson-airstrait": {"asin": "B0G5BFZ9TN", "source": "auto", "subsource": "premium", "category": "cabelo", "price_tier": "premium"},
-    "dyson-supersonic": {"asin": "B0F2GNQSKS", "source": "auto", "subsource": "premium", "category": "cabelo", "price_tier": "premium"},
-    "dyson-v15-detect": {"asin": "B0CT97D9R2", "source": "auto", "subsource": "premium", "category": "casa", "price_tier": "premium"},
-    "dyson-v8": {"asin": "B09YS9N7H2", "source": "auto", "subsource": "premium", "category": "casa", "price_tier": "high"},
-    "dyson-pure-cool-am07": {"asin": "B0CBW17PPQ", "source": "auto", "subsource": "premium", "category": "casa", "price_tier": "premium"},
-    "ninja-liquidificador-1200w": {"asin": "B0DWBCG2M9", "source": "auto", "subsource": "premium", "category": "cozinha", "price_tier": "high"},
-    "ninja-creami": {"asin": "B0DHSWL7D6", "source": "auto", "subsource": "premium", "category": "cozinha", "price_tier": "high"},
-    "ninja-max-pro-fritadeira": {"asin": "B0CPFT191B", "source": "auto", "subsource": "premium", "category": "cozinha", "price_tier": "high"},
-    "ninja-crispi-airfryer": {"asin": "B0DJFBDFZK", "source": "auto", "subsource": "premium", "category": "cozinha", "price_tier": "high"},
-    "ninja-mixer-imersao": {"asin": "B0F6NRPXZ7", "source": "auto", "subsource": "premium", "category": "cozinha", "price_tier": "mid"},
-
-    "abib-pdrn-eye-patch": {"asin": "B0F8TV2MNB", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "vita-c-capsule-cream": {"asin": "B0D2Z3GGCY", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "centella-ampoule": {"asin": "B07ZKHPV9Y", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "ksecret-creme-olhos-retinal": {"asin": "B0DGGBYDRZ", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "high"},
-    "pdrn-pink-collagen-cream": {"asin": "B0DTKCN3Z4", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "pdrn-gel-mask": {"asin": "B0DGTMR754", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "axisy-serum-vegano-olhos": {"asin": "B0CWPCX1D2", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "frudia-mascara-vitc": {"asin": "B0B5RMTNM3", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "low"},
-    "etude-lash-serum": {"asin": "B0D4YPT6QW", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "pdrn-night-wrapping-mask": {"asin": "B0F8HHJG25", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "pdrn-pink-peptide-serum": {"asin": "B0GQ9S98M1", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "melano-cc-serum": {"asin": "B08GB65ZB7", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "low"},
-    "frudia-kit-mascaras": {"asin": "B09KN7K1M6", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "low"},
-    "axisy-serum-niacinamida": {"asin": "B091238V7N", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "hada-labo-gokujyun-lotion": {"asin": "B07ZD69QXX", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "low"},
-    "skin1004-probio-cica": {"asin": "B0BTRWGQNV", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "celimax-shot-tightening-30ml": {"asin": "B0DK4WKPZW", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "mid"},
-    "ksecret-creme-retinal": {"asin": "B0DGGK9PX4", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "high"},
-    "vitamina-e-tocoferol-coreana": {"asin": "B0GYWD1VGT", "source": "auto", "subsource": "bestseller", "category": "kbeauty", "price_tier": "low"},
-
-    "sallve-protetor-solar-bastao-fps60": {"asin": "B0CRWRFHSC", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "mid"},
-    "sallve-bastao-antioleosidade": {"asin": "B0DC8S35LH", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "mid"},
-    "sallve-bastao-antioxidante-olhos": {"asin": "B0DG9VSY5X", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "mid"},
-    "sallve-solar-bastao-antioleosidade": {"asin": "B0FRPD3DGP", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "mid"},
-    "sallve-serum-antiolheiras": {"asin": "B0FJNJQSYZ", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "mid"},
-    "cetaphil-locao-hidratante": {"asin": "B079VPMXHF", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "low"},
-    "cetaphil-pro-restoraderm": {"asin": "B07FKQVTXN", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "mid"},
-    "neutrogena-hidratante-corporal": {"asin": "B0F4G1GF7W", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "low"},
-    "cerave-locao-fluida": {"asin": "B07RK4HST7", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "mid"},
-    "cerave-creme-ceramidas": {"asin": "B07XP8K162", "source": "auto", "subsource": "bestseller", "category": "teenbeauty", "price_tier": "mid"},
-
-    "racao-special-dog-carne": {"asin": "B07Y9WYQ7W", "source": "auto", "subsource": "bestseller", "category": "pet", "price_tier": "mid"},
-    "granplus-affinity-choice": {"asin": "B07SHQHPTY", "source": "auto", "subsource": "bestseller", "category": "pet", "price_tier": "mid"},
-    "quatree-racao-15kg": {"asin": "B07T6CBLLT", "source": "auto", "subsource": "bestseller", "category": "pet", "price_tier": "mid"},
-    "adimax-origens-class": {"asin": "B095QNFYRQ", "source": "auto", "subsource": "bestseller", "category": "pet", "price_tier": "mid"},
-    "pedigree-nutricao-essencial": {"asin": "B0CJCGH59T", "source": "auto", "subsource": "bestseller", "category": "pet", "price_tier": "low"},
-    "special-dog-gold-life": {"asin": "B0CKRX26HB", "source": "auto", "subsource": "bestseller", "category": "pet", "price_tier": "mid"}
+    "fita-silicone-vital-derme": {
+      "asin": "B0FRVYXPSW",
+      "source": "user",
+      "category": "cuidados",
+      "price_tier": "low"
+    },
+    "massageador-couro-cabeludo": {
+      "asin": "B0CN19843K",
+      "source": "user",
+      "category": "bemestar",
+      "price_tier": "low"
+    },
+    "hada-labo-eye-care": {
+      "asin": "B0BVT1LK79",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "celimax-tightening-booster": {
+      "asin": "B0DK4Y2YP3",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "medicube-kojic-niacinamide": {
+      "asin": "B0FG7VLJKG",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "hub-usb-c": {
+      "asin": "B0GKQTNBSS",
+      "source": "user",
+      "category": "tech",
+      "price_tier": "low"
+    },
+    "filamento-tpu-preto": {
+      "asin": "B0G5N2WBMM",
+      "source": "user",
+      "category": "tech",
+      "price_tier": "mid"
+    },
+    "filamento-tpu-flexivel": {
+      "asin": "B0GSQXF738",
+      "source": "user",
+      "category": "tech",
+      "price_tier": "low"
+    },
+    "silk-amendoa": {
+      "asin": "B07YYH4Z5M",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "low"
+    },
+    "whey-dux": {
+      "asin": "B07NH7B9JC",
+      "source": "user",
+      "category": "esporte",
+      "price_tier": "high"
+    },
+    "sabao-liquido": {
+      "asin": "B0FMXFWNP3",
+      "source": "user",
+      "category": "casa",
+      "price_tier": "low"
+    },
+    "medicube-pdrn-jelly-mist": {
+      "asin": "B0FPPKK2Z5",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "loreal-absolut-repair-serum": {
+      "asin": "B0CBV94G6D",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "high"
+    },
+    "tirtir-red-cushion": {
+      "asin": "B0DBZLL7LN",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "capsulas-peptide-cobre-azul": {
+      "asin": "B0FDJ768DD",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "skin1004-centella-watergel-mask": {
+      "asin": "B0BZV4MS6K",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "low"
+    },
+    "oceane-nivea-antissinais": {
+      "asin": "B07LFLFC1R",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "low"
+    },
+    "beauty-friends-aloe-kit3": {
+      "asin": "B0FN5CH1F3",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "low"
+    },
+    "kbeauty-kit-8-mascaras": {
+      "asin": "B0GZLZVR8Q",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "low"
+    },
+    "pro-stick-fps95": {
+      "asin": "B0B3SVR41R",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "pink-stick-fps90": {
+      "asin": "B07F483M6T",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "odorata-solar-stick-sport": {
+      "asin": "B0G4XN8567",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "soul-sun-mineral-nude": {
+      "asin": "B0DCRPJFSW",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "soul-sun-mineral-kids": {
+      "asin": "B0DG5QX6ZP",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "mustela-solar-stick-50": {
+      "asin": "B0B1DW4P6T",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "redken-acidic-color-gloss": {
+      "asin": "B0CRHSCB4Y",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "pink-cheeks-leave-in-fps": {
+      "asin": "B0BGM453PN",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "low"
+    },
+    "photoage-protetor-capilar": {
+      "asin": "B0D8Q81H41",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "low"
+    },
+    "sebastian-hydre-shampoo": {
+      "asin": "B0FTY8JM9Y",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "mise-en-scene-damage-care": {
+      "asin": "B0DFQGMY5M",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "low"
+    },
+    "isdin-retinal-serum": {
+      "asin": "B0GCVMJ8RL",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "high"
+    },
+    "sanduicheira-cadence": {
+      "asin": "B0CDJ4L7CZ",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "cozinha",
+      "price_tier": "low"
+    },
+    "filtro-electrolux-pe12": {
+      "asin": "B0F256HPZJ",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "cozinha",
+      "price_tier": "low"
+    },
+    "potes-vidro-gato-panda": {
+      "asin": "B08CPW5BR2",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "cozinha",
+      "price_tier": "low"
+    },
+    "mixer-elgin-turbo-chef": {
+      "asin": "B09VQ39F41",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "cozinha",
+      "price_tier": "low"
+    },
+    "pilha-elgin-aaa": {
+      "asin": "B0754J12RW",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "casa",
+      "price_tier": "low"
+    },
+    "galaxy-a17": {
+      "asin": "B0FPYXKBJG",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "tech",
+      "price_tier": "high"
+    },
+    "galaxy-a07": {
+      "asin": "B0FPJ52LSR",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "tech",
+      "price_tier": "mid"
+    },
+    "kit-faixas-elasticas": {
+      "asin": "B07KQMVYKL",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "esporte",
+      "price_tier": "low"
+    },
+    "garrafa-squeeze-tiba": {
+      "asin": "B0G1PCXPNC",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "esporte",
+      "price_tier": "low"
+    },
+    "bike-ergometrica-spinning": {
+      "asin": "B0GG4WYRNM",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "esporte",
+      "price_tier": "high"
+    },
+    "cartucho-hp-667": {
+      "asin": "B08WKPK952",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "tech",
+      "price_tier": "low"
+    },
+    "mouse-logitech-m170": {
+      "asin": "B074L9L5KZ",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "tech",
+      "price_tier": "low"
+    },
+    "mouse-rgb-bluetooth": {
+      "asin": "B0F1G2TL8P",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "tech",
+      "price_tier": "low"
+    },
+    "omo-lavagem-perfeita": {
+      "asin": "B07DYHDXX8",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "casa",
+      "price_tier": "low"
+    },
+    "creatina-dark-lab": {
+      "asin": "B0CF71CJ2L",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "esporte",
+      "price_tier": "mid"
+    },
+    "downy-amaciante": {
+      "asin": "B07MBXDB51",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "casa",
+      "price_tier": "low"
+    },
+    "finish-lava-loucas": {
+      "asin": "B07DZ8VXQN",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "casa",
+      "price_tier": "low"
+    },
+    "percarbonato-sodio": {
+      "asin": "B0GPN6CNRT",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "casa",
+      "price_tier": "low"
+    },
+    "veja-buque-cerrado": {
+      "asin": "B07DZ7JP8L",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "casa",
+      "price_tier": "low"
+    },
+    "finish-secante": {
+      "asin": "B07FGYQCKM",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "casa",
+      "price_tier": "low"
+    },
+    "dyson-airwrap-kit": {
+      "asin": "B0F2TPQVRX",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "cabelo",
+      "price_tier": "premium"
+    },
+    "dyson-airstrait": {
+      "asin": "B0G5BFZ9TN",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "cabelo",
+      "price_tier": "premium"
+    },
+    "dyson-supersonic": {
+      "asin": "B0F2GNQSKS",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "cabelo",
+      "price_tier": "premium"
+    },
+    "dyson-v15-detect": {
+      "asin": "B0CT97D9R2",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "casa",
+      "price_tier": "premium"
+    },
+    "dyson-v8": {
+      "asin": "B09YS9N7H2",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "casa",
+      "price_tier": "high"
+    },
+    "dyson-pure-cool-am07": {
+      "asin": "B0CBW17PPQ",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "casa",
+      "price_tier": "premium"
+    },
+    "ninja-liquidificador-1200w": {
+      "asin": "B0DWBCG2M9",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "cozinha",
+      "price_tier": "high"
+    },
+    "ninja-creami": {
+      "asin": "B0DHSWL7D6",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "cozinha",
+      "price_tier": "high"
+    },
+    "ninja-max-pro-fritadeira": {
+      "asin": "B0CPFT191B",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "cozinha",
+      "price_tier": "high"
+    },
+    "ninja-crispi-airfryer": {
+      "asin": "B0DJFBDFZK",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "cozinha",
+      "price_tier": "high"
+    },
+    "ninja-mixer-imersao": {
+      "asin": "B0F6NRPXZ7",
+      "source": "auto",
+      "subsource": "premium",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "abib-pdrn-eye-patch": {
+      "asin": "B0F8TV2MNB",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "vita-c-capsule-cream": {
+      "asin": "B0D2Z3GGCY",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "centella-ampoule": {
+      "asin": "B07ZKHPV9Y",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "ksecret-creme-olhos-retinal": {
+      "asin": "B0DGGBYDRZ",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "high"
+    },
+    "pdrn-pink-collagen-cream": {
+      "asin": "B0DTKCN3Z4",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "pdrn-gel-mask": {
+      "asin": "B0DGTMR754",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "axisy-serum-vegano-olhos": {
+      "asin": "B0CWPCX1D2",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "frudia-mascara-vitc": {
+      "asin": "B0B5RMTNM3",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "low"
+    },
+    "etude-lash-serum": {
+      "asin": "B0D4YPT6QW",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "pdrn-night-wrapping-mask": {
+      "asin": "B0F8HHJG25",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "pdrn-pink-peptide-serum": {
+      "asin": "B0GQ9S98M1",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "melano-cc-serum": {
+      "asin": "B08GB65ZB7",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "low"
+    },
+    "frudia-kit-mascaras": {
+      "asin": "B09KN7K1M6",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "low"
+    },
+    "axisy-serum-niacinamida": {
+      "asin": "B091238V7N",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "hada-labo-gokujyun-lotion": {
+      "asin": "B07ZD69QXX",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "low"
+    },
+    "skin1004-probio-cica": {
+      "asin": "B0BTRWGQNV",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "celimax-shot-tightening-30ml": {
+      "asin": "B0DK4WKPZW",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "ksecret-creme-retinal": {
+      "asin": "B0DGGK9PX4",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "high"
+    },
+    "vitamina-e-tocoferol-coreana": {
+      "asin": "B0GYWD1VGT",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "kbeauty",
+      "price_tier": "low"
+    },
+    "sallve-protetor-solar-bastao-fps60": {
+      "asin": "B0CRWRFHSC",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "mid"
+    },
+    "sallve-bastao-antioleosidade": {
+      "asin": "B0DC8S35LH",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "mid"
+    },
+    "sallve-bastao-antioxidante-olhos": {
+      "asin": "B0DG9VSY5X",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "mid"
+    },
+    "sallve-solar-bastao-antioleosidade": {
+      "asin": "B0FRPD3DGP",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "mid"
+    },
+    "sallve-serum-antiolheiras": {
+      "asin": "B0FJNJQSYZ",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "mid"
+    },
+    "cetaphil-locao-hidratante": {
+      "asin": "B079VPMXHF",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "low"
+    },
+    "cetaphil-pro-restoraderm": {
+      "asin": "B07FKQVTXN",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "mid"
+    },
+    "neutrogena-hidratante-corporal": {
+      "asin": "B0F4G1GF7W",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "low"
+    },
+    "cerave-locao-fluida": {
+      "asin": "B07RK4HST7",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "mid"
+    },
+    "cerave-creme-ceramidas": {
+      "asin": "B07XP8K162",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "teenbeauty",
+      "price_tier": "mid"
+    },
+    "racao-special-dog-carne": {
+      "asin": "B07Y9WYQ7W",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "pet",
+      "price_tier": "mid"
+    },
+    "granplus-affinity-choice": {
+      "asin": "B07SHQHPTY",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "pet",
+      "price_tier": "mid"
+    },
+    "quatree-racao-15kg": {
+      "asin": "B07T6CBLLT",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "pet",
+      "price_tier": "mid"
+    },
+    "adimax-origens-class": {
+      "asin": "B095QNFYRQ",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "pet",
+      "price_tier": "mid"
+    },
+    "pedigree-nutricao-essencial": {
+      "asin": "B0CJCGH59T",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "pet",
+      "price_tier": "low"
+    },
+    "special-dog-gold-life": {
+      "asin": "B0CKRX26HB",
+      "source": "auto",
+      "subsource": "bestseller",
+      "category": "pet",
+      "price_tier": "mid"
+    },
+    "mae-terra-granola-tradicional-zero-acucares-800-g": {
+      "asin": "B0B7BYH4R8",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    }
   }
 }
