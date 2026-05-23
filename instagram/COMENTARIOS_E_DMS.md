@@ -120,17 +120,30 @@ Qualquer dúvida específica, manda aqui!
 
 ---
 
-## 📊 Como configurar Respostas Rápidas no Instagram
+## 📊 Como configurar Respostas Salvas
 
-1. Abre o Instagram (precisa ser conta Business ou Creator)
-2. Configurações → Comerciais → **Respostas Rápidas**
-3. **+ Nova Resposta Rápida**
-4. **Atalho**: `/preco` (ou outro nome curto)
-5. **Mensagem**: cola o texto acima
-6. Salva
-7. Repete pra cada uma
+⚠️ **Importante**: as Respostas Salvas (antigo "Respostas Rápidas") **não aparecem no Instagram desktop (instagram.com)**. Você precisa configurar por um dos 2 caminhos:
 
-**Como usar**: quando responder uma DM, digita `/preco` e o Instagram autocomplete oferece colar a resposta inteira.
+### Caminho A — Meta Business Suite (no computador)
+
+1. Acessa [business.facebook.com](https://business.facebook.com) logada
+2. Menu esquerdo → **Caixa de entrada**
+3. ⚙️ engrenagem (canto superior direito) → **Respostas Automatizadas**
+4. Aba **Respostas Salvas** → **+ Criar resposta**
+5. Pra cada uma:
+   - **Atalho**: ex `preco`
+   - **Mensagem**: cola o texto correspondente abaixo
+   - Salva
+
+### Caminho B — App Instagram no celular (mais rápido)
+
+1. Instagram app → perfil → ☰ → **Configurações e privacidade**
+2. **Ferramentas para criadores** (ou "Empresas")
+3. **Respostas salvas**
+4. **+** no canto superior direito
+5. Cria cada atalho
+
+**Como usar (em qualquer DM)**: digita `/preco` (com a barra) e o Instagram autocomplete oferece colar a resposta inteira.
 
 ---
 
