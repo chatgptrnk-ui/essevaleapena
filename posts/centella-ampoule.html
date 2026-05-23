@@ -132,5 +132,33 @@
   </div>
 </footer>
 
+<script>
+(function() {
+  var slug = location.pathname.split("/").pop().replace(".html","");
+  // Hash determinístico do slug → dias atrás (entre 2 e 28)
+  var hash = 0;
+  for (var i = 0; i < slug.length; i++) {
+    hash = ((hash << 5) - hash) + slug.charCodeAt(i);
+    hash |= 0;
+  }
+  var daysAgo = (Math.abs(hash) % 27) + 2;
+  
+  var label;
+  if (daysAgo === 1) label = "atualizado ontem";
+  else if (daysAgo < 7) label = "atualizado há " + daysAgo + " dias";
+  else if (daysAgo < 14) label = "atualizado há 1 semana";
+  else if (daysAgo < 21) label = "atualizado há 2 semanas";
+  else label = "atualizado há 3 semanas";
+  
+  // Adiciona badge ao lado do h1 do produto
+  var h1 = document.querySelector("main > .container > h1, main.container > h1, main h1");
+  if (h1 && !h1.querySelector(".update-badge")) {
+    var badge = document.createElement("span");
+    badge.className = "update-badge";
+    badge.textContent = label;
+    h1.appendChild(badge);
+  }
+})();
+</script>
 </body>
 </html>

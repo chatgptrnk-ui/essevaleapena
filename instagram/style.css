@@ -463,3 +463,198 @@ body {
   line-height: 1.3;
   max-width: 780px;
 }
+
+/* ========= TYPE 7: BRAND/MANIFESTO ========= */
+.tpl-manifesto {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F1F5F9 100%);
+  padding: 120px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tpl-manifesto .pre-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--brand-1, #1E40AF);
+  margin-bottom: 28px;
+}
+.tpl-manifesto h1 {
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  color: #0F172A;
+  margin-bottom: 32px;
+}
+.tpl-manifesto h1 .accent {
+  background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.tpl-manifesto .body-text {
+  font-size: 24px;
+  color: #334155;
+  line-height: 1.4;
+  max-width: 800px;
+  font-weight: 500;
+}
+
+/* ========= TYPE 8: WELCOME ========= */
+.tpl-welcome {
+  background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+  color: white;
+  padding: 100px 70px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tpl-welcome::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -20%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+}
+.tpl-welcome .ig-logo,
+.tpl-welcome .ig-tag,
+.tpl-welcome .ig-cta,
+.tpl-welcome .ig-handle {
+  color: white !important;
+  -webkit-text-fill-color: white !important;
+  background: none !important;
+}
+.tpl-welcome .emoji-big {
+  font-size: 84px;
+  margin-bottom: 24px;
+  position: relative;
+}
+.tpl-welcome h1 {
+  font-size: 84px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin-bottom: 28px;
+  position: relative;
+}
+.tpl-welcome .sub {
+  font-size: 28px;
+  font-weight: 500;
+  opacity: 0.95;
+  max-width: 800px;
+  position: relative;
+  line-height: 1.35;
+}
+
+/* ========= TYPE 9: NUMBERED LIST CAROUSEL ========= */
+.tpl-numbered {
+  background: white;
+  padding: 100px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tpl-numbered .badge-top {
+  background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+  color: white;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.tpl-numbered h1 {
+  font-size: 68px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 40px;
+  color: #0F172A;
+}
+.tpl-numbered .list-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tpl-numbered .list-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 2px solid #F1F5F9;
+}
+.tpl-numbered .list-items li:last-child { border-bottom: none; }
+.tpl-numbered .num-circle {
+  background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+  color: white;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 900;
+}
+.tpl-numbered .item-text {
+  font-size: 22px;
+  font-weight: 600;
+  color: #1F2937;
+  line-height: 1.35;
+  padding-top: 12px;
+}
+
+/* ========= TYPE 10: QUOTE/INSIGHT ========= */
+.tpl-quote {
+  background: #0F172A;
+  color: white;
+  padding: 130px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.tpl-quote::before {
+  content: """;
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  font-size: 240px;
+  line-height: 0.8;
+  color: rgba(6,182,212,0.2);
+  font-family: Georgia, serif;
+}
+.tpl-quote .ig-logo,
+.tpl-quote .ig-tag,
+.tpl-quote .ig-handle { color: rgba(255,255,255,0.7) !important; -webkit-text-fill-color: rgba(255,255,255,0.7) !important; background: none !important;}
+.tpl-quote .ig-cta { color: #06B6D4 !important; -webkit-text-fill-color: #06B6D4 !important; background: none !important;}
+.tpl-quote .quote-text {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.tpl-quote .quote-text .accent {
+  background: linear-gradient(135deg, #06B6D4 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.tpl-quote .quote-attr {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
