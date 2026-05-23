@@ -100,7 +100,7 @@ Se a imagem não carregar (URL quebrada, arquivo ausente), aparece automaticamen
 2. Arraste a pasta `produtos amazon` inteira
 3. Project Name: `achados-da-semana`
 4. Clique **"Deploy"**
-5. URL: `https://esevalepena.vercel.app`
+5. URL: `https://essevaleapenasim.com.br`
 
 ### Via Git (recomendado para updates fáceis)
 
@@ -131,9 +131,9 @@ Depois em [vercel.com/new](https://vercel.com/new) → "Import Git Repository" �
 
 1. Acesse [associados.amazon.com.br](https://associados.amazon.com.br)
 2. Inscreva-se com **e-mail e CPF do operador**
-3. URL do site: `https://esevalepena.vercel.app`
+3. URL do site: `https://essevaleapenasim.com.br`
 4. Tópicos: Tecnologia, Beleza, Casa & Cozinha, Esporte
-5. Tag preferida: `esevalepena-20`
+5. Tag preferida: `essevaleapena-20`
 6. Conta bancária do operador
 7. Aguarde 1-3 dias para gerar links
 
@@ -149,7 +149,7 @@ href="https://www.amazon.com.br/dp/CODIGO" target="_blank"
 ```
 **Para:**
 ```
-href="https://www.amazon.com.br/dp/CODIGO?tag=esevalepena-20" target="_blank"
+href="https://www.amazon.com.br/dp/CODIGO?tag=essevaleapena-20" target="_blank"
 ```
 
 No VSCode: `Cmd+Shift+H` → busca em todos os arquivos. Ou me pede um script.
@@ -160,12 +160,12 @@ No VSCode: `Cmd+Shift+H` → busca em todos os arquivos. Ou me pede um script.
 
 **Link único pro WhatsApp:**
 ```
-https://esevalepena.vercel.app/categorias.html
+https://essevaleapenasim.com.br/categorias.html
 ```
 
 Sugestão de mensagem:
 > Tô organizando aqui os produtos que ando testando. Dei uma olhada no que vale a pena na Amazon, escrevi review de cada um — passa lá se quiser:
-> https://esevalepena.vercel.app/categorias.html
+> https://essevaleapenasim.com.br/categorias.html
 
 **⚠️ Lembretes**:
 - NÃO mandar pra pacientes (atuais ou antigos)
