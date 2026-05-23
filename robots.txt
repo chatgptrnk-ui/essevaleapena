@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://essevaleapena.vercel.app/sitemap.xml
+
+# Bloqueios técnicos (não há conteúdo sensível, apenas higiene)
+Disallow: /.git/
+Disallow: /atualizar_tag.py
