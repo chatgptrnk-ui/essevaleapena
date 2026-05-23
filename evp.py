@@ -343,6 +343,10 @@ def generate_review_html(slug, product_data, category, store_id):
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="ESSE VALE A PENA SIM">
 <meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="apple-touch-icon" href="../apple-touch-icon.svg">
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#1E40AF">
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
@@ -805,6 +809,10 @@ def rebuild_links_page(highlight_slug=None, highlight_label=None):
 <meta name="twitter:description" content="Curadoria honesta de achados Amazon — reviews com prós E contras.">
 <meta name="twitter:image" content="{site_url}/assets/og-default.png">
 <meta name="robots" content="index, follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1E40AF">
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
