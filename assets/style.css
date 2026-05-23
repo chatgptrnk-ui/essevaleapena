@@ -472,6 +472,9 @@ li { margin-bottom: 4px; }
 .gradient-bemestar { background: linear-gradient(135deg, #155E75 0%, #0891B2 100%); }
 .gradient-kbeauty { background: linear-gradient(135deg, #BE185D 0%, #F472B6 100%); }
 .gradient-teen { background: linear-gradient(135deg, #047857 0%, #34D399 100%); }
+.gradient-pele { background: linear-gradient(135deg, #9333EA 0%, #EC4899 100%); }
+.gradient-cabelo { background: linear-gradient(135deg, #6D28D9 0%, #A78BFA 100%); }
+.gradient-pet { background: linear-gradient(135deg, #92400E 0%, #FBBF24 100%); }
 
 .cat-beleza { color: #7C3AED; }
 .cat-tech { color: #1E40AF; }
@@ -483,6 +486,9 @@ li { margin-bottom: 4px; }
 .cat-bemestar { color: #0E7490; }
 .cat-kbeauty { color: #BE185D; }
 .cat-teen { color: #047857; }
+.cat-pele { color: #9333EA; }
+.cat-cabelo { color: #6D28D9; }
+.cat-pet { color: #92400E; }
 
 /* PRODUCT PAGE — compact */
 .product-hero {
@@ -518,6 +524,9 @@ li { margin-bottom: 4px; }
 .product-hero.gradient-bemestar::before { background: linear-gradient(90deg, #155E75 0%, #0891B2 100%); }
 .product-hero.gradient-kbeauty::before { background: linear-gradient(90deg, #BE185D 0%, #F472B6 100%); }
 .product-hero.gradient-teen::before { background: linear-gradient(90deg, #047857 0%, #34D399 100%); }
+.product-hero.gradient-pele::before { background: linear-gradient(90deg, #9333EA 0%, #EC4899 100%); }
+.product-hero.gradient-cabelo::before { background: linear-gradient(90deg, #6D28D9 0%, #A78BFA 100%); }
+.product-hero.gradient-pet::before { background: linear-gradient(90deg, #92400E 0%, #FBBF24 100%); }
 .product-hero.gradient-beleza,
 .product-hero.gradient-tech,
 .product-hero.gradient-cozinha,
