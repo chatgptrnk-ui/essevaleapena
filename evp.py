@@ -1255,6 +1255,442 @@ def generate_month(year_month=None, start_date=None, days_ahead=30):
     return fname, len(schedule)
 
 # ============================================================
+# REELS — Gerador de vídeo 9:16 com TTS pt-BR
+# ============================================================
+FFMPEG_BIN = None  # detectado em runtime
+
+def find_ffmpeg():
+    """Detecta ffmpeg em locais comuns."""
+    global FFMPEG_BIN
+    if FFMPEG_BIN: return FFMPEG_BIN
+    candidates = [
+        os.path.join(SITE_DIR, "automation/bin/ffmpeg"),
+        "/opt/homebrew/bin/ffmpeg",
+        "/usr/local/bin/ffmpeg",
+        "/usr/bin/ffmpeg",
+    ]
+    for c in candidates:
+        if os.path.exists(c) and os.access(c, os.X_OK):
+            FFMPEG_BIN = c
+            return c
+    # PATH
+    try:
+        result = subprocess.run(["which", "ffmpeg"], capture_output=True, text=True)
+        if result.returncode == 0 and result.stdout.strip():
+            FFMPEG_BIN = result.stdout.strip()
+            return FFMPEG_BIN
+    except: pass
+    return None
+
+def extract_review_data(slug):
+    """Extrai título, prós, contras, veredicto do post HTML."""
+    post_path = os.path.join(SITE_DIR, f"posts/{slug}.html")
+    if not os.path.exists(post_path):
+        return None
+    with open(post_path, 'r', encoding='utf-8') as f:
+        html = f.read()
+    data = {"slug": slug}
+    m = re.search(r'<h1>([^<]+)</h1>', html)
+    data["title"] = m.group(1).strip() if m else slug
+    m = re.search(r'<img[^>]+src="(https://m\.media-amazon\.com/images/I/[^"]+)"', html)
+    data["image"] = m.group(1) if m else ""
+    # Prós (primeiros 3)
+    pros_section = re.search(r'class="pros".*?<ul>(.*?)</ul>', html, re.DOTALL)
+    pros = []
+    if pros_section:
+        pros = re.findall(r'<li>([^<]+)</li>', pros_section.group(1))[:3]
+    data["pros"] = [p.strip() for p in pros]
+    # Contras (primeiro)
+    cons_section = re.search(r'class="cons".*?<ul>(.*?)</ul>', html, re.DOTALL)
+    cons = []
+    if cons_section:
+        cons = re.findall(r'<li>([^<]+)</li>', cons_section.group(1))[:1]
+    data["cons"] = [c.strip() for c in cons]
+    return data
+
+PHONETIC_DICT = {
+    # Marcas K-beauty / americanas aportuguesadas
+    "Medicube": "Medikiúbe",
+    "Kojic Acid": "ácido cójico",
+    "Niacinamide": "niacinamida",
+    "Niacinamida": "niacinamida",
+    "Skin1004": "Skin mil e quatro",
+    "Beauty of Joseon": "Biúti óf Djoson",
+    "Cosrx": "Cósrex",
+    "TIRTIR": "Tertér",
+    "Mise en Scène": "Mizansén",
+    "Anua": "Ânua",
+    "Hada Labo": "Rada Labô",
+    "Innisfree": "Inisfri",
+    "Laneige": "Laneije",
+    "Etude House": "Etúde Hauz",
+    "Frudia": "Fruidia",
+    "Celimax": "Celimács",
+    "Axis-Y": "Áxis Uái",
+    "K-Beauty": "Kei Biúti",
+    "K-beauty": "Kei Biúti",
+    "kbeauty": "Kei Biúti",
+    "Korean": "coreano",
+    # Tech / Internacionais
+    "Dyson": "Dáison",
+    "Airwrap": "Érrap",
+    "Airstrait": "Erstreit",
+    "Supersonic": "Supersónic",
+    "Pure Cool": "Piur cul",
+    "Logitech": "Lóji tek",
+    "Samsung Galaxy": "Samsung Galáxi",
+    "iPhone": "ai fôn",
+    "MacBook": "MeqBúk",
+    "USB-C": "u s b cê",
+    "USB": "u s b",
+    "Hub": "rab",
+    "Ninja": "Nínja",
+    "TPU": "tê pê u",
+    "PLA": "pê ele a",
+    "ABS": "a bê esse",
+    # Skincare/beleza
+    "L'Oréal": "Loreal",
+    "L'Oreal": "Loreal",
+    "Sallve": "Sálve",
+    "Cerave": "Seravê",
+    "CeraVe": "Seravê",
+    "Cetaphil": "Cetafil",
+    "ISDIN": "Ísdin",
+    "Mustela": "Mustela",
+    "NIVEA": "Nívia",
+    "Bioderma": "Biodérma",
+    "Sebastian": "Sebastián",
+    "Redken": "Rédqui",
+    "Pink Cheeks": "Pinque Tchíks",
+    "Pink Stick": "Pinque Estíq",
+    "Photoage": "Fôto eidj",
+    "FPS": "f p ésse",
+    "PDRN": "p d r ene",
+    # Genéricos
+    "&": "e",
+    "+": "mais",
+}
+
+def apply_phonetic(text):
+    """Substitui palavras chatas pra TTS pronunciar melhor.
+    Usa word boundaries pra não substituir no meio de palavras (ex: 'ABS' em 'absorve')."""
+    # Ordena por tamanho decrescente — substitui frases longas antes de palavras curtas
+    for orig, replace in sorted(PHONETIC_DICT.items(), key=lambda x: -len(x[0])):
+        # \b funciona pra letras ASCII; pra acentos usamos lookahead/lookbehind manuais
+        pattern = r'(?<![A-Za-zÀ-ÿ])' + re.escape(orig) + r'(?![A-Za-zÀ-ÿ])'
+        text = re.sub(pattern, replace, text, flags=re.IGNORECASE)
+    return text
+
+def normalize_for_speech(title):
+    """Limpa título pra ficar natural na voz."""
+    # Remove medidas e códigos: "30ml", "800g", "FPS 50", "B0XXXX"
+    t = title
+    # Remove parênteses e tudo dentro
+    t = re.sub(r'\([^)]*\)', '', t)
+    # Remove brackets
+    t = re.sub(r'\[[^\]]*\]', '', t)
+    # Remove códigos longos
+    t = re.sub(r'\b[A-Z0-9]{6,}\b', '', t)
+    # Reduz medidas pra naturalidade
+    t = re.sub(r'(\d+)\s*ml', r'\1 mililitros', t)
+    t = re.sub(r'(\d+)\s*g\b', r'\1 gramas', t)
+    t = re.sub(r'(\d+)\s*kg', r'\1 quilos', t)
+    # FPS
+    t = re.sub(r'FPS\s*(\d+)', r'fator \1', t)
+    # Hifens viram espaços
+    t = t.replace('-', ' ').replace('_', ' ').replace('/', ' ou ')
+    # Multispace
+    t = re.sub(r'\s+', ' ', t).strip()
+    # Aplica dicionário fonético
+    t = apply_phonetic(t)
+    return t
+
+def generate_reel_script(d):
+    """Gera narração com estrutura fixa da marca:
+    1. ABERTURA (pergunta): 'Esse vale a pena?'
+    2. CONTEÚDO: produto + prós + contras
+    3. ENCERRAMENTO (afirmação): 'Esse vale a pena sim!'
+    """
+    title_clean = normalize_for_speech(d["title"])
+
+    # === 1. ABERTURA — sempre a mesma pergunta da marca
+    abertura = "Esse vale a pena?"
+
+    # === 2. CONTEÚDO
+    # Apresentação do produto (logo após a pergunta)
+    apresentacao = f"Hoje a gente analisa: {title_clean}."
+
+    # Prós em frase natural — limitando a 2 prós principais
+    pros = d.get("pros", [])[:2]
+    pros_clean = []
+    for p in pros:
+        p_clean = apply_phonetic(p.strip())
+        if not p_clean.endswith('.'): p_clean += '.'
+        pros_clean.append(p_clean)
+    pros_text = " ".join(pros_clean) if pros_clean else ""
+
+    # Contras (1 só, opcional)
+    cons_text = ""
+    if d.get("cons"):
+        cons_clean = apply_phonetic(d["cons"][0].strip())
+        if not cons_clean.endswith('.'): cons_clean += '.'
+        cons_text = f" Mas atenção: {cons_clean}"
+
+    # CTA antes da afirmação
+    cta = " Análise completa no link da bio."
+
+    # === 3. ENCERRAMENTO — sempre a mesma afirmação da marca
+    encerramento = "Esse vale a pena sim!"
+
+    return f"{abertura} {apresentacao} {pros_text}{cons_text}{cta} {encerramento}"
+
+def download_image(url, dest):
+    """Baixa imagem via curl."""
+    try:
+        subprocess.run(["curl", "-s", "-L", "-o", dest, url], check=True, timeout=20)
+        return os.path.exists(dest) and os.path.getsize(dest) > 1000
+    except: return False
+
+def pick_background_music(slug):
+    """Escolhe uma música aleatória da pasta automation/music/ (deterministic por slug)."""
+    music_dir = os.path.join(SITE_DIR, "automation/music")
+    if not os.path.isdir(music_dir):
+        return None
+    musics = sorted(glob.glob(os.path.join(music_dir, "*.mp3")) +
+                    glob.glob(os.path.join(music_dir, "*.m4a")) +
+                    glob.glob(os.path.join(music_dir, "*.wav")))
+    if not musics:
+        return None
+    # Hash determinístico do slug → mesma música pro mesmo produto (consistência)
+    idx = sum(ord(c) for c in slug) % len(musics)
+    return musics[idx]
+
+def generate_reel(slug, voice="pt-BR-FranciscaNeural", rate="+5%"):
+    """Gera reel MP4 9:16 (1080×1920) com TTS neural + imagem + texto + música."""
+    ffmpeg = find_ffmpeg()
+    if not ffmpeg:
+        log("❌ ffmpeg não encontrado.", "err")
+        return None
+
+    d = extract_review_data(slug)
+    if not d or not d.get("image"):
+        log(f"❌ Sem dados/imagem pra {slug}", "err")
+        return None
+
+    temp_dir = os.path.join(SITE_DIR, "automation/reels-temp")
+    out_dir = os.path.join(SITE_DIR, "automation/reels")
+    os.makedirs(temp_dir, exist_ok=True)
+    os.makedirs(out_dir, exist_ok=True)
+
+    # 1. Baixar imagem
+    img_path = os.path.join(temp_dir, f"{slug}.jpg")
+    if not download_image(d["image"], img_path):
+        log(f"❌ Falha ao baixar imagem de {slug}", "err")
+        return None
+
+    # 2. Gerar TTS — Edge TTS (vozes neurais Microsoft) é prioridade
+    script = generate_reel_script(d)
+    aiff_path = os.path.join(temp_dir, f"{slug}.mp3")  # edge-tts gera mp3
+    use_edge = "Neural" in voice or "Multilingual" in voice or "pt-BR-" in voice
+
+    if use_edge:
+        # Usa edge-tts (Microsoft neural) — com retry pra timeout
+        success = False
+        for attempt in range(1, 4):  # 3 tentativas
+            try:
+                subprocess.run([
+                    "python3", "-m", "edge_tts",
+                    "--voice", voice,
+                    "--text", script,
+                    "--rate", rate,
+                    "--write-media", aiff_path
+                ], check=True, timeout=120, capture_output=True, text=True)
+                success = True
+                break
+            except subprocess.TimeoutExpired:
+                log(f"   ⏱️ Edge TTS timeout (tentativa {attempt}/3)", "warn")
+                import time
+                time.sleep(3 * attempt)  # backoff: 3s, 6s, 9s
+            except subprocess.CalledProcessError as e:
+                log(f"   ❌ Edge TTS erro (tentativa {attempt}/3): {e.stderr[-200:] if e.stderr else e}", "warn")
+                import time
+                time.sleep(3 * attempt)
+
+        if not success:
+            log(f"   ⚠️ Edge TTS falhou após 3 tentativas. Pulando.", "err")
+            return None
+    else:
+        # Voz Apple (say)
+        aiff_path = aiff_path.replace(".mp3", ".aiff")
+        try:
+            subprocess.run(["say", "-v", voice, "-o", aiff_path, script],
+                           check=True, timeout=60, capture_output=True, text=True)
+        except subprocess.CalledProcessError as e:
+            log(f"❌ TTS falhou: {e.stderr or e}", "err")
+            return None
+
+    # Duração do áudio
+    duration_result = subprocess.run(
+        [ffmpeg, "-i", aiff_path, "-f", "null", "-"],
+        capture_output=True, text=True
+    )
+    m = re.search(r'Duration: (\d+):(\d+):(\d+\.\d+)', duration_result.stderr)
+    if m:
+        h, mn, s = m.groups()
+        audio_dur = int(h)*3600 + int(mn)*60 + float(s)
+    else:
+        audio_dur = 25.0
+    duration = max(audio_dur + 1.0, 10.0)  # +1s pra respirar no fim
+
+    # 3. Textos pra overlay (sanitiza)
+    def esc(s):
+        # ffmpeg drawtext escapes: : \ '
+        return s.replace("\\", "\\\\").replace("'", "").replace(":", " -")[:60]
+
+    # Quebra título em até 2 linhas (~ 22 chars cada)
+    full_title = d["title"]
+    if len(full_title) > 22:
+        words = full_title.split()
+        line1, line2 = "", ""
+        for w in words:
+            if len(line1) + len(w) < 22:
+                line1 = (line1 + " " + w).strip()
+            else:
+                line2 = (line2 + " " + w).strip()
+        if len(line2) > 28:
+            line2 = line2[:25] + "..."
+        title_line1 = esc(line1)
+        title_line2 = esc(line2)
+    else:
+        title_line1 = esc(full_title)
+        title_line2 = ""
+
+    out_path = os.path.join(out_dir, f"{slug}.mp4")
+    font_path = "/System/Library/Fonts/HelveticaNeue.ttc"
+
+    # 4. Monta vídeo: fundo azul + imagem branca centralizada + textos + áudio
+    # Estratégia: pré-processa imagem (scale + pad), depois overlay no canvas
+    text_filters = (
+        f"drawtext=fontfile={font_path}:text='ESSE VALE A PENA SIM':fontsize=44:fontcolor=white:"
+        f"box=1:boxcolor=black@0.4:boxborderw=18:x=(w-text_w)/2:y=140,"
+        f"drawtext=fontfile={font_path}:text='{title_line1}':fontsize=58:fontcolor=white:"
+        f"box=1:boxcolor=0x06B6D4@0.9:boxborderw=20:x=(w-text_w)/2:y=h-440"
+    )
+    if title_line2:
+        text_filters += (
+            f",drawtext=fontfile={font_path}:text='{title_line2}':fontsize=58:fontcolor=white:"
+            f"box=1:boxcolor=0x06B6D4@0.9:boxborderw=20:x=(w-text_w)/2:y=h-360"
+        )
+    text_filters += (
+        f",drawtext=fontfile={font_path}:text='@essevaleapenasim':fontsize=38:fontcolor=white:"
+        f"box=1:boxcolor=black@0.3:boxborderw=14:x=(w-text_w)/2:y=h-180"
+    )
+
+    # 4.1 Seleciona música de fundo (se disponível)
+    music_path = pick_background_music(slug)
+
+    # 4.2 Filtros de vídeo
+    video_filter = (
+        f"color=c=0x1E40AF:size=1080x1920:duration={duration}:rate=30[bg];"
+        f"[1:v]scale=900:900:force_original_aspect_ratio=decrease,"
+        f"pad=900:900:(ow-iw)/2:(oh-ih)/2:color=white,setsar=1[img];"
+        f"[bg][img]overlay=(W-w)/2:(H-h)/2-80[v1];"
+        f"[v1]{text_filters}[vout]"
+    )
+
+    if music_path:
+        # Mix: voz 100% + música 12% (fade in/out)
+        # [2:a] = voz, [3:a] = música
+        audio_filter = (
+            f"[2:a]volume=1.0,apad=pad_dur={duration}[voice];"
+            f"[3:a]aloop=loop=-1:size=2e+9,atrim=duration={duration},"
+            f"afade=t=in:st=0:d=1.0,afade=t=out:st={duration-1.5}:d=1.5,"
+            f"volume=0.12[music];"
+            f"[voice][music]amix=inputs=2:duration=first:dropout_transition=0[aout]"
+        )
+        filter_complex = video_filter + ";" + audio_filter
+        cmd = [
+            ffmpeg, "-y",
+            "-f", "lavfi", "-i", f"color=c=0x1E40AF:size=1080x1920:rate=30:duration={duration}",
+            "-loop", "1", "-i", img_path,
+            "-i", aiff_path,          # [2:a] voz
+            "-stream_loop", "-1", "-i", music_path,  # [3:a] música em loop
+            "-filter_complex", filter_complex,
+            "-map", "[vout]", "-map", "[aout]",
+            "-c:v", "libx264", "-preset", "fast", "-pix_fmt", "yuv420p", "-profile:v", "high", "-level", "4.0",
+            "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+            "-t", str(duration),
+            "-movflags", "+faststart",
+            out_path
+        ]
+    else:
+        # Sem música — só voz
+        filter_complex = video_filter
+        cmd = [
+            ffmpeg, "-y",
+            "-f", "lavfi", "-i", f"color=c=0x1E40AF:size=1080x1920:rate=30:duration={duration}",
+            "-loop", "1", "-i", img_path,
+            "-i", aiff_path,
+            "-filter_complex", filter_complex,
+            "-map", "[vout]", "-map", "2:a",
+            "-c:v", "libx264", "-preset", "fast", "-pix_fmt", "yuv420p", "-profile:v", "high", "-level", "4.0",
+            "-c:a", "aac", "-b:a", "128k", "-ar", "44100",
+            "-shortest",
+            "-movflags", "+faststart",
+            out_path
+        ]
+
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        if result.returncode != 0:
+            log(f"❌ ffmpeg falhou: {result.stderr[-500:]}", "err")
+            return None
+    except subprocess.TimeoutExpired:
+        log("❌ ffmpeg timeout (60s)", "err")
+        return None
+
+    # Limpa temp
+    try: os.remove(aiff_path)
+    except: pass
+
+    return out_path
+
+def generate_all_reels(only_user=True, skip_existing=True, force=False):
+    """Gera reels pra todos os produtos. Pula os que já existem por padrão."""
+    meta = load_meta()
+    products = meta["products"]
+    slugs = [s for s, p in products.items()
+             if (not only_user) or p.get("source") == "user"]
+    out_dir = os.path.join(SITE_DIR, "automation/reels")
+    pending = []
+    skipped = 0
+    for s in slugs:
+        existing = os.path.join(out_dir, f"{s}.mp4")
+        if skip_existing and not force and os.path.exists(existing):
+            skipped += 1
+        else:
+            pending.append(s)
+    log(f"→ {len(pending)} reels pendentes ({skipped} já existem, pulando)", "info")
+    if not pending:
+        log("✓ Nada a fazer — todos os reels já existem.", "ok")
+        return 0, 0
+
+    done = failed = 0
+    import time
+    for i, slug in enumerate(pending, 1):
+        log(f"\n[{i}/{len(pending)}] {slug}", "info")
+        result = generate_reel(slug)
+        if result:
+            log(f"✓ {os.path.basename(result)}", "ok")
+            done += 1
+        else:
+            failed += 1
+        # Pausa pequena pra não saturar Edge TTS API
+        if i < len(pending):
+            time.sleep(1.0)
+    return done, failed
+
+# ============================================================
 # AFFILIATE TAG
 # ============================================================
 def add_affiliate_tag(store_id):
@@ -1351,6 +1787,19 @@ def cmd_add(args):
     # 5. Gerar template Instagram
     ig_fname = generate_ig_post(slug, pd, category)
     log(f"✓ Template Instagram: instagram/posts/{ig_fname}", "ok")
+
+    # 6. Gerar Reel automático (se source=user e --no-reel não passado)
+    if source == "user" and "--no-reel" not in args:
+        if find_ffmpeg():
+            log("→ Gerando reel automático (use --no-reel pra pular)...", "info")
+            reel_path = generate_reel(slug)
+            if reel_path:
+                log(f"✓ Reel: automation/reels/{slug}.mp4", "ok")
+            else:
+                log("⚠️ Reel falhou — você pode tentar depois com 'evp reel " + slug + "'", "warn")
+        else:
+            log("⚠️ ffmpeg não encontrado — reel não gerado. Configure pra gerar automático.", "warn")
+
     log(f"\n{C.BOLD}🎉 Produto adicionado com sucesso!{C.END}", "ok")
     log(f"   Próximo: 'python3 evp.py publish \"Add {slug}\"' pra subir no Vercel", "info")
 
@@ -1455,6 +1904,47 @@ def cmd_suggest(args):
   5. WhatsApp filtrado: 1 link/semana pra mesma pessoa max
   6. Email signature: assinatura com link do site em emails pessoais
   7. Pinterest: criar conta + 5 pins/dia (tráfego grátis duradouro)""")
+
+def cmd_reel(args):
+    """Gera reel(s) MP4 9:16 com TTS neural pt-BR (Francisca Microsoft).
+
+    Uso:
+      evp reel                                  → todos os produtos user-indicated
+      evp reel <slug>                           → 1 produto específico
+      evp reel --all                            → todos (user + auto)
+      evp reel --voice=pt-BR-AntonioNeural      → voz masculina
+      evp reel --voice=pt-BR-ThalitaMultilingualNeural → voz multilingual
+    """
+    voice = "pt-BR-FranciscaNeural"  # voz neural Microsoft (qualidade Cortana)
+    only_user = True
+    slug = None
+    for a in args:
+        if a.startswith("--voice="):
+            voice = a.split("=", 1)[1]
+        elif a == "--all":
+            only_user = False
+        elif not a.startswith("--"):
+            slug = a
+
+    ffmpeg = find_ffmpeg()
+    if not ffmpeg:
+        log("❌ ffmpeg não encontrado.", "err")
+        log("Instale via Homebrew: brew install ffmpeg", "info")
+        log("Ou baixe binário estático: https://evermeet.cx/ffmpeg/", "info")
+        log("E coloque em: automation/bin/ffmpeg (chmod +x)", "info")
+        return
+    log(f"✓ ffmpeg: {ffmpeg}", "ok")
+
+    if slug:
+        log(f"→ Gerando reel pra: {slug}", "info")
+        result = generate_reel(slug, voice=voice)
+        if result:
+            log(f"\n🎬 Reel gerado: {result}", "ok")
+            log(f"   Abra com: open '{result}'", "info")
+    else:
+        done, failed = generate_all_reels(only_user=only_user)
+        log(f"\n🎬 {done} reels gerados, {failed} falharam", "ok")
+        log(f"   Pasta: automation/reels/", "info")
 
 def cmd_search_index(args):
     """Regenera /search-index.json manualmente."""
@@ -1594,6 +2084,7 @@ COMMANDS = {
     "stories": cmd_stories,
     "links": cmd_links,
     "next": cmd_next,
+    "reel": cmd_reel,
     "search-index": cmd_search_index,
     "tag": cmd_tag,
     "publish": cmd_publish,

@@ -130,6 +130,44 @@ python3 evp.py help
 
 ---
 
+### `reel` — Gerar vídeo Reel 9:16 com narração IA
+
+```bash
+python3 evp.py reel                  # Gera pra todos os 36 produtos user-indicated
+python3 evp.py reel <slug>           # Gera só pra um produto
+python3 evp.py reel --all            # Inclui também os auto-fetched (66 produtos)
+python3 evp.py reel --voice=pt-BR-AntonioNeural   # Voz masculina
+python3 evp.py reel --voice=pt-BR-ThalitaMultilingualNeural   # Voz multilingual
+```
+
+**O que produz**: vídeo MP4 1080×1920 (formato Reels/Stories/TikTok), ~22 segundos cada, com:
+- Fundo azul gradient
+- Imagem do produto centralizada
+- Badge "ESSE VALE A PENA SIM ✓" no topo
+- Título grande do produto no rodapé
+- Marca "@essevaleapenasim · link na bio"
+- Narração com voz **Francisca Neural** (Microsoft, gratuita)
+
+**Estrutura fixa da narração** (todos os reels):
+```
+ABERTURA:     "Esse vale a pena?"           ← pergunta da marca
+APRESENTAÇÃO: "Hoje a gente analisa: ..."
+PRÓS:         [2 prós do review]
+CONTRA:       [1 contra do review]
+CTA:          "Análise completa no link da bio."
+ENCERRAMENTO: "Esse vale a pena sim!"       ← afirmação da marca
+```
+
+**Pasta de saída**: `automation/reels/<slug>.mp4`
+
+**Dicionário fonético** (palavras que TTS pronuncia mal): editável em `evp.py` na variável `PHONETIC_DICT`. Inclui marcas como Medicube → Medikiúbe, Kojic Acid → ácido cójico, Niacinamide → niacinamida, etc.
+
+**Pré-requisitos**:
+- FFmpeg em `automation/bin/ffmpeg` (Rosetta 2 ativo se Mac M-series)
+- Python lib `edge-tts`: `pip3 install edge-tts`
+
+---
+
 ## 🔁 Workflow recomendado (rotina semanal)
 
 ### Quinta de manhã (10 min)
