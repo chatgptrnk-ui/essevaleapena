@@ -1655,6 +1655,105 @@ def generate_reel(slug, voice="pt-BR-FranciscaNeural", rate="+5%"):
 
     return out_path
 
+def generate_reels_schedule(start_date=None, reels_per_day=2,
+                            slot_times=("09:00", "21:00"), only_user=True):
+    """Gera cronograma de postagem dos reels. 2 por dia, slots fixos (9h e 21h)."""
+    meta = load_meta()
+    reels_dir = os.path.join(SITE_DIR, "automation/reels")
+    if not os.path.isdir(reels_dir):
+        return None
+    mp4_files = sorted(glob.glob(os.path.join(reels_dir, "*.mp4")))
+    available_slugs = [os.path.basename(f).replace(".mp4", "") for f in mp4_files]
+    if only_user:
+        user_slugs = {s for s, p in meta["products"].items() if p.get("source") == "user"}
+        available_slugs = [s for s in available_slugs if s in user_slugs]
+    import random
+    rng = random.Random(20260524)
+    rng.shuffle(available_slugs)
+    if not start_date:
+        start_date = datetime.date.today()
+    schedule = []
+    current_date = start_date
+    slot_idx = 0
+    for slug in available_slugs:
+        time_str = slot_times[slot_idx % len(slot_times)]
+        schedule.append({"date": current_date, "time": time_str, "slug": slug})
+        slot_idx += 1
+        if slot_idx % reels_per_day == 0:
+            current_date = current_date + datetime.timedelta(days=1)
+    return schedule
+
+def generate_reels_schedule_md():
+    """Gera MD com cronograma pra Meta Business Suite."""
+    schedule = generate_reels_schedule()
+    if not schedule:
+        return None
+    meta = load_meta()
+    products = meta["products"]
+    site_url = meta["config"]["site_url"]
+    lines = [f"# 🎬 Cronograma de Reels — @essevaleapenasim", ""]
+    lines.append(f"> Gerado em {datetime.date.today().isoformat()}")
+    lines.append(f"> **{len(schedule)} reels** programados, 2 por dia (9h e 21h)")
+    lines.append(f"> Vai de {schedule[0]['date'].strftime('%d/%m')} até {schedule[-1]['date'].strftime('%d/%m')}")
+    lines.append("")
+    lines.append("## 📋 Como agendar no Meta Business Suite")
+    lines.append("")
+    lines.append("1. `business.facebook.com` → **Planejador**")
+    lines.append("2. Pra cada reel abaixo:")
+    lines.append("   - **Criar publicação** → tipo **Reel**")
+    lines.append("   - Upload do MP4 indicado")
+    lines.append("   - Cola legenda")
+    lines.append("   - Define data + hora")
+    lines.append("   - Marca **Instagram + Facebook**")
+    lines.append("   - **Agendar**")
+    lines.append("")
+    lines.append("---")
+    lines.append("")
+    for i, item in enumerate(schedule, 1):
+        date = item["date"]; time = item["time"]; slug = item["slug"]
+        weekday = ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"][date.weekday()]
+        post_path = os.path.join(SITE_DIR, f"posts/{slug}.html")
+        title = slug
+        if os.path.exists(post_path):
+            with open(post_path, 'r', encoding='utf-8') as f: h = f.read()
+            m = re.search(r'<h1>([^<]+)</h1>', h)
+            if m: title = m.group(1)
+        p = products.get(slug, {})
+        cat = p.get("category", "tech")
+        cat_emoji = CATEGORY_META.get(cat, CATEGORY_META["tech"])["emoji"]
+        lines.append(f"## Reel {i}/{len(schedule)} — {weekday} {date.strftime('%d/%m')} às {time}")
+        lines.append("")
+        lines.append(f"**Produto**: {title}")
+        lines.append(f"**Categoria**: {cat_emoji} {cat}")
+        lines.append(f"**📁 MP4**: `automation/reels/{slug}.mp4`")
+        lines.append("")
+        lines.append(f"**📝 Legenda**:")
+        lines.append("```")
+        lines.append(f"{cat_emoji} {title}")
+        lines.append("")
+        lines.append(f"Esse vale a pena sim? Análise honesta com prós e contras no link da bio:")
+        lines.append(f"{site_url}/posts/{slug}")
+        lines.append("")
+        lines.append(f"Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos de verdade. 🛒 Compra direto pela Amazon (link no review).")
+        lines.append("")
+        lines.append(f"#essevaleapenasim #achadosamazon #{cat} #review #curadoria #valeapena #amazonbrasil")
+        lines.append("```")
+        lines.append("")
+        lines.append(f"**📌 Comentário fixado (cola no post depois)**:")
+        lines.append("```")
+        lines.append(f"👉 Análise completa: {site_url}/posts/{slug}")
+        lines.append("```")
+        lines.append("")
+        lines.append("---")
+        lines.append("")
+    out_dir = os.path.join(SITE_DIR, "instagram/mensal")
+    os.makedirs(out_dir, exist_ok=True)
+    fname = f"reels-cronograma-{datetime.date.today().isoformat()}.md"
+    out_path = os.path.join(out_dir, fname)
+    with open(out_path, 'w', encoding='utf-8') as f:
+        f.write("\n".join(lines))
+    return out_path
+
 def generate_all_reels(only_user=True, skip_existing=True, force=False):
     """Gera reels pra todos os produtos. Pula os que já existem por padrão."""
     meta = load_meta()
@@ -1905,6 +2004,15 @@ def cmd_suggest(args):
   6. Email signature: assinatura com link do site em emails pessoais
   7. Pinterest: criar conta + 5 pins/dia (tráfego grátis duradouro)""")
 
+def cmd_schedule_reels(args):
+    """Gera cronograma de postagem dos 36 reels: 2 por dia, 9h e 21h, começando hoje."""
+    out_path = generate_reels_schedule_md()
+    if not out_path:
+        log("❌ Nenhum reel encontrado em automation/reels/", "err")
+        return
+    log(f"✓ Cronograma gerado: {out_path}", "ok")
+    log(f"   Abre o arquivo pra ver a lista completa de 36 reels com datas/horas/legendas", "info")
+
 def cmd_reel(args):
     """Gera reel(s) MP4 9:16 com TTS neural pt-BR (Francisca Microsoft).
 
@@ -2085,6 +2193,7 @@ COMMANDS = {
     "links": cmd_links,
     "next": cmd_next,
     "reel": cmd_reel,
+    "schedule-reels": cmd_schedule_reels,
     "search-index": cmd_search_index,
     "tag": cmd_tag,
     "publish": cmd_publish,
