@@ -6,7 +6,7 @@
 <title>Buscar produtos — ESSE VALE A PENA SIM</title>
 <meta name="description" content="Pesquise nos 100+ reviews honestos de produtos Amazon. Encontre o que você procura por nome, marca ou categoria.">
 <link rel="canonical" href="https://essevaleapenasim.com.br/buscar">
-<link rel="stylesheet" href="/assets/style.css?v=2">
+<link rel="stylesheet" href="/assets/style.css?v=3">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="apple-touch-icon" href="/apple-touch-icon.svg">
 <link rel="manifest" href="/manifest.json">
@@ -162,11 +162,41 @@
     justify-content: center;
     padding: 20px;
     border-bottom: 1px solid var(--border);
+    position: relative;
   }
   .result-img img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+  }
+  .result-img-link {
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+  .result-img-link::after {
+    content: "🛒 Amazon";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 100px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .result-img-link:hover::after { opacity: 1; }
+  .result-body-link {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-decoration: none;
+    color: inherit;
   }
   .result-body {
     padding: 14px 16px 16px;
@@ -400,20 +430,22 @@
       resultsList.appendChild(card);
     });
 
-    // Render produtos
+    // Render produtos — imagem clica direto Amazon, body clica review
     products.forEach(p => {
-      const card = document.createElement('a');
-      card.href = `/posts/${p.slug}.html`;
+      const card = document.createElement('div');
       card.className = 'result-card';
       const catLabel = CAT_NAMES[p.category] || p.category;
       const img = p.image ? `<img src="${p.image}" alt="${escapeHtml(p.title)}" loading="lazy" onerror="this.style.display='none'">` : '🔌';
+      const amazonUrl = p.asin ? `https://www.amazon.com.br/dp/${p.asin}?tag=essevaleapena-20` : '#';
       card.innerHTML = `
-        <div class="result-img">${img}</div>
-        <div class="result-body">
-          <span class="result-cat cat-${p.category}">${catLabel}</span>
-          <h3 class="result-title">${escapeHtml(p.title)}</h3>
-          <span class="result-arrow">Ver review →</span>
-        </div>`;
+        <a href="${amazonUrl}" target="_blank" rel="nofollow noopener sponsored" class="result-img-link" aria-label="Comprar na Amazon"><div class="result-img">${img}</div></a>
+        <a href="/posts/${p.slug}.html" class="result-body-link">
+          <div class="result-body">
+            <span class="result-cat cat-${p.category}">${catLabel}</span>
+            <h3 class="result-title">${escapeHtml(p.title)}</h3>
+            <span class="result-arrow">Ver review →</span>
+          </div>
+        </a>`;
       resultsList.appendChild(card);
     });
   }

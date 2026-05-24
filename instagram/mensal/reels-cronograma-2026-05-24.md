@@ -4,6 +4,8 @@
 > **36 reels** programados, 2 por dia (9h e 21h)
 > Vai de 24/05 até 10/06
 
+> 💡 **Os MP4s estão numerados de 01 a 36** em `automation/reels/` (mesma ordem deste cronograma).
+
 ## 📋 Como agendar no Meta Business Suite
 
 1. `business.facebook.com` → **Planejador**
@@ -17,11 +19,11 @@
 
 ---
 
-## Reel 1/36 — Dom 24/05 às 09:00
+## #01 — Dom 24/05 às 09:00
 
 **Produto**: Soul Sun Premium Mineral Stick FPS 75 Nude
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/soul-sun-mineral-nude.mp4`
+**📁 MP4**: `01-soul-sun-mineral-nude.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -42,11 +44,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 2/36 — Dom 24/05 às 21:00
+## #02 — Dom 24/05 às 21:00
 
 **Produto**: PINK Stick FPS90 5km 15,5g
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/pink-stick-fps90.mp4`
+**📁 MP4**: `02-pink-stick-fps90.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -67,11 +69,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 3/36 — Seg 25/05 às 09:00
+## #03 — Seg 25/05 às 09:00
 
 **Produto**: Cápsulas de Soro Peptídeo de Cobre Azul (GHK)
 **Categoria**: 🌸 kbeauty
-**📁 MP4**: `automation/reels/capsulas-peptide-cobre-azul.mp4`
+**📁 MP4**: `03-capsulas-peptide-cobre-azul.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -92,11 +94,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 4/36 — Seg 25/05 às 21:00
+## #04 — Seg 25/05 às 21:00
 
 **Produto**: L'Oréal Professionnel Absolut Repair Sérum Molecular 250ml
 **Categoria**: 💇 cabelo
-**📁 MP4**: `automation/reels/loreal-absolut-repair-serum.mp4`
+**📁 MP4**: `04-loreal-absolut-repair-serum.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -117,11 +119,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 5/36 — Ter 26/05 às 09:00
+## #05 — Ter 26/05 às 09:00
 
 **Produto**: Hada Labo Gokujyun Premium Eye Care
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/hada-labo-eye-care.mp4`
+**📁 MP4**: `05-hada-labo-eye-care.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -142,11 +144,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 6/36 — Ter 26/05 às 21:00
+## #06 — Ter 26/05 às 21:00
 
 **Produto**: Hub USB-C 7 em 1
 **Categoria**: 🔌 tech
-**📁 MP4**: `automation/reels/hub-usb-c.mp4`
+**📁 MP4**: `06-hub-usb-c.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -167,11 +169,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 7/36 — Qua 27/05 às 09:00
+## #07 — Qua 27/05 às 09:00
 
 **Produto**: Sebastian Professional Hydre Shampoo
 **Categoria**: 💇 cabelo
-**📁 MP4**: `automation/reels/sebastian-hydre-shampoo.mp4`
+**📁 MP4**: `07-sebastian-hydre-shampoo.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -192,11 +194,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 8/36 — Qua 27/05 às 21:00
+## #08 — Qua 27/05 às 21:00
 
 **Produto**: Isdin Reparador Labial Stick Pink com Ácido Hialurônico 4g -...
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/isdin-reparador-labial-stick-pink-com-acido-hialur.mp4`
+**📁 MP4**: `08-isdin-reparador-labial-stick-pink-com-acido-hialur.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -217,11 +219,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 9/36 — Qui 28/05 às 09:00
+## #09 — Qui 28/05 às 09:00
 
 **Produto**: ISDIN Isdinceutics Retinal Sérum 50ml
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/isdin-retinal-serum.mp4`
+**📁 MP4**: `09-isdin-retinal-serum.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -242,11 +244,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 10/36 — Qui 28/05 às 21:00
+## #10 — Qui 28/05 às 21:00
 
 **Produto**: Tirtir Red Cushion Base 4.5g — Tom 22N Shell Beige (Mini)
 **Categoria**: 🌸 kbeauty
-**📁 MP4**: `automation/reels/tirtir-red-cushion.mp4`
+**📁 MP4**: `10-tirtir-red-cushion.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -267,11 +269,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 11/36 — Sex 29/05 às 09:00
+## #11 — Sex 29/05 às 09:00
 
 **Produto**: Mise en Scène Damage Care Conditioner
 **Categoria**: 💇 cabelo
-**📁 MP4**: `automation/reels/mise-en-scene-damage-care.mp4`
+**📁 MP4**: `11-mise-en-scene-damage-care.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -292,11 +294,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 12/36 — Sex 29/05 às 21:00
+## #12 — Sex 29/05 às 21:00
 
 **Produto**: Sabão líquido Profunda Brancura
 **Categoria**: 🧺 casa
-**📁 MP4**: `automation/reels/sabao-liquido.mp4`
+**📁 MP4**: `12-sabao-liquido.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -317,11 +319,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 13/36 — Sáb 30/05 às 09:00
+## #13 — Sáb 30/05 às 09:00
 
 **Produto**: Skin1004 Centella Watergel Mask
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/skin1004-centella-watergel-mask.mp4`
+**📁 MP4**: `13-skin1004-centella-watergel-mask.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -342,11 +344,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 14/36 — Sáb 30/05 às 21:00
+## #14 — Sáb 30/05 às 21:00
 
 **Produto**: Silk Amêndoa sem açúcar
 **Categoria**: 🍳 cozinha
-**📁 MP4**: `automation/reels/silk-amendoa.mp4`
+**📁 MP4**: `14-silk-amendoa.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -367,11 +369,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 15/36 — Dom 31/05 às 09:00
+## #15 — Dom 31/05 às 09:00
 
 **Produto**: K Beauty Kit 8 Máscaras Variadas
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/kbeauty-kit-8-mascaras.mp4`
+**📁 MP4**: `15-kbeauty-kit-8-mascaras.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -392,11 +394,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 16/36 — Dom 31/05 às 21:00
+## #16 — Dom 31/05 às 21:00
 
 **Produto**: Beauty Friends Aloe Kit 3 Máscaras
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/beauty-friends-aloe-kit3.mp4`
+**📁 MP4**: `16-beauty-friends-aloe-kit3.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -417,11 +419,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 17/36 — Seg 01/06 às 09:00
+## #17 — Seg 01/06 às 09:00
 
 **Produto**: Redken Acidic Color Gloss Condicionador
 **Categoria**: 💇 cabelo
-**📁 MP4**: `automation/reels/redken-acidic-color-gloss.mp4`
+**📁 MP4**: `17-redken-acidic-color-gloss.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -442,11 +444,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 18/36 — Seg 01/06 às 21:00
+## #18 — Seg 01/06 às 21:00
 
 **Produto**: medicube Soro PDRN Collagen Glow Jelly Mist
 **Categoria**: 🌸 kbeauty
-**📁 MP4**: `automation/reels/medicube-pdrn-jelly-mist.mp4`
+**📁 MP4**: `18-medicube-pdrn-jelly-mist.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -467,11 +469,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 19/36 — Ter 02/06 às 09:00
+## #19 — Ter 02/06 às 09:00
 
 **Produto**: Mustela Protetor Solar Stick FPS 50
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/mustela-solar-stick-50.mp4`
+**📁 MP4**: `19-mustela-solar-stick-50.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -492,11 +494,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 20/36 — Ter 02/06 às 21:00
+## #20 — Ter 02/06 às 21:00
 
 **Produto**: PRO STICK FPS95 PRO20 14g
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/pro-stick-fps95.mp4`
+**📁 MP4**: `20-pro-stick-fps95.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -517,11 +519,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 21/36 — Qua 03/06 às 09:00
+## #21 — Qua 03/06 às 09:00
 
 **Produto**: Filamento TPU 95A 250g flexível
 **Categoria**: 🔌 tech
-**📁 MP4**: `automation/reels/filamento-tpu-flexivel.mp4`
+**📁 MP4**: `21-filamento-tpu-flexivel.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -542,11 +544,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 22/36 — Qua 03/06 às 21:00
+## #22 — Qua 03/06 às 21:00
 
 **Produto**: Photoage Protetor Capilar KPF 50+
 **Categoria**: 💇 cabelo
-**📁 MP4**: `automation/reels/photoage-protetor-capilar.mp4`
+**📁 MP4**: `22-photoage-protetor-capilar.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -567,11 +569,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 23/36 — Qui 04/06 às 09:00
+## #23 — Qui 04/06 às 09:00
 
 **Produto**: Soul Sun Premium Mineral Stick FPS 75 Kids
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/soul-sun-mineral-kids.mp4`
+**📁 MP4**: `23-soul-sun-mineral-kids.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -592,11 +594,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 24/36 — Qui 04/06 às 21:00
+## #24 — Qui 04/06 às 21:00
 
 **Produto**: Odorata Sport Clean FPS 70
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/odorata-solar-stick-sport.mp4`
+**📁 MP4**: `24-odorata-solar-stick-sport.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -617,11 +619,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 25/36 — Sex 05/06 às 09:00
+## #25 — Sex 05/06 às 09:00
 
 **Produto**: Whey Protein DUX concentrado refil 8kg
 **Categoria**: 💪 esporte
-**📁 MP4**: `automation/reels/whey-dux.mp4`
+**📁 MP4**: `25-whey-dux.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -642,11 +644,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 26/36 — Sex 05/06 às 21:00
+## #26 — Sex 05/06 às 21:00
 
 **Produto**: Celimax Shot Tightening Booster
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/celimax-tightening-booster.mp4`
+**📁 MP4**: `26-celimax-tightening-booster.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -667,11 +669,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 27/36 — Sáb 06/06 às 09:00
+## #27 — Sáb 06/06 às 09:00
 
 **Produto**: Coador de Café Dose Única com 50 Filtros Descartáveis 7,5x9c...
 **Categoria**: 🍳 cozinha
-**📁 MP4**: `automation/reels/coador-de-cafe-dose-unica-com-50-filtros-descartav.mp4`
+**📁 MP4**: `27-coador-de-cafe-dose-unica-com-50-filtros-descartav.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -692,11 +694,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 28/36 — Sáb 06/06 às 21:00
+## #28 — Sáb 06/06 às 21:00
 
 **Produto**: Fita de silicone Vital Derme
 **Categoria**: 🩹 cuidados
-**📁 MP4**: `automation/reels/fita-silicone-vital-derme.mp4`
+**📁 MP4**: `28-fita-silicone-vital-derme.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -717,11 +719,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 29/36 — Dom 07/06 às 09:00
+## #29 — Dom 07/06 às 09:00
 
 **Produto**: Pink Cheeks Leave-in Anti-shock
 **Categoria**: 💇 cabelo
-**📁 MP4**: `automation/reels/pink-cheeks-leave-in-fps.mp4`
+**📁 MP4**: `29-pink-cheeks-leave-in-fps.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -742,11 +744,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 30/36 — Dom 07/06 às 21:00
+## #30 — Dom 07/06 às 21:00
 
 **Produto**: Filamento TPU Masterprint preto 1kg
 **Categoria**: 🔌 tech
-**📁 MP4**: `automation/reels/filamento-tpu-preto.mp4`
+**📁 MP4**: `30-filamento-tpu-preto.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -767,11 +769,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 31/36 — Seg 08/06 às 09:00
+## #31 — Seg 08/06 às 09:00
 
 **Produto**: Medicube Kojic Acid + Niacinamide Serum
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/medicube-kojic-niacinamide.mp4`
+**📁 MP4**: `31-medicube-kojic-niacinamide.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -792,11 +794,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 32/36 — Seg 08/06 às 21:00
+## #32 — Seg 08/06 às 21:00
 
 **Produto**: NIVEA Antissinais Ultraleve 7 em 1
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/oceane-nivea-antissinais.mp4`
+**📁 MP4**: `32-oceane-nivea-antissinais.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -817,11 +819,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 33/36 — Ter 09/06 às 09:00
+## #33 — Ter 09/06 às 09:00
 
 **Produto**: ISDIN Reparador Labial em Stick - 4g
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/isdin-reparador-labial-em-stick---4g.mp4`
+**📁 MP4**: `33-isdin-reparador-labial-em-stick---4g.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -842,11 +844,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 34/36 — Ter 09/06 às 21:00
+## #34 — Ter 09/06 às 21:00
 
 **Produto**: Mãe Terra Granola Tradicional Zero Açúcares 800 g
 **Categoria**: 🍳 cozinha
-**📁 MP4**: `automation/reels/mae-terra-granola-tradicional-zero-acucares-800-g.mp4`
+**📁 MP4**: `34-mae-terra-granola-tradicional-zero-acucares-800-g.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -867,11 +869,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 35/36 — Qua 10/06 às 09:00
+## #35 — Qua 10/06 às 09:00
 
 **Produto**: Massageador elétrico de couro cabeludo
 **Categoria**: 💆 bemestar
-**📁 MP4**: `automation/reels/massageador-couro-cabeludo.mp4`
+**📁 MP4**: `35-massageador-couro-cabeludo.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```
@@ -892,11 +894,11 @@ Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos 
 
 ---
 
-## Reel 36/36 — Qua 10/06 às 21:00
+## #36 — Qua 10/06 às 21:00
 
 **Produto**: KIKO MILANO, Coloured Balm, Hidratante Labial Colorido, Cor
 **Categoria**: 💧 pele
-**📁 MP4**: `automation/reels/kiko-milano-coloured-balm-hidratante-labial-colo.mp4`
+**📁 MP4**: `36-kiko-milano-coloured-balm-hidratante-labial-colo.mp4` (em `automation/reels/`)
 
 **📝 Legenda**:
 ```

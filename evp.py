@@ -364,9 +364,11 @@ def generate_review_html(slug, product_data, category, store_id):
 
 <main class="container">
 
-  <div class="product-hero {cat_meta['gradient']}">
-    <img loading="lazy" decoding="async" src="{img_url}" alt="{short}" onerror="this.style.display='none';this.parentElement.innerHTML='{cat_meta['emoji']}';">
-  </div>
+  <a href="https://www.amazon.com.br/dp/{asin}?tag={store_id}" target="_blank" rel="nofollow noopener sponsored" class="product-hero-link" aria-label="Ver na Amazon">
+    <div class="product-hero {cat_meta['gradient']}">
+      <img loading="lazy" decoding="async" src="{img_url}" alt="{short}" onerror="this.style.display='none';this.parentElement.innerHTML='{cat_meta['emoji']}';">
+    </div>
+  </a>
 
   <span class="category-badge" style="{cat_meta['badge_style']}">{cat_meta['badge_text']}</span>
   <h1>{short}</h1>
@@ -408,23 +410,24 @@ def generate_review_html(slug, product_data, category, store_id):
 # ============================================================
 # HOMEPAGE — Adicionar card
 # ============================================================
-def add_to_homepage(slug, short_name, short_desc, category, img_url, emoji):
+def add_to_homepage(slug, short_name, short_desc, category, img_url, emoji, asin=None, store_id="essevaleapena-20"):
     cat_meta = CATEGORY_META.get(category, CATEGORY_META["tech"])
     cat_css = {"pele":"cat-pele","cabelo":"cat-cabelo","kbeauty":"cat-kbeauty","teenbeauty":"cat-teen",
                "cuidados":"cat-cuidados","bemestar":"cat-bemestar","cozinha":"cat-cozinha",
                "casa":"cat-casa","esporte":"cat-esporte","pet":"cat-pet","tech":"cat-tech"}.get(category, "cat-tech")
+    amazon_url = f"https://www.amazon.com.br/dp/{asin}?tag={store_id}" if asin else f"posts/{slug}.html"
     card = f"""
-    <a href="posts/{slug}.html" class="product-card">
-      <div class="visual {cat_meta['gradient']}">
+    <div class="product-card">
+      <a href="{amazon_url}" target="_blank" rel="nofollow noopener sponsored" class="card-image-link" aria-label="Comprar na Amazon"><div class="visual {cat_meta['gradient']}">
         <img src="{img_url}" alt="{short_name}" onerror="this.style.display='none';this.parentElement.innerHTML='{emoji}';">
-      </div>
-      <div class="body">
+      </div></a>
+      <a href="posts/{slug}.html" class="card-body-link"><div class="body">
         <span class="category {cat_css}">{cat_meta['badge_text']}</span>
         <h3>{short_name}</h3>
         <p>{short_desc}</p>
         <span class="arrow">Ler review →</span>
-      </div>
-    </a>
+      </div></a>
+    </div>
 """
     index_path = os.path.join(SITE_DIR, "index.html")
     with open(index_path, 'r', encoding='utf-8') as f:
@@ -476,24 +479,26 @@ def rebuild_categorias():
             premium = p.get("price_tier") == "premium"
             items.append({
                 "slug": slug, "name": short_name, "img": img_url,
-                "emoji": emoji_p, "premium": premium
+                "emoji": emoji_p, "premium": premium, "asin": p.get("asin", "")
             })
         items.sort(key=lambda x: (0 if x["premium"] else 1, x["name"]))
         if not items: continue
         total += len(items)
+        store_id_local = meta["config"]["store_id"]
         items_html = ""
         for it in items:
             premium_badge = ' <span style="background:linear-gradient(135deg,#FBBF24 0%,#F59E0B 100%);color:white;font-size:10px;font-weight:800;padding:2px 7px;border-radius:10px;margin-left:6px;letter-spacing:0.5px;">PREMIUM</span>' if it["premium"] else ""
-            items_html += f"""      <a href="posts/{it['slug']}.html" class="cat-item">
-        <div class="thumb">
+            amazon_link = f"https://www.amazon.com.br/dp/{it['asin']}?tag={store_id_local}" if it.get("asin") else f"posts/{it['slug']}.html"
+            items_html += f"""      <div class="cat-item">
+        <a href="{amazon_link}" target="_blank" rel="nofollow noopener sponsored" class="cat-thumb-link" aria-label="Comprar na Amazon"><div class="thumb">
           <img src="{it['img']}" alt="{it['name']}" onerror="this.style.display='none';this.parentElement.innerHTML='{it['emoji']}';">
-        </div>
-        <div class="info">
+        </div></a>
+        <a href="posts/{it['slug']}.html" class="cat-info-link"><div class="info">
           <span class="name">{it['name']}{premium_badge}</span>
           <span class="desc"></span>
         </div>
-        <span class="arrow">→</span>
-      </a>
+        <span class="arrow">→</span></a>
+      </div>
 """
         sections += f"""
   <div class="cat-section">
@@ -1589,24 +1594,46 @@ def generate_reel(slug, voice="pt-BR-FranciscaNeural", rate="+5%"):
     # 4.1 Seleciona música de fundo (se disponível)
     music_path = pick_background_music(slug)
 
-    # 4.2 Filtros de vídeo
+    # 4.2 Filtros de vídeo — força output 1080x1920 com SAR 1:1 (Meta-friendly)
     video_filter = (
-        f"color=c=0x1E40AF:size=1080x1920:duration={duration}:rate=30[bg];"
+        f"color=c=0x1E40AF:size=1080x1920:duration={duration}:rate=30,setsar=1[bg];"
         f"[1:v]scale=900:900:force_original_aspect_ratio=decrease,"
         f"pad=900:900:(ow-iw)/2:(oh-ih)/2:color=white,setsar=1[img];"
-        f"[bg][img]overlay=(W-w)/2:(H-h)/2-80[v1];"
-        f"[v1]{text_filters}[vout]"
+        f"[bg][img]overlay=(W-w)/2:(H-h)/2-80,setsar=1[v1];"
+        f"[v1]{text_filters},scale=1080:1920,setsar=1[vout]"
     )
 
+    # Specs Meta Reels: yuv420p (TV range), 3500+ kb/s, CFR 30fps, AAC stereo 44100Hz
+    META_VIDEO_OPTS = [
+        "-c:v", "libx264",
+        "-preset", "medium",
+        "-pix_fmt", "yuv420p",          # TV range (NÃO yuvj420p)
+        "-profile:v", "high",
+        "-level", "4.1",                # 4.1+ pra Instagram
+        "-x264-params", "nal-hrd=cbr",  # Constant Bitrate (Meta exige bitrate constante)
+        "-b:v", "5000k",                # Bitrate alto pra HD Reels
+        "-minrate", "5000k",            # FORÇA o mínimo
+        "-maxrate", "5000k",            # FORÇA o máximo (CBR real)
+        "-bufsize", "10000k",
+        "-fps_mode", "cfr",             # Frame rate constante (Meta exige)
+        "-r", "30",
+        "-g", "60",                     # Keyframe a cada 2s (Meta recomenda)
+        "-color_range", "tv",
+        "-colorspace", "bt709",
+        "-color_primaries", "bt709",
+        "-color_trc", "bt709",
+        "-metadata:s:v:0", "rotate=0",  # Garante zero rotação no metadata
+    ]
+
     if music_path:
-        # Mix: voz 100% + música 12% (fade in/out)
-        # [2:a] = voz, [3:a] = música
+        # Mix: voz 100% + música 12% (fade in/out) → estéreo
         audio_filter = (
             f"[2:a]volume=1.0,apad=pad_dur={duration}[voice];"
             f"[3:a]aloop=loop=-1:size=2e+9,atrim=duration={duration},"
             f"afade=t=in:st=0:d=1.0,afade=t=out:st={duration-1.5}:d=1.5,"
             f"volume=0.12[music];"
-            f"[voice][music]amix=inputs=2:duration=first:dropout_transition=0[aout]"
+            f"[voice][music]amix=inputs=2:duration=first:dropout_transition=0,"
+            f"aformat=channel_layouts=stereo,asetrate=44100[aout]"
         )
         filter_complex = video_filter + ";" + audio_filter
         cmd = [
@@ -1617,24 +1644,24 @@ def generate_reel(slug, voice="pt-BR-FranciscaNeural", rate="+5%"):
             "-stream_loop", "-1", "-i", music_path,  # [3:a] música em loop
             "-filter_complex", filter_complex,
             "-map", "[vout]", "-map", "[aout]",
-            "-c:v", "libx264", "-preset", "fast", "-pix_fmt", "yuv420p", "-profile:v", "high", "-level", "4.0",
-            "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
+            *META_VIDEO_OPTS,
+            "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2",  # stereo
             "-t", str(duration),
             "-movflags", "+faststart",
             out_path
         ]
     else:
-        # Sem música — só voz
-        filter_complex = video_filter
+        # Sem música — só voz (mas força stereo pra compatibilidade)
+        filter_complex = video_filter + f";[2:a]aformat=channel_layouts=stereo,asetrate=44100[aout]"
         cmd = [
             ffmpeg, "-y",
             "-f", "lavfi", "-i", f"color=c=0x1E40AF:size=1080x1920:rate=30:duration={duration}",
             "-loop", "1", "-i", img_path,
             "-i", aiff_path,
             "-filter_complex", filter_complex,
-            "-map", "[vout]", "-map", "2:a",
-            "-c:v", "libx264", "-preset", "fast", "-pix_fmt", "yuv420p", "-profile:v", "high", "-level", "4.0",
-            "-c:a", "aac", "-b:a", "128k", "-ar", "44100",
+            "-map", "[vout]", "-map", "[aout]",
+            *META_VIDEO_OPTS,
+            "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2",
             "-shortest",
             "-movflags", "+faststart",
             out_path
@@ -1683,18 +1710,42 @@ def generate_reels_schedule(start_date=None, reels_per_day=2,
             current_date = current_date + datetime.timedelta(days=1)
     return schedule
 
-def generate_reels_schedule_md():
-    """Gera MD com cronograma pra Meta Business Suite."""
+def generate_reels_schedule_md(rename_reels=True):
+    """Gera MD com cronograma pra Meta Business Suite.
+    Se rename_reels=True, renomeia os MP4 com prefixo NN- pra match.
+    """
     schedule = generate_reels_schedule()
     if not schedule:
         return None
     meta = load_meta()
     products = meta["products"]
     site_url = meta["config"]["site_url"]
+    reels_dir = os.path.join(SITE_DIR, "automation/reels")
+
+    # Renomeia reels com prefixo numérico pra match com o MD
+    if rename_reels:
+        # Limpa prefixos antigos primeiro
+        for f in glob.glob(os.path.join(reels_dir, "*.mp4")):
+            base = os.path.basename(f)
+            m = re.match(r'^\d{2}-(.+\.mp4)$', base)
+            if m:
+                clean = os.path.join(reels_dir, m.group(1))
+                if not os.path.exists(clean):
+                    os.rename(f, clean)
+        # Aplica prefixo na ordem do cronograma
+        for i, item in enumerate(schedule, 1):
+            slug = item['slug']
+            old = os.path.join(reels_dir, f"{slug}.mp4")
+            new = os.path.join(reels_dir, f"{i:02d}-{slug}.mp4")
+            if os.path.exists(old):
+                os.rename(old, new)
+
     lines = [f"# 🎬 Cronograma de Reels — @essevaleapenasim", ""]
     lines.append(f"> Gerado em {datetime.date.today().isoformat()}")
     lines.append(f"> **{len(schedule)} reels** programados, 2 por dia (9h e 21h)")
     lines.append(f"> Vai de {schedule[0]['date'].strftime('%d/%m')} até {schedule[-1]['date'].strftime('%d/%m')}")
+    lines.append("")
+    lines.append("> 💡 **Os MP4s estão numerados de 01 a {0}** em `automation/reels/` (mesma ordem deste cronograma).".format(len(schedule)))
     lines.append("")
     lines.append("## 📋 Como agendar no Meta Business Suite")
     lines.append("")
@@ -1721,11 +1772,11 @@ def generate_reels_schedule_md():
         p = products.get(slug, {})
         cat = p.get("category", "tech")
         cat_emoji = CATEGORY_META.get(cat, CATEGORY_META["tech"])["emoji"]
-        lines.append(f"## Reel {i}/{len(schedule)} — {weekday} {date.strftime('%d/%m')} às {time}")
+        lines.append(f"## #{i:02d} — {weekday} {date.strftime('%d/%m')} às {time}")
         lines.append("")
         lines.append(f"**Produto**: {title}")
         lines.append(f"**Categoria**: {cat_emoji} {cat}")
-        lines.append(f"**📁 MP4**: `automation/reels/{slug}.mp4`")
+        lines.append(f"**📁 MP4**: `{i:02d}-{slug}.mp4` (em `automation/reels/`)")
         lines.append("")
         lines.append(f"**📝 Legenda**:")
         lines.append("```")
@@ -1870,7 +1921,7 @@ def cmd_add(args):
     img_url = f"https://m.media-amazon.com/images/I/{pd['img_id']}._AC_SX679_.jpg"
     cat_meta = CATEGORY_META.get(category, CATEGORY_META["tech"])
     short_name = (pd["title"][:50] + "...") if len(pd["title"]) > 50 else pd["title"]
-    add_to_homepage(slug, short_name, "Análise editorial completa", category, img_url, cat_meta["emoji"])
+    add_to_homepage(slug, short_name, "Análise editorial completa", category, img_url, cat_meta["emoji"], asin=asin, store_id=store_id)
     log("✓ Card adicionado na homepage", "ok")
     # 3. Atualizar metadata
     meta["products"][slug] = {"asin": asin, "source": source, "category": category, "price_tier": "mid"}
