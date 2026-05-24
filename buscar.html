@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buscar produtos — ESSE VALE A PENA SIM</title>
+<meta name="description" content="Pesquise nos 100+ reviews honestos de produtos Amazon. Encontre o que você procura por nome, marca ou categoria.">
+<link rel="canonical" href="https://essevaleapenasim.com.br/buscar">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1E40AF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Buscar produtos — ESSE VALE A PENA SIM">
+<meta property="og:description" content="Pesquise nos 100+ reviews honestos de produtos Amazon.">
+<meta property="og:url" content="https://essevaleapenasim.com.br/buscar">
+<meta property="og:image" content="https://essevaleapenasim.com.br/assets/og-default.png">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="ESSE VALE A PENA SIM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Buscar produtos — ESSE VALE A PENA SIM">
+<meta name="twitter:description" content="Pesquise nos 100+ reviews honestos de produtos Amazon.">
+<meta name="twitter:image" content="https://essevaleapenasim.com.br/assets/og-default.png">
+<meta name="robots" content="index, follow">
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+  .search-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  .search-hero {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .search-hero h1 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+  }
+  .search-hero p {
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+  .search-box {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .search-input {
+    width: 100%;
+    padding: 20px 56px 20px 56px;
+    font-size: 18px;
+    font-weight: 500;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    background: white;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    -webkit-appearance: none;
+    font-family: inherit;
+  }
+  .search-input:focus {
+    border-color: #1E40AF;
+    box-shadow: 0 0 0 4px rgba(30,64,175,0.1);
+  }
+  .search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+  .search-clear {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--text-muted);
+    color: white;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    line-height: 1;
+  }
+  .search-clear.visible { display: flex; }
+  .search-clear:hover { background: var(--text); }
+
+  .category-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    justify-content: center;
+  }
+  .cat-pill {
+    padding: 8px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    background: white;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--text);
+    user-select: none;
+  }
+  .cat-pill:hover { transform: translateY(-1px); border-color: #1E40AF; }
+  .cat-pill.active {
+    background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+    color: white;
+    border-color: transparent;
+  }
+
+  .results-info {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .results-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .result-card {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+  }
+  .result-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .result-img {
+    background: white;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .result-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .result-body {
+    padding: 14px 16px 16px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .result-cat {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .result-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    color: var(--text);
+    flex-grow: 1;
+  }
+  .result-arrow {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1E40AF;
+  }
+
+  .article-card {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FFEDD5 100%);
+    border-color: #FCD34D;
+  }
+  .article-card .result-cat { color: #92400E; }
+
+  .empty {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--text-muted);
+  }
+  .empty h3 {
+    color: var(--text);
+    margin-bottom: 8px;
+    font-size: 18px;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--text-muted);
+  }
+
+  /* Cores das categorias */
+  .cat-pele { color: #9333EA; }
+  .cat-cabelo { color: #6D28D9; }
+  .cat-kbeauty { color: #BE185D; }
+  .cat-teenbeauty { color: #047857; }
+  .cat-cuidados { color: #1E40AF; }
+  .cat-bemestar { color: #0E7490; }
+  .cat-cozinha { color: #B45309; }
+  .cat-casa { color: #166534; }
+  .cat-esporte { color: #991B1B; }
+  .cat-pet { color: #92400E; }
+  .cat-tech { color: #1E40AF; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">ESSE VALE A PENA SIM</a>
+    <nav class="nav">
+      <a href="/categorias.html">Categorias</a>
+      <a href="/buscar.html">Buscar</a>
+      <a href="/sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main class="search-wrap">
+  <div class="search-hero">
+    <h1>🔍 Buscar produtos</h1>
+    <p>Pesquise nos <strong id="totalCount">…</strong> reviews — por nome, marca ou categoria</p>
+  </div>
+
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="search" id="searchInput" class="search-input" placeholder="Ex: medicube, dyson, k-beauty, granola…" autocomplete="off" autofocus>
+    <button class="search-clear" id="searchClear" aria-label="Limpar busca">×</button>
+  </div>
+
+  <div class="category-filters" id="categoryFilters">
+    <span class="cat-pill active" data-cat="">Tudo</span>
+  </div>
+
+  <div class="results-info" id="resultsInfo"></div>
+
+  <div class="loading" id="loading">Carregando reviews…</div>
+
+  <div class="results-list" id="resultsList"></div>
+
+  <div class="empty" id="empty" style="display:none;">
+    <h3>Nada encontrado</h3>
+    <p>Tenta outras palavras (marca, tipo de produto, categoria).</p>
+    <p style="margin-top:16px;font-size:13px;">Ou <a href="/categorias.html" style="color:#1E40AF;font-weight:600;">explora todas as categorias</a>.</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>ESSE VALE A PENA SIM</h4>
+      <p>Curadoria editorial de produtos da Amazon com análise honesta de prós, contras e a quem cada um se destina.</p>
+    </div>
+    <div class="footer-col">
+      <h4>O site</h4>
+      <ul>
+        <li><a href="/sobre.html">Sobre</a></li>
+        <li><a href="/processo-editorial.html">Processo editorial</a></li>
+        <li><a href="/faq.html">Perguntas frequentes</a></li>
+        <li><a href="/contato.html">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/afiliados.html">Aviso de Afiliados</a></li>
+        <li><a href="/politica.html">Política de Privacidade</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© ESSE VALE A PENA SIM · Participante do Programa de Associados Amazon</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const input = document.getElementById('searchInput');
+  const clear = document.getElementById('searchClear');
+  const resultsList = document.getElementById('resultsList');
+  const resultsInfo = document.getElementById('resultsInfo');
+  const empty = document.getElementById('empty');
+  const loading = document.getElementById('loading');
+  const totalCount = document.getElementById('totalCount');
+  const filtersWrap = document.getElementById('categoryFilters');
+
+  const CAT_NAMES = {
+    pele: '💧 Pele', cabelo: '💇 Cabelo', kbeauty: '🌸 K-Beauty',
+    teenbeauty: '🌱 Teen Beauty', cuidados: '🩹 Cuidados', bemestar: '💆 Bem-estar',
+    cozinha: '🍳 Cozinha', casa: '🧺 Casa', esporte: '💪 Esporte',
+    pet: '🐶 Pet', tech: '🔌 Tech'
+  };
+
+  let DATA = { products: [], articles: [] };
+  let activeCategory = '';
+
+  // Normaliza string pra comparação (remove acentos, lowercase)
+  function norm(s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  // Score de match: maior = mais relevante
+  function score(item, q) {
+    const title = norm(item.title);
+    const cat = norm(item.category || '');
+    const kw = norm(item.kw || item.description || '');
+    let s = 0;
+    if (title.startsWith(q)) s += 50;
+    if (title.includes(q)) s += 30;
+    if (cat.includes(q)) s += 15;
+    if (kw.includes(q)) s += 5;
+    // Bonus tier premium = produtos caros (relevância pra search)
+    if (item.tier === 'premium') s += 2;
+    if (item.tier === 'high') s += 1;
+    return s;
+  }
+
+  function render() {
+    const q = norm(input.value.trim());
+    clear.classList.toggle('visible', input.value.length > 0);
+
+    let products = DATA.products;
+    let articles = DATA.articles;
+
+    // Filtro de categoria
+    if (activeCategory) {
+      products = products.filter(p => p.category === activeCategory);
+    }
+
+    // Filtro de texto
+    if (q) {
+      products = products
+        .map(p => ({ ...p, _s: score(p, q) }))
+        .filter(p => p._s > 0)
+        .sort((a, b) => b._s - a._s);
+      articles = articles
+        .map(a => ({ ...a, _s: score(a, q) }))
+        .filter(a => a._s > 0)
+        .sort((a, b) => b._s - a._s);
+    } else {
+      // Sem busca: mostra produtos por categoria (até 24 cards)
+      products = products.slice(0, 24);
+      articles = [];
+    }
+
+    const total = products.length + articles.length;
+    resultsList.innerHTML = '';
+
+    if (total === 0) {
+      empty.style.display = 'block';
+      resultsInfo.textContent = '';
+      return;
+    }
+    empty.style.display = 'none';
+
+    resultsInfo.textContent = q
+      ? `${total} resultado${total === 1 ? '' : 's'} para "${input.value.trim()}"`
+      : (activeCategory ? `${total} produto${total === 1 ? '' : 's'} em ${CAT_NAMES[activeCategory] || activeCategory}` : `Mostrando ${total} de ${DATA.products.length} produtos · digite pra filtrar`);
+
+    // Render artigos primeiro
+    articles.forEach(a => {
+      const card = document.createElement('a');
+      card.href = `/artigos/${a.slug}.html`;
+      card.className = 'result-card article-card';
+      card.innerHTML = `
+        <div class="result-body">
+          <span class="result-cat">📝 Artigo editorial</span>
+          <h3 class="result-title">${escapeHtml(a.title)}</h3>
+          <span class="result-arrow">Ler artigo →</span>
+        </div>`;
+      resultsList.appendChild(card);
+    });
+
+    // Render produtos
+    products.forEach(p => {
+      const card = document.createElement('a');
+      card.href = `/posts/${p.slug}.html`;
+      card.className = 'result-card';
+      const catLabel = CAT_NAMES[p.category] || p.category;
+      const img = p.image ? `<img src="${p.image}" alt="${escapeHtml(p.title)}" loading="lazy" onerror="this.style.display='none'">` : '🔌';
+      card.innerHTML = `
+        <div class="result-img">${img}</div>
+        <div class="result-body">
+          <span class="result-cat cat-${p.category}">${catLabel}</span>
+          <h3 class="result-title">${escapeHtml(p.title)}</h3>
+          <span class="result-arrow">Ver review →</span>
+        </div>`;
+      resultsList.appendChild(card);
+    });
+  }
+
+  function escapeHtml(s) {
+    return (s || '').replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]);
+  }
+
+  // Carrega o índice
+  fetch('/search-index.json')
+    .then(r => r.json())
+    .then(data => {
+      DATA = data;
+      loading.style.display = 'none';
+      totalCount.textContent = data.total_products;
+
+      // Monta pills de categoria
+      data.categories.forEach(cat => {
+        const pill = document.createElement('span');
+        pill.className = 'cat-pill';
+        pill.dataset.cat = cat;
+        pill.textContent = CAT_NAMES[cat] || cat;
+        filtersWrap.appendChild(pill);
+      });
+
+      // Listeners pra pills
+      filtersWrap.addEventListener('click', e => {
+        if (!e.target.classList.contains('cat-pill')) return;
+        activeCategory = e.target.dataset.cat;
+        filtersWrap.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+        e.target.classList.add('active');
+        render();
+      });
+
+      // Listener pra input com debounce leve
+      let timeout;
+      input.addEventListener('input', () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(render, 80);
+      });
+
+      // Botão limpar
+      clear.addEventListener('click', () => {
+        input.value = '';
+        input.focus();
+        render();
+      });
+
+      // Suporte a query string ?q=
+      const params = new URLSearchParams(window.location.search);
+      const initialQ = params.get('q');
+      if (initialQ) input.value = initialQ;
+
+      render();
+    })
+    .catch(err => {
+      loading.innerHTML = '<p style="color:#991B1B;">Erro ao carregar reviews. Tenta recarregar a página.</p>';
+      console.error(err);
+    });
+})();
+</script>
+
+</body>
+</html>

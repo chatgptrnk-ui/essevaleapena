@@ -563,6 +563,72 @@ def rebuild_categorias():
     return total
 
 # ============================================================
+# SEARCH INDEX (JSON com todos produtos pra busca client-side)
+# ============================================================
+def rebuild_search_index():
+    """Gera /search-index.json com title, slug, category, asin, image, keywords."""
+    meta = load_meta()
+    products = meta["products"]
+    items = []
+    for slug, p in products.items():
+        post_path = os.path.join(SITE_DIR, f"posts/{slug}.html")
+        if not os.path.exists(post_path):
+            continue
+        with open(post_path, 'r', encoding='utf-8') as f:
+            html = f.read()
+        title = slug
+        m = re.search(r'<h1>([^<]+)</h1>', html)
+        if m: title = m.group(1)
+        img_url = ""
+        m = re.search(r'(https://m\.media-amazon\.com/images/I/[A-Za-z0-9_-]+\._[^"\']+\.jpg)', html)
+        if m: img_url = m.group(1)
+        # Extrai keywords pra busca melhor (bullets/parágrafos curtos)
+        keywords = []
+        bullets = re.findall(r'<li>([^<]+)</li>', html)
+        for b in bullets[:5]:
+            keywords.append(b.strip()[:80])
+        items.append({
+            "slug": slug,
+            "title": title,
+            "category": p.get("category", "tech"),
+            "asin": p.get("asin", ""),
+            "image": img_url,
+            "tier": p.get("price_tier", "mid"),
+            "source": p.get("source", "user"),
+            "kw": " ".join(keywords)[:300]
+        })
+    # Inclui artigos editoriais também
+    articles = []
+    for ap in sorted(glob.glob(os.path.join(SITE_DIR, 'artigos/*.html'))):
+        slug = os.path.basename(ap).replace('.html', '')
+        with open(ap, 'r', encoding='utf-8') as f:
+            html = f.read()
+        title = slug
+        m = re.search(r'<h1>([^<]+)</h1>', html)
+        if m: title = m.group(1)
+        m = re.search(r'<meta name="description" content="([^"]+)"', html)
+        desc = m.group(1) if m else ""
+        articles.append({
+            "slug": slug,
+            "title": title,
+            "type": "artigo",
+            "description": desc[:200]
+        })
+    index = {
+        "generated": datetime.date.today().isoformat(),
+        "site_url": meta["config"]["site_url"],
+        "total_products": len(items),
+        "total_articles": len(articles),
+        "categories": list(CATEGORY_META.keys()),
+        "products": items,
+        "articles": articles
+    }
+    out = os.path.join(SITE_DIR, "search-index.json")
+    with open(out, 'w', encoding='utf-8') as f:
+        json.dump(index, f, ensure_ascii=False, separators=(',', ':'))
+    return len(items), len(articles)
+
+# ============================================================
 # SITEMAP
 # ============================================================
 def rebuild_sitemap():
@@ -1270,11 +1336,13 @@ def cmd_add(args):
     meta["products"][slug] = {"asin": asin, "source": source, "category": category, "price_tier": "mid"}
     save_meta(meta)
     log("✓ Metadata atualizada", "ok")
-    # 4. Rebuild categorias + sitemap
+    # 4. Rebuild categorias + sitemap + search-index
     total = rebuild_categorias()
     log(f"✓ categorias.html atualizada ({total} produtos)", "ok")
     n_urls = rebuild_sitemap()
     log(f"✓ sitemap.xml atualizado ({n_urls} URLs)", "ok")
+    n_prod, n_art = rebuild_search_index()
+    log(f"✓ search-index.json atualizado ({n_prod} produtos + {n_art} artigos)", "ok")
     # 5. Gerar template Instagram
     ig_fname = generate_ig_post(slug, pd, category)
     log(f"✓ Template Instagram: instagram/posts/{ig_fname}", "ok")
@@ -1382,6 +1450,11 @@ def cmd_suggest(args):
   5. WhatsApp filtrado: 1 link/semana pra mesma pessoa max
   6. Email signature: assinatura com link do site em emails pessoais
   7. Pinterest: criar conta + 5 pins/dia (tráfego grátis duradouro)""")
+
+def cmd_search_index(args):
+    """Regenera /search-index.json manualmente."""
+    n_prod, n_art = rebuild_search_index()
+    log(f"✓ search-index.json gerado: {n_prod} produtos + {n_art} artigos", "ok")
 
 def cmd_links(args):
     """Regenera /links.html. Use 'evp links <slug>' pra destacar um produto específico."""
@@ -1516,6 +1589,7 @@ COMMANDS = {
     "stories": cmd_stories,
     "links": cmd_links,
     "next": cmd_next,
+    "search-index": cmd_search_index,
     "tag": cmd_tag,
     "publish": cmd_publish,
     "list": cmd_list,
