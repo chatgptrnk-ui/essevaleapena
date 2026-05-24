@@ -333,7 +333,7 @@ def generate_review_html(slug, product_data, category, store_id):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{short} — Review</title>
 <meta name="description" content="Review editorial do {short}.">
-<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 <link rel="canonical" href="{page_url}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="{short} — Review">
@@ -513,7 +513,7 @@ def rebuild_categorias():
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Achados por categoria — ESSE VALE A PENA SIM</title>
 <meta name="description" content="Todos os produtos organizados em 11 categorias.">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=2">
 <link rel="canonical" href="https://essevaleapenasim.com.br/categorias">
 <meta name="robots" content="index, follow">
 </head>
@@ -674,7 +674,7 @@ def generate_ig_post(slug, product_data, category):
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../style.css?v=2">
 </head>
 <body>
 <div class="ig-post tpl-highlight" style="display:flex;flex-direction:column;">
@@ -791,7 +791,7 @@ def rebuild_links_page(highlight_slug=None, highlight_label=None):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Links — ESSE VALE A PENA SIM</title>
 <meta name="description" content="Todos os links do ESSE VALE A PENA SIM — reviews, achados por categoria e produtos em destaque.">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=2">
 <style>
   .links-page {{
     max-width: 480px;

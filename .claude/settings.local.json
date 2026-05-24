@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(rm -f automation/reels/*.mp4 automation/reels-temp/*)",
+      "Bash(python3 evp.py reel)"
     ]
   }
 }
