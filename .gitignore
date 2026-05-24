@@ -1,25 +1,23 @@
-# Sistema operacional
+# Binários grandes
+automation/bin/
+
+# Outputs gerados (não versionados — usuário gera localmente)
+automation/reels/
+automation/reels-temp/
+automation/music/
+
+# Sistema
 .DS_Store
+.AppleDouble
+.LSOverride
 Thumbs.db
-*.swp
-*~
 
-# Claude Code (não deve ir pro GitHub)
-.claude/
+# Python
+__pycache__/
+*.pyc
+*.pyo
 
-# IDE
-.vscode/
-.idea/
-
-# Logs
+# Logs e temp
 *.log
-
-# Node (caso venha a ser usado no futuro)
-node_modules/
-
-# Vercel
-.vercel/
-
-# Temporários
 *.tmp
-*.bak
+.cache/
