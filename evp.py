@@ -1441,8 +1441,11 @@ def generate_reel_script(d):
         if not cons_clean.endswith('.'): cons_clean += '.'
         cons_text = f" Mas atenção: {cons_clean}"
 
-    # CTA antes da afirmação
-    cta = " Análise completa no link da bio."
+    # CTA + chamada pra DM com palavra-chave "QUERO"
+    cta = (
+        " Análise completa no link da bio. "
+        "Quer saber mais? Escreva QUERO nos comentários que eu te mando o link direto!"
+    )
 
     # === 3. ENCERRAMENTO — sempre a mesma afirmação da marca
     encerramento = "Esse vale a pena sim!"
@@ -1789,19 +1792,20 @@ def generate_reels_schedule_md(rename_reels=True):
         lines.append("```")
         lines.append(f"{cat_emoji} {title}")
         lines.append("")
-        lines.append(f"Esse vale a pena sim? Análise honesta com prós e contras no link da bio:")
-        lines.append(f"{site_url}/posts/{slug}")
+        lines.append(f"Esse vale a pena sim? Análise honesta com prós e contras.")
         lines.append("")
-        lines.append(f"Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos de verdade. 🛒 Compra direto pela Amazon (link no review).")
+        lines.append(f"💬 Quer o link direto? Escreve QUERO nos comentários ou DM que eu te mando!")
+        lines.append("")
+        lines.append(f"Curadoria editorial sem promessa de milagre — só o que avaliamos e indicamos de verdade.")
         lines.append("")
         lines.append(f"#essevaleapenasim #achadosamazon #{cat} #review #curadoria #valeapena #amazonbrasil")
         lines.append("```")
         lines.append("")
         lines.append(f"**📌 Comentário fixado (cola no post depois)**:")
         lines.append("```")
-        lines.append(f"👉 Análise completa no link da BIO 📲")
+        lines.append(f"👉 Escreve QUERO aqui nos comentários ou na DM que eu te envio o link direto! 💬")
         lines.append(f"")
-        lines.append(f"Ou manda DM \"{slug.split('-')[0].upper()}\" que te envio o link direto 💬")
+        lines.append(f"Análise completa também no link da BIO 📲")
         lines.append("```")
         lines.append("")
         lines.append("---")
