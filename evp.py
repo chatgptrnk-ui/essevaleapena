@@ -1947,6 +1947,23 @@ def cmd_add(args):
     log(f"✓ sitemap.xml atualizado ({n_urls} URLs)", "ok")
     n_prod, n_art = rebuild_search_index()
     log(f"✓ search-index.json atualizado ({n_prod} produtos + {n_art} artigos)", "ok")
+    # Cria link curto /p/slug.html → redireciona pra Amazon
+    short_url = f"https://www.amazon.com.br/dp/{asin}?tag={store_id}"
+    short_template = f"""<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8"><title>Redirecionando...</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="refresh" content="0; url={short_url}">
+<link rel="canonical" href="{short_url}">
+<script>window.location.replace("{short_url}");</script>
+<style>body{{font-family:-apple-system,sans-serif;text-align:center;padding:60px 20px;background:#1E40AF;color:white}}a{{color:white}}</style>
+</head><body><p>Redirecionando para Amazon...</p>
+<p><a href="{short_url}">Clique aqui se não for redirecionado</a></p>
+</body></html>"""
+    os.makedirs(os.path.join(SITE_DIR, "p"), exist_ok=True)
+    with open(os.path.join(SITE_DIR, f"p/{slug}.html"), 'w', encoding='utf-8') as f:
+        f.write(short_template)
+    log(f"✓ Link curto: essevaleapenasim.com.br/p/{slug}", "ok")
     # 5. Gerar template Instagram
     ig_fname = generate_ig_post(slug, pd, category)
     log(f"✓ Template Instagram: instagram/posts/{ig_fname}", "ok")
