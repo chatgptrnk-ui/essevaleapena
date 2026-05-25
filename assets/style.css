@@ -488,33 +488,11 @@ li { margin-bottom: 4px; }
   transform: translateY(-6px);
   box-shadow: var(--shadow-lg);
 }
-/* Imagem clica direto pra Amazon */
+/* Imagem clica direto pra Amazon (sem badge visível) */
 .product-card .card-image-link {
   display: block;
   position: relative;
   cursor: pointer;
-}
-.product-card .card-image-link::after {
-  content: "🛒 Comprar na Amazon";
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(0,0,0,0.75);
-  color: white;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 100px;
-  opacity: 0;
-  transition: opacity 0.2s, transform 0.2s;
-  transform: translateY(6px);
-  letter-spacing: 0.3px;
-  pointer-events: none;
-  z-index: 2;
-}
-.product-card .card-image-link:hover::after {
-  opacity: 1;
-  transform: translateY(0);
 }
 .product-card .card-body-link {
   display: flex;
@@ -530,26 +508,6 @@ li { margin-bottom: 4px; }
   cursor: pointer;
   position: relative;
   text-decoration: none;
-}
-.product-hero-link::after {
-  content: "🛒 Ver na Amazon";
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(0,0,0,0.78);
-  color: white;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 8px 14px;
-  border-radius: 100px;
-  opacity: 0.9;
-  letter-spacing: 0.3px;
-  z-index: 2;
-  pointer-events: none;
-}
-.product-hero-link:hover::after {
-  opacity: 1;
-  background: rgba(0,0,0,0.9);
 }
 .product-card .visual {
   aspect-ratio: 1 / 1;
@@ -903,26 +861,6 @@ li { margin-bottom: 4px; }
   cursor: pointer;
   position: relative;
 }
-.cat-item .cat-thumb-link::after {
-  content: "🛒";
-  position: absolute;
-  bottom: -2px;
-  right: -2px;
-  background: rgba(0,0,0,0.75);
-  color: white;
-  font-size: 11px;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s;
-  z-index: 2;
-  pointer-events: none;
-}
-.cat-item .cat-thumb-link:hover::after { opacity: 1; }
 .cat-item .cat-info-link {
   display: flex;
   align-items: center;
