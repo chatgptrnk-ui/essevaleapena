@@ -1690,7 +1690,14 @@ def generate_reels_schedule(start_date=None, reels_per_day=2,
     if not os.path.isdir(reels_dir):
         return None
     mp4_files = sorted(glob.glob(os.path.join(reels_dir, "*.mp4")))
-    available_slugs = [os.path.basename(f).replace(".mp4", "") for f in mp4_files]
+    # Remove prefixo NN- se existir, pra ter slug puro
+    available_slugs = []
+    for f in mp4_files:
+        base = os.path.basename(f).replace(".mp4", "")
+        m = re.match(r'^\d{2}-(.+)$', base)
+        slug = m.group(1) if m else base
+        if slug not in available_slugs:
+            available_slugs.append(slug)
     if only_user:
         user_slugs = {s for s, p in meta["products"].items() if p.get("source") == "user"}
         available_slugs = [s for s in available_slugs if s in user_slugs]
@@ -1792,7 +1799,9 @@ def generate_reels_schedule_md(rename_reels=True):
         lines.append("")
         lines.append(f"**📌 Comentário fixado (cola no post depois)**:")
         lines.append("```")
-        lines.append(f"👉 Análise completa: {site_url}/posts/{slug}")
+        lines.append(f"👉 Análise completa no link da BIO 📲")
+        lines.append(f"")
+        lines.append(f"Ou manda DM \"{slug.split('-')[0].upper()}\" que te envio o link direto 💬")
         lines.append("```")
         lines.append("")
         lines.append("---")
