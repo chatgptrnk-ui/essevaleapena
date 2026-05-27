@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sugerir produto pra análise — ESSE VALE A PENA SIM</title>
+<meta name="description" content="Não achou o produto que queria? Pede uma análise personalizada. Avaliamos com base em compradores reais da Amazon e publicamos no site.">
+<link rel="stylesheet" href="/assets/style.css?v=4">
+<link rel="canonical" href="https://essevaleapenasim.com.br/sugerir">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1E40AF">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sugerir produto pra análise — ESSE VALE A PENA SIM">
+<meta property="og:description" content="Pede uma análise personalizada de qualquer produto da Amazon. Avaliamos com base em compradores reais.">
+<meta property="og:url" content="https://essevaleapenasim.com.br/sugerir">
+<meta property="og:image" content="https://essevaleapenasim.com.br/assets/og-default.png">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="ESSE VALE A PENA SIM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+  .sugerir-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  .sugerir-hero {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .sugerir-hero h1 {
+    font-size: 38px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .sugerir-hero p {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .processo {
+    background: linear-gradient(135deg, rgba(30,64,175,0.04) 0%, rgba(6,182,212,0.04) 100%);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 32px;
+  }
+  .processo h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .processo ol {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .processo li {
+    counter-increment: step;
+    padding: 8px 0 8px 38px;
+    position: relative;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .processo li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 6px;
+    background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .form-card {
+    background: white;
+    border-radius: 18px;
+    padding: 36px;
+    box-shadow: var(--shadow-md);
+  }
+  .form-group {
+    margin-bottom: 22px;
+  }
+  .form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 14px;
+  }
+  .form-group label .required {
+    color: #DC2626;
+  }
+  .form-group label .opt {
+    font-weight: 500;
+    color: var(--text-muted);
+    font-size: 12px;
+    margin-left: 4px;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    background: #F9FAFB;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+    -webkit-appearance: none;
+    color: var(--text);
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #1E40AF;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(30,64,175,0.1);
+  }
+  .form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+  .form-group small {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .btn-submit {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-top: 8px;
+  }
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(30,64,175,0.25);
+  }
+  .btn-submit:active { transform: translateY(0); }
+
+  .compromise {
+    margin-top: 28px;
+    padding: 16px 20px;
+    background: rgba(251,191,36,0.08);
+    border-left: 3px solid #F59E0B;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .compromise strong { color: var(--text); }
+
+  .success-msg {
+    display: none;
+    background: linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(16,185,129,0.08) 100%);
+    border: 2px solid #10B981;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+  }
+  .success-msg.show { display: block; }
+  .success-msg h2 { color: #047857; margin-bottom: 12px; }
+  .success-msg p { color: var(--text); line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">ESSE VALE A PENA SIM</a>
+    <form class="header-search" action="/buscar.html" method="get" role="search"><input type="search" name="q" placeholder="Buscar produtos…" aria-label="Buscar" autocomplete="off"><button type="submit" aria-label="Buscar">🔍</button></form>
+    <nav class="nav">
+      <a href="/categorias.html">Categorias</a>
+      <a href="/sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<main class="sugerir-wrap">
+
+  <div class="sugerir-hero">
+    <h1>💡 Sugerir produto pra análise</h1>
+    <p>Não achou o produto que queria avaliar? Manda aqui! Avaliamos com critério editorial — baseado em opiniões reais de compradores na Amazon, comparação com alternativas e nossa visão.</p>
+  </div>
+
+  <div class="processo">
+    <h3>🔍 Como funciona nossa análise</h3>
+    <ol>
+      <li>Você sugere o produto (formulário abaixo)</li>
+      <li>Avaliamos demanda — se vários pedirem, prioriza</li>
+      <li>Pesquisamos avaliações reais (mínimo 50 reviews na Amazon)</li>
+      <li>Cruzamos com alternativas do segmento</li>
+      <li>Publicamos análise completa em até 7 dias (com prós, contras e veredicto)</li>
+      <li>Te avisamos por email (se você deixou) quando o review estiver no ar</li>
+    </ol>
+  </div>
+
+  <form class="form-card" id="sugerirForm" action="https://formspree.io/f/xpwlnqaz" method="POST">
+
+    <div class="form-group">
+      <label for="produto">Nome do produto <span class="required">*</span></label>
+      <input type="text" id="produto" name="produto" required placeholder="Ex: Sérum Anua Heartleaf, Air Fryer Mondial XYZ, etc.">
+      <small>Quanto mais específico (marca + modelo), melhor</small>
+    </div>
+
+    <div class="form-group">
+      <label for="link">Link Amazon <span class="opt">(opcional, mas ajuda muito)</span></label>
+      <input type="url" id="link" name="link" placeholder="https://amazon.com.br/...">
+      <small>Cola o link do produto na Amazon — facilita identificar a versão exata</small>
+    </div>
+
+    <div class="form-group">
+      <label for="categoria">Categoria <span class="opt">(ajuda a encaixar no site)</span></label>
+      <select id="categoria" name="categoria">
+        <option value="">-- Escolhe se souber --</option>
+        <option value="pele">💧 Pele / Skincare</option>
+        <option value="kbeauty">🌸 K-Beauty</option>
+        <option value="cabelo">💇 Cabelo</option>
+        <option value="teenbeauty">🌱 Teen Beauty</option>
+        <option value="cuidados">🩹 Cuidados pessoais</option>
+        <option value="bemestar">💆 Bem-estar</option>
+        <option value="cozinha">🍳 Cozinha</option>
+        <option value="casa">🧺 Casa & limpeza</option>
+        <option value="esporte">💪 Esporte & treino</option>
+        <option value="pet">🐶 Pet</option>
+        <option value="tech">🔌 Tech</option>
+        <option value="outro">Outra / não sei</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="motivo">Por que esse produto te interessa? <span class="opt">(opcional)</span></label>
+      <textarea id="motivo" name="motivo" placeholder="Ex: Vi muita gente recomendando nas redes mas não sei se vale o preço. Tenho dúvida se serve pra pele sensível. Etc."></textarea>
+      <small>Quanto mais contexto, mais a análise será útil pra você</small>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Seu email <span class="opt">(opcional — te aviso quando o review sair)</span></label>
+      <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com">
+      <small>Não usamos pra mais nada além de te avisar sobre essa análise</small>
+    </div>
+
+    <button type="submit" class="btn-submit">📩 Enviar sugestão</button>
+
+    <div class="compromise">
+      <strong>💛 Nosso compromisso:</strong> análise honesta com prós E contras. Se o produto não for bom, vamos dizer. Não recebemos nada do fabricante — somos afiliados Amazon (ganhamos comissão quando você compra pelo link do site, sem custo extra pra você).
+    </div>
+  </form>
+
+  <div class="success-msg" id="successMsg">
+    <h2>✨ Recebido!</h2>
+    <p>Sua sugestão chegou aqui. Vamos avaliar e responder em até 7 dias úteis.</p>
+    <p style="margin-top:16px;"><a href="/" style="color:#1E40AF;font-weight:700;">← Voltar pra home</a></p>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>ESSE VALE A PENA SIM</h4>
+      <p>Curadoria editorial de produtos da Amazon com análise honesta de prós, contras e a quem cada um se destina.</p>
+    </div>
+    <div class="footer-col">
+      <h4>O site</h4>
+      <ul>
+        <li><a href="/sobre.html">Sobre</a></li>
+        <li><a href="/processo-editorial.html">Processo editorial</a></li>
+        <li><a href="/sugerir.html">Sugerir produto</a></li>
+        <li><a href="/faq.html">Perguntas frequentes</a></li>
+        <li><a href="/contato.html">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/afiliados.html">Aviso de Afiliados</a></li>
+        <li><a href="/politica.html">Política de Privacidade</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© ESSE VALE A PENA SIM · Participante do Programa de Associados Amazon</p>
+  </div>
+</footer>
+
+<script>
+// Intercepta submit do form e mostra mensagem de sucesso (Formspree retorna JSON se header Accept estiver setado)
+document.getElementById('sugerirForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('.btn-submit');
+  submitBtn.disabled = true;
+  submitBtn.textContent = '⏳ Enviando...';
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('successMsg').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      throw new Error('Erro no envio');
+    }
+  } catch (err) {
+    // Fallback: usa mailto
+    const produto = form.produto.value;
+    const link = form.link.value;
+    const motivo = form.motivo.value;
+    const email = form.email.value;
+    const body = `Produto: ${produto}\n\nLink: ${link}\n\nCategoria: ${form.categoria.value}\n\nMotivo: ${motivo}\n\nEmail pra resposta: ${email}`;
+    window.location.href = `mailto:essevaleapenasim@gmail.com?subject=Sugestao de produto: ${encodeURIComponent(produto)}&body=${encodeURIComponent(body)}`;
+    submitBtn.disabled = false;
+    submitBtn.textContent = '📩 Enviar sugestão';
+  }
+});
+</script>
+
+</body>
+</html>
