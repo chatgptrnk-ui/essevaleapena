@@ -690,6 +690,36 @@
       "source": "user",
       "category": "cozinha",
       "price_tier": "mid"
+    },
+    "tonico-capilar-peptideos-de-cobre-ghk-cu-hair-repa": {
+      "asin": "B0GXCLP9VW",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "scalp-delivery-peptide-vegan-5-hair-growth-serum": {
+      "asin": "B0D3BCFT4V",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "serum-capilar-lilyeve-growturn-crescimento-antique": {
+      "asin": "B0GD71QKB2",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "01-ghk-cu-coreamy-peptideo-de-cobre-soro-facia": {
+      "asin": "B0GRPVMQ28",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "hkh-soro-de-peptideos-de-cobre-para-rosto-38-caps": {
+      "asin": "B0FZCK7XXH",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
     }
   }
 }
