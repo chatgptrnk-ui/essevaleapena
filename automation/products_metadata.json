@@ -726,6 +726,54 @@
       "source": "user",
       "category": "pele",
       "price_tier": "mid"
+    },
+    "oral-b-io-series-7-electric-toothbrush-with-2-brus": {
+      "asin": "B088CFK5VQ",
+      "source": "auto",
+      "category": "cuidados",
+      "price_tier": "high"
+    },
+    "escova-de-dentes-eletrica-oral-b-io9-com-cabo-reca": {
+      "asin": "B0B4Z1FKJ8",
+      "source": "auto",
+      "category": "cuidados",
+      "price_tier": "high"
+    },
+    "braun-silk-expert-pro-5-depiladora-laser-mulherho": {
+      "asin": "B09QQS92GP",
+      "source": "auto",
+      "category": "cuidados",
+      "price_tier": "high"
+    },
+    "massageador-eletrico-com-calor-shiatsu-alivio-im": {
+      "asin": "B0CF1TCYPD",
+      "source": "auto",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "comfier-massageador-shiatsu-de-pescoco-e-ombro-al": {
+      "asin": "B07QNN19XJ",
+      "source": "auto",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "difusor-de-aromas-ultrassonico-para-aromaterapia": {
+      "asin": "B085WCV38Q",
+      "source": "auto",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "travesseiro-nasa-x-viscoelastico-ortopedico-cervic": {
+      "asin": "B0F3G23RLH",
+      "source": "auto",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "kit-2-travesseiros-nasa-x-duoflex": {
+      "asin": "B0BG3BT9FM",
+      "source": "auto",
+      "category": "bemestar",
+      "price_tier": "mid"
     }
   }
 }
