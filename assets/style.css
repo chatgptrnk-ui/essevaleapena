@@ -31,6 +31,50 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 
+/* BANNER DE DISCLOSURE — Amazon Associates (no topo, visível) */
+.affiliate-banner {
+  background: #FEF3C7;
+  color: #92400E;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid #FDE68A;
+  line-height: 1.4;
+}
+.affiliate-banner a {
+  color: #78350F;
+  text-decoration: underline;
+  font-weight: 700;
+}
+.affiliate-banner .hashtag {
+  display: inline-block;
+  background: #FDE68A;
+  color: #78350F;
+  padding: 1px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 800;
+  margin: 0 2px;
+  letter-spacing: 0.3px;
+}
+@media (max-width: 640px) {
+  .affiliate-banner { font-size: 12px; padding: 9px 14px; }
+}
+
+/* DISCLOSURE PRÓXIMO AO CTA "Ver na Amazon" */
+.affiliate-note {
+  background: rgba(251, 191, 36, 0.1);
+  border-left: 3px solid #F59E0B;
+  padding: 10px 14px;
+  margin: 12px 0;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #92400E;
+  line-height: 1.5;
+}
+.affiliate-note strong { color: #78350F; }
+
 /* HEADER — minimal */
 .site-header {
   background: var(--surface);

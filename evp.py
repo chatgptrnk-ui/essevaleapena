@@ -350,6 +350,9 @@ def generate_review_html(slug, product_data, category, store_id):
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+<div class="affiliate-banner">
+  📢 <strong>Conteúdo com links de afiliação Amazon</strong> · <span class="hashtag">#anúncio</span> <span class="hashtag">#comcomissões</span> · Ganhamos uma pequena comissão quando você compra pelos nossos links (sem custo extra pra você) — <a href="../afiliados.html">saiba mais</a>
+</div>
 
 <header class="site-header">
   <div class="header-inner">
@@ -393,6 +396,9 @@ def generate_review_html(slug, product_data, category, store_id):
     <p>Produto presente nas avaliações públicas com nota consistente. Análise editorial detalhada considerando o segmento.</p>
   </div>{bullets_html}
 
+  <div class="affiliate-note">
+    💡 <strong>#anúncio · #comcomissões</strong> — Link de afiliada Amazon. Você paga o mesmo preço; nós recebemos uma pequena comissão. Não temos vínculo com a marca.
+  </div>
   <div class="cta">
     <a href="{amazon_url}" target="_blank" rel="nofollow noopener">Ver na Amazon →</a>
     <span class="cta-note">Preço atualizado direto na Amazon</span>
