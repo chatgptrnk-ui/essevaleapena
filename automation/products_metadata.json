@@ -774,6 +774,48 @@
       "source": "auto",
       "category": "bemestar",
       "price_tier": "mid"
+    },
+    "dux-human-health-whey-protein-concentrado-900g-cho": {
+      "asin": "B07MS89BTP",
+      "source": "user",
+      "category": "esporte",
+      "price_tier": "mid"
+    },
+    "kit-15-sache-30g-isolate-protein-5-chocolate-5-mo": {
+      "asin": "B0FD135TVK",
+      "source": "user",
+      "category": "esporte",
+      "price_tier": "mid"
+    },
+    "color-andina-food---adocante-stevia-10g-color-an": {
+      "asin": "B0D7MVZSWN",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "castanhas-de-caju-torradas-em-bandas-com-sal-1kg-m": {
+      "asin": "B0FHJ9J94J",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "kerasys---tea-tree-oil---shampoo-400ml": {
+      "asin": "B0G4F6X7PV",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "skin1004-madagascar-centella-kit-de-viagem-toner": {
+      "asin": "B08BZ89KKR",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "medicube-deep-vita-c-daily-quick-30-mascaras-cer": {
+      "asin": "B0D1G84K32",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
     }
   }
 }
