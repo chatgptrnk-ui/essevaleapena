@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Processo Editorial — ESSE VALE A PENA SIM</title>
 <meta name="description" content="Como produzimos análises de produtos no ESSE VALE A PENA SIM — metodologia, fontes e critérios editoriais.">
-<link rel="stylesheet" href="assets/style.css?v=5">
+<link rel="stylesheet" href="assets/style.css?v=6">
 <link rel="canonical" href="https://essevaleapenasim.com.br/processo-editorial">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Processo Editorial — ESSE VALE A PENA SIM">
@@ -22,7 +22,7 @@
 </head>
 <body>
 <div class="affiliate-banner">
-  📢 <strong>Conteúdo com links de afiliação Amazon</strong> · <span class="hashtag">#anúncio</span> <span class="hashtag">#comcomissões</span> · Ganhamos uma pequena comissão quando você compra pelos nossos links (sem custo extra pra você) — <a href="/afiliados.html">saiba mais</a>
+  📢 <strong>Conteúdo com links de afiliação Amazon</strong> · <span class="hashtag">#ComissõesPorCompra</span> <span class="hashtag">#anúncio</span> · Como Associada Amazon, recebemos comissão pelas compras qualificadas — sem custo extra pra você. <a href="/afiliados.html">Saiba mais</a>
 </div>
 
 <header class="site-header">
@@ -136,6 +136,27 @@
     <p class="disclaimer-mini">Este site participa do Programa de Associados Amazon. Como associado, podemos receber comissão por compras qualificadas através dos links daqui, sem custo adicional para você. Os reviews refletem opinião pessoal do autor — não constituem orientação clínica, médica, nutricional ou financeira. Consulte um profissional habilitado para decisões que envolvam sua saúde.</p>
   </div>
 </footer>
+
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>🍪 <strong>Usamos cookies</strong> pra melhorar sua experiência, lembrar suas preferências e analisar tráfego. Terceiros (inclusive Amazon e parceiros) podem coletar dados sobre sua navegação. Saiba mais na <a href="/politica.html">Política de Privacidade</a>.</p>
+  <div class="cookie-actions">
+    <button class="reject" onclick="cookieAction('reject')">Apenas necessários</button>
+    <button class="accept" onclick="cookieAction('accept')">Aceitar todos</button>
+  </div>
+</div>
+<script>
+(function(){
+  var key='evp_cookies';
+  if(!localStorage.getItem(key)){
+    setTimeout(function(){var b=document.getElementById('cookieBanner');if(b)b.classList.add('show');}, 800);
+  }
+  window.cookieAction=function(choice){
+    localStorage.setItem(key,choice+'-'+Date.now());
+    document.getElementById('cookieBanner').classList.remove('show');
+  };
+})();
+</script>
 
 </body>
 </html>

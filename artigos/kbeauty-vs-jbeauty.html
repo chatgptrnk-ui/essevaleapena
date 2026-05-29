@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>K-Beauty vs J-Beauty: diferenças, filosofias e qual escolher — ESSE VALE A PENA SIM</title>
 <meta name="description" content="Diferenças entre skincare coreano e japonês: camadas vs minimalismo, ativos inovadores vs consistência. Quando escolher cada filosofia.">
-<link rel="stylesheet" href="../assets/style.css?v=5">
+<link rel="stylesheet" href="../assets/style.css?v=6">
 <link rel="canonical" href="https://essevaleapenasim.com.br/artigos/kbeauty-vs-jbeauty">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K-Beauty vs J-Beauty: diferenças, filosofias e qual escolher — ESSE VALE A PENA SIM">
@@ -39,7 +39,7 @@
 </head>
 <body>
 <div class="affiliate-banner">
-  📢 <strong>Conteúdo com links de afiliação Amazon</strong> · <span class="hashtag">#anúncio</span> <span class="hashtag">#comcomissões</span> · Ganhamos uma pequena comissão quando você compra pelos nossos links (sem custo extra pra você) — <a href="../afiliados.html">saiba mais</a>
+  📢 <strong>Conteúdo com links de afiliação Amazon</strong> · <span class="hashtag">#ComissõesPorCompra</span> <span class="hashtag">#anúncio</span> · Como Associada Amazon, recebemos comissão pelas compras qualificadas — sem custo extra pra você. <a href="../afiliados.html">Saiba mais</a>
 </div>
 
 <header class="site-header">
@@ -188,6 +188,27 @@
     <p>© ESSE VALE A PENA SIM · Participante do Programa de Associados Amazon</p>
   </div>
 </footer>
+
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>🍪 <strong>Usamos cookies</strong> pra melhorar sua experiência, lembrar suas preferências e analisar tráfego. Terceiros (inclusive Amazon e parceiros) podem coletar dados sobre sua navegação. Saiba mais na <a href="../politica.html">Política de Privacidade</a>.</p>
+  <div class="cookie-actions">
+    <button class="reject" onclick="cookieAction('reject')">Apenas necessários</button>
+    <button class="accept" onclick="cookieAction('accept')">Aceitar todos</button>
+  </div>
+</div>
+<script>
+(function(){
+  var key='evp_cookies';
+  if(!localStorage.getItem(key)){
+    setTimeout(function(){var b=document.getElementById('cookieBanner');if(b)b.classList.add('show');}, 800);
+  }
+  window.cookieAction=function(choice){
+    localStorage.setItem(key,choice+'-'+Date.now());
+    document.getElementById('cookieBanner').classList.remove('show');
+  };
+})();
+</script>
 
 </body>
 </html>
