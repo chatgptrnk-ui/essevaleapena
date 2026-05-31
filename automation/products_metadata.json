@@ -816,6 +816,24 @@
       "source": "user",
       "category": "kbeauty",
       "price_tier": "mid"
+    },
+    "conjunto-de-suporte-de-teto-e-mosquetoes-de-aco-in": {
+      "asin": "B0DLJX4LCF",
+      "source": "user",
+      "category": "esporte",
+      "price_tier": "mid"
+    },
+    "cadeira-rede-balanco-almofada-suspensa-trancada-de": {
+      "asin": "B0GWRQPBHD",
+      "source": "user",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "saco-de-pancada-180-cm-luva-suporte-teto---gor": {
+      "asin": "B07QMWXSBF",
+      "source": "user",
+      "category": "esporte",
+      "price_tier": "mid"
     }
   }
 }
