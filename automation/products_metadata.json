@@ -912,6 +912,12 @@
       "source": "user",
       "category": "pele",
       "price_tier": "mid"
+    },
+    "pipoqueira-popflix-mondial-vermelho-1200w-110v": {
+      "asin": "B07G1HWM9D",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
     }
   }
 }
