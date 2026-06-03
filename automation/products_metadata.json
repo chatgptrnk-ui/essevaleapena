@@ -834,6 +834,78 @@
       "source": "user",
       "category": "esporte",
       "price_tier": "mid"
+    },
+    "esfigmomanometro-em-nylon-premium-preto": {
+      "asin": "B07B9ZTQG3",
+      "source": "user",
+      "category": "cuidados",
+      "price_tier": "mid"
+    },
+    "coala-home-spray-ambientes-e-tecidos-260ml-cha-bra": {
+      "asin": "B0C6R8G61Z",
+      "source": "user",
+      "category": "casa",
+      "price_tier": "mid"
+    },
+    "sanol-desinfetante-liquido-para-uso-geral-lavanda": {
+      "asin": "B077XDYZNF",
+      "source": "user",
+      "category": "casa",
+      "price_tier": "mid"
+    },
+    "jimo-lava-louca-multicamadas-detergente-concentrad": {
+      "asin": "B0CK2R6D9F",
+      "source": "user",
+      "category": "casa",
+      "price_tier": "mid"
+    },
+    "tinta-fosco-chega-de-mofo-economico-900ml-branco": {
+      "asin": "B07FTXK1XN",
+      "source": "user",
+      "category": "casa",
+      "price_tier": "mid"
+    },
+    "leite-em-po-desnatado-instantaneo-400g-itambe": {
+      "asin": "B0B7P6JXLD",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "pipoqueira-poplite-inox-bpi01vi-vermelho-220v": {
+      "asin": "B076HZCFMY",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "percarbonato-de-sodio-1kg-100-puro-tira-manchas-e": {
+      "asin": "B0FWCTHSWQ",
+      "source": "user",
+      "category": "casa",
+      "price_tier": "mid"
+    },
+    "wap-aspirador-de-po-vertical-a-bateria-eco-rapido": {
+      "asin": "B0CJYJH5TD",
+      "source": "user",
+      "category": "casa",
+      "price_tier": "mid"
+    },
+    "lyor---conjunto-50-filtros-de-papel-descartavel-do": {
+      "asin": "B0CT6LKJS7",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "cafe-tradicional-melitta-vacuo-250g": {
+      "asin": "B004Z99POE",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "kit-de-cuidados-com-a-pele-sakura-do-japao-com-6": {
+      "asin": "B0DGY1K584",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
     }
   }
 }
