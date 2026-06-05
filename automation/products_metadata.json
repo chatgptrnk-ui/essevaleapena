@@ -924,6 +924,90 @@
       "source": "user",
       "category": "cozinha",
       "price_tier": "mid"
+    },
+    "medicube-age-r-booster-pro-massageador-de-beleza": {
+      "asin": "B0CWK6YQ7V",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "anua-serum-calmante-para-vermelhidao-acido-azelai": {
+      "asin": "B0DG1DQ2S7",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "prevent-pharma-kit-2-shampoo-cetoconazol-prevencao": {
+      "asin": "B0H1F3HYFQ",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "shampoo-de-peptideo-antidiluicao-shampoo-dht-hid": {
+      "asin": "B0FMQB8NWK",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "texture-id-oleo-calmante-para-cabelos-secos-e-cour": {
+      "asin": "B083G9QXLC",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "truss-equilibrium-scalp-mascara-de-couro-cabeludo": {
+      "asin": "B0F9XR7J4R",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "scalp-relief-shampoo-clobetasol-005-dermatologic": {
+      "asin": "B0GD8ZYY8H",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "shampoo-revival-fluid-urban-spa-black-500ml-profis": {
+      "asin": "B0GVKWYL7K",
+      "source": "user",
+      "category": "cabelo",
+      "price_tier": "mid"
+    },
+    "probio-20bi-30-capsulas-essential-nutrition": {
+      "asin": "B0DW5VNCMT",
+      "source": "user",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "probiotico-10-bilhoes-de-ufc-30-capsulas---bioroot": {
+      "asin": "B0GQHZGS8B",
+      "source": "user",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "copa-do-mundo-fifa-2026-kit-com-24-envelopes-de-f": {
+      "asin": "B0H1SHLF97",
+      "source": "user",
+      "category": "tech",
+      "price_tier": "mid"
+    },
+    "armani-beauty-acqua-di-gio-eau-de-toilette-giorg": {
+      "asin": "B000E7YK5K",
+      "source": "user",
+      "category": "cuidados",
+      "price_tier": "mid"
+    },
+    "tri-magnesio-dimalato-quelato-e-taurato-inosito": {
+      "asin": "B0CK8LRQ3M",
+      "source": "user",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "kit-10-potes-de-vidro-borossilicato-retangular-640": {
+      "asin": "B0GSS59FFM",
+      "source": "user",
+      "category": "casa",
+      "price_tier": "mid"
     }
   }
 }
