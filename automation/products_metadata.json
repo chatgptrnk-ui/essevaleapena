@@ -1008,6 +1008,24 @@
       "source": "user",
       "category": "casa",
       "price_tier": "mid"
+    },
+    "cafe-em-capsula-compativel-com-nespresso-nescafe-f": {
+      "asin": "B0D8CHF1N3",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "cafe-em-capsula-nescafe-farmers-origins-colombia": {
+      "asin": "B0FWFRRT48",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "kit-everyday-essentials-real-techniques": {
+      "asin": "B07FTXBNVL",
+      "source": "user",
+      "category": "cuidados",
+      "price_tier": "mid"
     }
   }
 }
