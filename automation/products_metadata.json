@@ -1026,6 +1026,12 @@
       "source": "user",
       "category": "cuidados",
       "price_tier": "mid"
+    },
+    "cartucho-hp-667xl-preto-original-3ym81ab-para-hp": {
+      "asin": "B08WKMBDN9",
+      "source": "user",
+      "category": "tech",
+      "price_tier": "mid"
     }
   }
 }
