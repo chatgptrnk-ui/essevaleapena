@@ -1056,6 +1056,18 @@
       "source": "user",
       "category": "casa",
       "price_tier": "mid"
+    },
+    "micro-ondas-philco-20l-branco-pmo23b-110v-110v": {
+      "asin": "B097CJVNWS",
+      "source": "user",
+      "category": "cozinha",
+      "price_tier": "mid"
+    },
+    "esfoliante-facial-aha-7-whitehead-power-liquid-co": {
+      "asin": "B00OZ9WOD8",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
     }
   }
 }
