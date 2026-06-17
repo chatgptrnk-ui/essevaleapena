@@ -1086,6 +1086,42 @@
       "source": "user",
       "category": "pele",
       "price_tier": "mid"
+    },
+    "kit-retinol-some-by-mi-trial-kit-retinol-intense-c": {
+      "asin": "B0CJV41RM3",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "vt-cosmetics-reti-a-reedle-shot-100-serum-de-micr": {
+      "asin": "B0DC5TNB66",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "locao-facial---oil-free-ultra-moisturizing-lotion": {
+      "asin": "B01CLTKI4A",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "creme-hidatante--centella-blemish-cream-cosrx": {
+      "asin": "B00XY0ONRY",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "celimax-poredark-spot-brightening-serum---30ml": {
+      "asin": "B0CZ8FPVW4",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
+    },
+    "aplb-retinol-vitamina-c-vitamina-e-locao-corporal": {
+      "asin": "B0DZ57V33T",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
     }
   }
 }
