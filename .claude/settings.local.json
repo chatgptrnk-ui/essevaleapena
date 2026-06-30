@@ -3,7 +3,8 @@
     "allow": [
       "WebSearch",
       "Bash(rm -f automation/reels/*.mp4 automation/reels-temp/*)",
-      "Bash(python3 evp.py reel)"
+      "Bash(python3 evp.py reel)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

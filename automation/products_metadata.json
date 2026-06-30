@@ -1122,6 +1122,30 @@
       "source": "user",
       "category": "kbeauty",
       "price_tier": "mid"
+    },
+    "isdin-acniben-gel-secativo-para-espinhas-on-the-sp": {
+      "asin": "B0BHX6J74D",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "isdin-acniben-spray-corporal-antiacne---150ml": {
+      "asin": "B0BHX5ND4C",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "gel-ultra-secativo-antiacne-15g--ozoncare": {
+      "asin": "B0F3V2D7JN",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
+    },
+    "dove-sabonete-serum-liquido-acne-control-547ml": {
+      "asin": "B0GPRVY4X9",
+      "source": "user",
+      "category": "pele",
+      "price_tier": "mid"
     }
   }
 }
