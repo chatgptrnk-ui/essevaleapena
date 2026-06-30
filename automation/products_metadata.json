@@ -1146,6 +1146,18 @@
       "source": "user",
       "category": "pele",
       "price_tier": "mid"
+    },
+    "zinco-30-mg-bisglicinato-suplemento-vitaminico-e": {
+      "asin": "B0DC1YKQGL",
+      "source": "user",
+      "category": "bemestar",
+      "price_tier": "mid"
+    },
+    "medicube-serum-para-os-olhos-com-peptideo-de-revit": {
+      "asin": "B09C19CGPF",
+      "source": "user",
+      "category": "kbeauty",
+      "price_tier": "mid"
     }
   }
 }
